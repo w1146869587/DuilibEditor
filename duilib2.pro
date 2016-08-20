@@ -1,6 +1,6 @@
 TEMPLATE = subdirs
 
 SUBDIRS += \
+    Test \
     DuilibEditor \
-    duilib2 \
-    Test
+    duilib2

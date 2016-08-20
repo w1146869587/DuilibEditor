@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT       += core gui xml
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -17,7 +17,8 @@ SOURCES += main.cpp\
 
 HEADERS  += mainwindow.h
 
-INCLUDEPATH += $$PWD/../duilib2/include
+INCLUDEPATH += $$PWD/../duilib2/include \
+            $$PWD/../duilib2/include/Qt
 INCLUDEPATH += $$PWD/../duilib2
 DEPENDPATH += $$PWD/../duilib2
 

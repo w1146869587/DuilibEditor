@@ -3,6 +3,7 @@
 
 #include <duilib2_global.h>
 #include <Singleton.h>
+#include <RawDataContainer.h>
 
 namespace duilib2
 {
@@ -14,17 +15,43 @@ public:
 	~ResourceManager();
 
 	/**
-	 * @brief 添加资源
+	 * @brief
+	 *     添加一个资源包，其中中包含图片、布局文件xml等
+	 *
 	 * @param name
-	 *		唯一标识一个资源的idName
+	 *     唯一标识一个资源包的ID
+	 *
 	 * @param type
-	 *		资源类型，比如zip、filesystem
+	 *     资源包类型：
+	 *     zip         zip压缩文件
+	 *     filesystem  磁盘文件夹
+	 *     res         嵌入应用程序内的资源
+	 *
 	 * @param location
-	 *		资源引用的位置，比如zip文件路径
+	 *    资源包位置，比如zip文件的路径、filesystem文件夹的路径、嵌入资源的字符串ID
 	 */
-	void addResource(const String& name, const String& type, const String& location);
+	void addResourcePackage(const String& name, const String& type, const String& location);
 
-	void setCurrentResource(const String& name);
+	/**
+	 * @brief
+	 *     设置当前使用的资源包，可以实现动态换肤
+	 *
+	 * @param name
+	 *     addResourcePackage()函数中使用的资源包ID
+	 */
+	void setCurrentResourcePackage(const String& name);
+
+	/**
+	 * @brief
+	 *     在当前资源包中找到指定文件，获得该文件数据
+	 *
+	 * @param fileName
+	 *     文件名
+	 *
+	 * @return
+	 *     整个文件二进制数据
+	 */
+	RawDataContainer getFileRawData(const String& fileName);
 
 private:
 };

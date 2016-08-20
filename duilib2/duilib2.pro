@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += widgets
+QT       += widgets xml
 
 TARGET = duilib2
 TEMPLATE = lib
@@ -16,19 +16,30 @@ SOURCES += \
     src/PushButton.cpp \
     src/Window.cpp \
     src/WindowManager.cpp \
-    src/ResourceManager.cpp
+    src/ResourceManager.cpp \
+    src/RawDataContainer.cpp \
+    src/XmlHandler.cpp \
+    src/XmlParsers/QtXmlParser.cpp \
+    src/Qt/SystemImpl.cpp \
+    src/XmlAttributes.cpp
 
 HEADERS +=\
-        duilib2_global.h \
     include/System.h \
     include/Singleton.h \
     include/duilib2.h \
     include/PushButton.h \
     include/Window.h \
     include/WindowManager.h \
-    include/ResourceManager.h
+    include/ResourceManager.h \
+    include/Qt/duilib2_global.h \
+    include/XmlParsers/QtXmlParser.h \
+    include/XmlHandler.h \
+    include/XmlParser.h \
+    include/RawDataContainer.h \
+    include/XmlAttributes.h
 
 INCLUDEPATH += include
+INCLUDEPATH += include/Qt
 
 unix {
     target.path = /usr/lib

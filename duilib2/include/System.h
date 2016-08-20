@@ -5,6 +5,7 @@
 #include <Singleton.h>
 #include <ResourceManager.h>
 #include <WindowManager.h>
+#include <XmlParser.h>
 
 namespace duilib2
 {
@@ -18,9 +19,15 @@ public:
 	static System* create();
 	static void destroy();
 
+	XmlParser* getXmlParser() const;
+
+private:
+	void createXmlParser();
+
 private:
 	ResourceManager* mResourceManager;
 	WindowManager*   mWindowManager;
+	XmlParser*       mXmlParser;
 };
 
 } // duilib2
