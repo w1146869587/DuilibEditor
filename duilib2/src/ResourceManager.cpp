@@ -25,7 +25,7 @@ void ResourceManager::addResourcePackage(const String& name, const String& type,
 	}
 
 	std::map<String, Archive*>::const_iterator pos = mResourcePackages.find(name);
-	if (pos == mResourcePackages.end())
+	if (pos != mResourcePackages.end())
 	{
 		throw Exception("Resource Package named" + name + "is already exists");
 	}
@@ -47,7 +47,7 @@ void ResourceManager::setCurrentResourcePackage(const String& name)
 
 RawDataContainerPtr ResourceManager::getFileRawData(const String& fileName)
 {
-	std::map<String, Archive*>::const_iterator pos = mResourcePackages.find(fileName);
+	std::map<String, Archive*>::const_iterator pos = mResourcePackages.find(mCurrentResourcePackage);
 	if (pos == mResourcePackages.end())
 	{
 		throw Exception("Current resource Package named" + mCurrentResourcePackage + "is not exists");

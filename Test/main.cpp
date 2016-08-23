@@ -19,6 +19,7 @@ int main(int argc, char *argv[])
 
 	testQtXmlParser();
 
+	/*
 	System::create();
 
 	// 资源
@@ -30,6 +31,7 @@ int main(int argc, char *argv[])
 	//rootWindow->showModal();
 
 	System::destroy();
+	*/
 
 	return a.exec();
 }
@@ -53,6 +55,7 @@ public:
 
 void testQtXmlParser()
 {
+	/*
 	QFile file("test.xml");
 	file.open(QIODevice::ReadOnly | QIODevice::Text);
 
@@ -62,4 +65,19 @@ void testQtXmlParser()
 	QtXmlParser parser;
 	parser.parseXmlString(handler, fileData);
 	file.close();
+	*/
+
+	System::create();
+
+	// 资源
+	ResourceManager::getSingleton().addResourcePackage("default", "FileSystem", ".");
+	ResourceManager::getSingleton().setCurrentResourcePackage("default");
+
+	RawDataContainerPtr rawData = ResourceManager::getSingleton().getFileRawData("test.xml");
+
+	TestXmlHandler handler;
+	QtXmlParser parser;
+	parser.parseXml(handler, *rawData.get());
+
+	System::destroy();
 }
