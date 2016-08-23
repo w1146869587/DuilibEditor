@@ -21,7 +21,11 @@ SOURCES += \
     src/XmlHandler.cpp \
     src/XmlParsers/QtXmlParser.cpp \
     src/Qt/SystemImpl.cpp \
-    src/XmlAttributes.cpp
+    src/XmlAttributes.cpp \
+    src/ArchiveManager.cpp \
+    src/FileSystemArchive.cpp \
+    src/QtResArchive.cpp \
+    src/ZipArchive.cpp
 
 HEADERS +=\
     include/System.h \
@@ -36,10 +40,19 @@ HEADERS +=\
     include/XmlHandler.h \
     include/XmlParser.h \
     include/RawDataContainer.h \
-    include/XmlAttributes.h
+    include/XmlAttributes.h \
+    include/Archive.h \
+    include/ArchiveFactory.h \
+    include/ArchiveManager.h \
+    include/FileSystemArchive.h \
+    include/QtResArchive.h \
+    include/ZipArchive.h \
+    include/Exception.h
 
-INCLUDEPATH += include
-INCLUDEPATH += include/Qt
+INCLUDEPATH += \
+    include \
+    include/Qt \
+    boost_1_60_0
 
 unix {
     target.path = /usr/lib

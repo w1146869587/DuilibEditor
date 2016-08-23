@@ -4,6 +4,8 @@
 #include <duilib2_global.h>
 #include <Singleton.h>
 #include <RawDataContainer.h>
+#include <Archive.h>
+#include <map>
 
 namespace duilib2
 {
@@ -19,7 +21,7 @@ public:
 	 *     添加一个资源包，其中中包含图片、布局文件xml等
 	 *
 	 * @param name
-	 *     唯一标识一个资源包的ID
+	 *     唯一标识一个资源包的ID，大小写敏感
 	 *
 	 * @param type
 	 *     资源包类型：
@@ -46,14 +48,16 @@ public:
 	 *     在当前资源包中找到指定文件，获得该文件数据
 	 *
 	 * @param fileName
-	 *     文件名
+	 *     文件名，大小写不敏感
 	 *
 	 * @return
 	 *     整个文件二进制数据
 	 */
-	RawDataContainer getFileRawData(const String& fileName);
+	RawDataContainerPtr getFileRawData(const String& fileName);
 
 private:
+	std::map<String, Archive*> mResourcePackages;
+	String                     mCurrentResourcePackage;
 };
 
 }

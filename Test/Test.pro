@@ -18,7 +18,9 @@ SOURCES += main.cpp\
 HEADERS  += mainwindow.h
 
 INCLUDEPATH += $$PWD/../duilib2/include \
-            $$PWD/../duilib2/include/Qt
+            $$PWD/../duilib2/include/Qt \
+            $$PWD/../duilib2/boost_1_60_0
+
 INCLUDEPATH += $$PWD/../duilib2
 DEPENDPATH += $$PWD/../duilib2
 

@@ -6,6 +6,7 @@
 #include <ResourceManager.h>
 #include <WindowManager.h>
 #include <XmlParser.h>
+#include <ArchiveManager.h>
 
 namespace duilib2
 {
@@ -23,8 +24,10 @@ public:
 
 private:
 	void createXmlParser();
+	void addArchiveFactories();
 
 private:
+	ArchiveManager*  mArchiveManager;
 	ResourceManager* mResourceManager;
 	WindowManager*   mWindowManager;
 	XmlParser*       mXmlParser;

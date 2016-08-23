@@ -29,6 +29,7 @@
 #define RAWDATACONTAINER_H
 
 #include <duilib2_global.h>
+#include <boost/smart_ptr.hpp>
 
 namespace duilib2
 {
@@ -85,9 +86,15 @@ public:
 	void release();
 
 private:
+	RawDataContainer(const RawDataContainer&);
+	RawDataContainer& operator=(const RawDataContainer&);
+
+private:
 	unsigned char* mData;
 	int mSize;
 };
+
+typedef boost::shared_ptr<RawDataContainer> RawDataContainerPtr;
 
 }
 

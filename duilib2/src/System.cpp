@@ -10,10 +10,13 @@ System::System()
 {
 	// 初始化ResourceManager等
 
+	mArchiveManager = new ArchiveManager;
 	mResourceManager = new ResourceManager;
 	mWindowManager = new WindowManager;
 
+	addArchiveFactories();
 	createXmlParser();
+
 }
 
 System::~System()

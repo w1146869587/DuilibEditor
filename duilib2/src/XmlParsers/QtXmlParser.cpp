@@ -28,8 +28,8 @@ void QtXmlParser::parseXml(XmlHandler& handler, const RawDataContainer& source)
 
 void QtXmlParser::parseXmlFile(XmlHandler& handler, const String& fileName)
 {
-	RawDataContainer rawData = ResourceManager::getSingleton().getFileRawData(fileName);
-	parseXml(handler, rawData);
+	RawDataContainerPtr rawData = ResourceManager::getSingleton().getFileRawData(fileName);
+	parseXml(handler, *rawData.get());
 }
 
 void QtXmlParser::parseXmlString(XmlHandler& handler, const String& source)

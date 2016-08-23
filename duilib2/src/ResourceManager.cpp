@@ -1,4 +1,6 @@
 #include <ResourceManager.h>
+#include <ArchiveManager.h>
+#include <Exception.h>
 
 namespace duilib2
 {
@@ -17,27 +19,41 @@ ResourceManager::~ResourceManager()
 
 void ResourceManager::addResourcePackage(const String& name, const String& type, const String& location)
 {
+	if (name.isEmpty())
+	{
+		throw Exception("\'name\' can't be empty.");
+	}
 
-	// 每种类型的文档对应一个 Archive 子类
-	// 比如 ZipArchive FileSystemArchive Win32ResArchive QtResArchive
-	// ResourceManager 保存一个资源列表
-	// name | Archive*
-	// 1. 打开文件获得rawdata  archive->getFileRawData(fileName)
-	// 2. 获得一张图片资源      archive->getImage(fileName) : Image
-	// Resource
-	// |- Image  包含图片数据
-	//
+	std::map<String, Archive*>::const_iterator pos = mResourcePackages.find(name);
+	if (pos == mResourcePackages.end())
+	{
+		throw Exception("Resource Package named" + name + "is already exists");
+	}
+
+	Archive* archive = ArchiveManager::getSingleton().load(location, type);
+	mResourcePackages[name] = archive;
 }
 
 void ResourceManager::setCurrentResourcePackage(const String& name)
 {
+	std::map<String, Archive*>::const_iterator pos = mResourcePackages.find(name);
+	if (pos == mResourcePackages.end())
+	{
+		throw Exception("Resource Package named" + name + "is not exists");
+	}
 
+	mCurrentResourcePackage = name;
 }
 
-RawDataContainer ResourceManager::getFileRawData(const String& fileName)
+RawDataContainerPtr ResourceManager::getFileRawData(const String& fileName)
 {
-	// ...
-	return RawDataContainer();
+	std::map<String, Archive*>::const_iterator pos = mResourcePackages.find(fileName);
+	if (pos == mResourcePackages.end())
+	{
+		throw Exception("Current resource Package named" + mCurrentResourcePackage + "is not exists");
+	}
+
+	return pos->second->open(fileName);
 }
 
 }
