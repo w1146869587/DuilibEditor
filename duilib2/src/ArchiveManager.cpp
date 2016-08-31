@@ -52,7 +52,9 @@ ArchiveManager::~ArchiveManager()
 		ArchiveFactoryMap::iterator iterF = mArchiveFactories.find(archive->getType());
 		if (iterF == mArchiveFactories.end())
 		{
-			throw Exception("Cannot find archive factory for type" + archive->getType());
+			DUILIB2_EXCEPT(Exception::ERR_ITEM_NOT_FOUND,
+								 "Cannot find archive factory for type" + archive->getType(),
+								 "ArchiveManager::~ArchiveManager");
 		}
 		iterF->second->destroyInstance(archive);
 	}
@@ -76,7 +78,11 @@ Archive* ArchiveManager::load(const String& fileName, const String& archiveType)
 	{
 		ArchiveFactoryMap::iterator iterFactory = mArchiveFactories.find(archiveType);
 		if (iterFactory == mArchiveFactories.end())
-			throw Exception("Cannot find an archive factory for type" + archiveType);
+		{
+			DUILIB2_EXCEPT(Exception::ERR_ITEM_NOT_FOUND,
+								 "Cannot find an archive factory for type" + archiveType,
+								 "ArchiveManager::load");
+		}
 
 		archive = iterFactory->second->createInstance(fileName);
 		archive->load();
@@ -105,7 +111,11 @@ void ArchiveManager::unload(const String& fileName)
 		// Find factory to destroy the archive instance
 		ArchiveFactoryMap::iterator iterFactory = mArchiveFactories.find(iter->second->getType());
 		if (iterFactory == mArchiveFactories.end())
-			throw Exception("Cannot find archive factory for type" + iter->second->getType());
+		{
+			DUILIB2_EXCEPT(Exception::ERR_ITEM_NOT_FOUND,
+								 "Cannot find an archive factory for type" + iter->second->getType(),
+								 "ArchiveManager::unload");
+		}
 
 		iterFactory->second->destroyInstance(iter->second);
 		mArchives.erase(iter);

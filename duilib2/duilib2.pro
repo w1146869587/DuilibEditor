@@ -25,7 +25,8 @@ SOURCES += \
     src/ArchiveManager.cpp \
     src/FileSystemArchive.cpp \
     src/QtResArchive.cpp \
-    src/ZipArchive.cpp
+    src/ZipArchive.cpp \
+    src/Exception.cpp
 
 HEADERS +=\
     include/System.h \

@@ -21,13 +21,16 @@ void ResourceManager::addResourcePackage(const String& name, const String& type,
 {
 	if (name.isEmpty())
 	{
-		throw Exception("\'name\' can't be empty.");
+		DUILIB2_EXCEPT(Exception::ERR_INVALIDPARAMS,
+							 "\'name\' can't be empty", "ResourceManager::addResourcePackage");
 	}
 
 	std::map<String, Archive*>::const_iterator pos = mResourcePackages.find(name);
 	if (pos != mResourcePackages.end())
 	{
-		throw Exception("Resource Package named" + name + "is already exists");
+		DUILIB2_EXCEPT(Exception::ERR_DUPLICATE_ITEM,
+							 "Resource package named" + name + "is already exists",
+							 "ResourceManager::addResourcePackage");
 	}
 
 	Archive* archive = ArchiveManager::getSingleton().load(location, type);
@@ -39,7 +42,9 @@ void ResourceManager::setCurrentResourcePackage(const String& name)
 	std::map<String, Archive*>::const_iterator pos = mResourcePackages.find(name);
 	if (pos == mResourcePackages.end())
 	{
-		throw Exception("Resource Package named" + name + "is not exists");
+		DUILIB2_EXCEPT(Exception::ERR_ITEM_NOT_FOUND,
+							 "Resource package named" + name + "is not exists",
+							 "ResourceManager::setCurrentResourcePackage");
 	}
 
 	mCurrentResourcePackage = name;
@@ -50,7 +55,9 @@ RawDataContainerPtr ResourceManager::getFileRawData(const String& fileName)
 	std::map<String, Archive*>::const_iterator pos = mResourcePackages.find(mCurrentResourcePackage);
 	if (pos == mResourcePackages.end())
 	{
-		throw Exception("Current resource Package named" + mCurrentResourcePackage + "is not exists");
+		DUILIB2_EXCEPT(Exception::ERR_ITEM_NOT_FOUND,
+							 "Current resource package named" + mCurrentResourcePackage + "is not exists",
+							 "ResourceManager::getFileRawData");
 	}
 
 	return pos->second->open(fileName);

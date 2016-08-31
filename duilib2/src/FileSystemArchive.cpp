@@ -45,7 +45,8 @@ RawDataContainerPtr FileSystemArchive::open(const String& fileName)
 	std::ifstream file(path.toLocal8Bit().data(), std::ios::in | std::ios::binary);
 	if (!file)
 	{
-		throw Exception("Cannot open file" + fileName);
+		DUILIB2_EXCEPT(Exception::ERR_FILE_NOT_FOUND,
+							 "Cannot open file" + fileName, "FileSystemArchive::open");
 	}
 
 	std::ostringstream strStream;
