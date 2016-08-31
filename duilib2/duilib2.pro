@@ -26,7 +26,8 @@ SOURCES += \
     src/FileSystemArchive.cpp \
     src/QtResArchive.cpp \
     src/ZipArchive.cpp \
-    src/Exception.cpp
+    src/Exception.cpp \
+    src/LayoutXmlHandler.cpp
 
 HEADERS +=\
     include/System.h \
@@ -48,7 +49,8 @@ HEADERS +=\
     include/FileSystemArchive.h \
     include/QtResArchive.h \
     include/ZipArchive.h \
-    include/Exception.h
+    include/Exception.h \
+    include/LayoutXmlHandler.h
 
 INCLUDEPATH += \
     include \
