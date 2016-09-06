@@ -21,7 +21,9 @@ Window* LayoutXmlHandler::getLayoutRootWindow()
 
 void LayoutXmlHandler::elementStart(const String& element, const XmlAttributes& attributes)
 {
-
+	// 根据元素名称构造窗口控件实例，设置属性
+	// WindowManager
+	// WindowFactory
 }
 
 void LayoutXmlHandler::elementEnd(const String& element)

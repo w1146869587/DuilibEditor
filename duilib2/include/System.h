@@ -25,6 +25,7 @@ public:
 private:
 	void createXmlParser();
 	void addArchiveFactories();
+	void addWindowFactores();
 
 private:
 	ArchiveManager*  mArchiveManager;

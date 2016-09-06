@@ -34,6 +34,9 @@ public:
 	 */
 	void addResourcePackage(const String& name, const String& type, const String& location);
 
+	// ...
+	void removeResourcePackage(const String& name);
+
 	/**
 	 * @brief
 	 *     设置当前使用的资源包，可以实现动态换肤

@@ -20,14 +20,20 @@ SOURCES += \
     src/RawDataContainer.cpp \
     src/XmlHandler.cpp \
     src/XmlParsers/QtXmlParser.cpp \
-    src/Qt/SystemImpl.cpp \
     src/XmlAttributes.cpp \
     src/ArchiveManager.cpp \
-    src/FileSystemArchive.cpp \
-    src/QtResArchive.cpp \
-    src/ZipArchive.cpp \
     src/Exception.cpp \
-    src/LayoutXmlHandler.cpp
+    src/LayoutXmlHandler.cpp \
+    src/NativeWindows/QtMainWindow.cpp \
+    src/NativeWindows/Win32MainWindow.cpp \
+    src/MainWindow.cpp \
+    src/Property.cpp \
+    src/PropertySet.cpp \
+    src/WindowFactory.cpp \
+    src/SystemImpl/QtSystemImpl.cpp \
+    src/Archives/FileSystemArchive.cpp \
+    src/Archives/QtResArchive.cpp \
+    src/Archives/ZipArchive.cpp
 
 HEADERS +=\
     include/System.h \
@@ -46,11 +52,17 @@ HEADERS +=\
     include/Archive.h \
     include/ArchiveFactory.h \
     include/ArchiveManager.h \
-    include/FileSystemArchive.h \
-    include/QtResArchive.h \
-    include/ZipArchive.h \
     include/Exception.h \
-    include/LayoutXmlHandler.h
+    include/LayoutXmlHandler.h \
+    include/NativeWindows/QtMainWindow.h \
+    include/NativeWindows/Win32MainWindow.h \
+    include/MainWindow.h \
+    include/Property.h \
+    include/PropertySet.h \
+    include/WindowFactory.h \
+    include/Archives/FileSystemArchive.h \
+    include/Archives/QtResArchive.h \
+    include/Archives/ZipArchive.h
 
 INCLUDEPATH += \
     include \
