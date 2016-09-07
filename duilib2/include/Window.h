@@ -3,11 +3,12 @@
 
 #include <duilib2_global.h>
 #include <vector>
+#include <PropertySet.h>
 
 namespace duilib2
 {
 
-class DUILIB2SHARED_EXPORT Window
+class DUILIB2SHARED_EXPORT Window : public PropertySet
 {
 public:
 	Window(const String& name);

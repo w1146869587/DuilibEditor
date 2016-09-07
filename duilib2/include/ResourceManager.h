@@ -30,11 +30,17 @@ public:
 	 *     res         嵌入应用程序内的资源
 	 *
 	 * @param location
-	 *    资源包位置，比如zip文件的路径、filesystem文件夹的路径、嵌入资源的字符串ID
+	 *     资源包位置，比如zip文件的路径、filesystem文件夹的路径、嵌入资源的字符串ID
 	 */
 	void addResourcePackage(const String& name, const String& type, const String& location);
 
-	// ...
+	/**
+	 * @brief
+	 *     Remove a resource package.
+	 *
+	 * @param name
+	 *     The name of the resource package.
+	 */
 	void removeResourcePackage(const String& name);
 
 	/**
@@ -60,7 +66,8 @@ public:
 
 private:
 	std::map<String, Archive*> mResourcePackages;
-	String                     mCurrentResourcePackage;
+	std::map<String, RawDataContainerPtr> mRawDataCaches;
+	String mCurrentResourcePackage;
 };
 
 }
