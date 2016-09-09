@@ -30,7 +30,7 @@
 
 ## 基本设计
 
-![architecture](https://github.com/yjwx0017/DuilibEditor/architecture.jpg)
+![architecture](https://github.com/yjwx0017/DuilibEditor/blob/master/architecture.jpg)
 
 ## 使用方法
 
