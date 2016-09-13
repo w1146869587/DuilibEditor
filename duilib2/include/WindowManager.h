@@ -57,16 +57,16 @@ public:
 	 * @brief
 	 *     Create a new window
 	 *
-	 * @param name
-	 *     The ID name of the new window
-	 *
 	 * @param type
 	 *     The type of the new window, e.g. PushButton
+	 *
+	 * @param name
+	 *     The ID name of the new window
 	 *
 	 * @return
 	 *     The pointer of the new window
 	 */
-	Window* createWindow(const String& name, const String& type);
+	Window* createWindow(const String& type, const String& name);
 
 	/**
 	 * @brief
@@ -96,10 +96,14 @@ public:
 	Window* loadLayoutFromFile(const String& fileName);
 
 private:
+	String generateUniqueWindowName();
+
+private:
 	typedef std::map<String, WindowFactory*> WindowFactoryMap;
 
 	WindowFactoryMap mWindowFactories;
 	std::vector<Window*> mWindows;
+	int mUidCounter;
 };
 
 } // namespace duilib2

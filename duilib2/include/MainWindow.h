@@ -9,7 +9,7 @@ namespace duilib2
 
 /**
  * @brief
- *     The MainWindow is the top window that contain come control windows
+ *     The MainWindow is the top window that contain some control windows
  *
  *     QtMainWindow using QWidget in Qt, Win32MainWindow using a win32 window.
  */

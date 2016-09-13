@@ -1,4 +1,5 @@
 #include <LayoutXmlHandler.h>
+#include <WindowManager.h>
 
 namespace duilib2
 {
@@ -21,17 +22,28 @@ Window* LayoutXmlHandler::getLayoutRootWindow()
 
 void LayoutXmlHandler::elementStart(const String& element, const XmlAttributes& attributes)
 {
-	// 根据元素名称构造窗口控件实例，设置属性
-	// WindowManager
-	// WindowFactory
+	Window* window = WindowManager::getSingleton().createWindow(element, attributes.getValue("name"));
+	if (mRootWindow == NULL)
+		mRootWindow = window;
+
+	mStack.push(window);
+
+	// 添加属性
+	int count = attributes.getCount();
+	for (int i = 0; i < count; ++i)
+	{
+		String name = attributes.getName(i);
+		String value = attributes.getValue(i);
+		window->addProperty(name, value);
+	}
 }
 
-void LayoutXmlHandler::elementEnd(const String& element)
+void LayoutXmlHandler::elementEnd(const String& /*element*/)
 {
-
+	mStack.pop();
 }
 
-void LayoutXmlHandler::text(const String& text)
+void LayoutXmlHandler::text(const String& /*text*/)
 {
 
 }

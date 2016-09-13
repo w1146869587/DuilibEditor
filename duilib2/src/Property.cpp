@@ -8,9 +8,10 @@ Property::Property()
 
 }
 
-Property::Property(const String& name, const String& value)
+Property::Property(const String& name, const String& value, const String& type)
 	: mName(name)
 	, mValue(value)
+	, mType(type)
 {
 
 }
@@ -30,6 +31,11 @@ String Property::getValue() const
 	return mValue;
 }
 
+String Property::getType() const
+{
+	return mType;
+}
+
 void Property::setName(const String& name)
 {
 	mName = name;
@@ -39,6 +45,11 @@ void Property::setValue(const String& value)
 {
 	mValue = value;
 	mAnyValue.clear();
+}
+
+void Property::setType(const String& type)
+{
+	mType = type;
 }
 
 }

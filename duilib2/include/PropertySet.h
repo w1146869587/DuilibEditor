@@ -25,13 +25,13 @@ public:
 	 * @param name
 	 *     The name of the property.
 	 *
-	 * @param type
-	 *     The type of the property, e.g. String, Bool
-	 *
 	 * @param value
 	 *     The value of the property.
+	 *
+	 * @param type
+	 *     The type of the property, e.g. String, Bool
 	 */
-	void addProperty(const String& name, const String& type, const String& value);
+	void addProperty(const String& name, const String& value, const String& type = "");
 
 	/**
 	 * @brief
@@ -44,6 +44,14 @@ public:
 	 *     The property.
 	 */
 	const Property& getProperty(const String& name) const;
+
+	/**
+	 * @brief
+	 *     Initialize the properties, parsing the 'value' string to the concrete type, e.g. Size, Color
+	 */
+	void initialize();
+
+private:
 	Property& getProperty(const String& name);
 
 private:

@@ -4,6 +4,8 @@
 #include <System.h>
 #include <Exception.h>
 #include <algorithm>
+#include <boost/lexical_cast.hpp>
+#include <string>
 
 namespace duilib2
 {
@@ -11,6 +13,7 @@ namespace duilib2
 WindowManager* Singleton<WindowManager>::mSingleton = NULL;
 
 WindowManager::WindowManager()
+	: mUidCounter(0)
 {
 
 }
@@ -47,7 +50,7 @@ void WindowManager::removeAllWindowFactories()
 	}
 }
 
-Window* WindowManager::createWindow(const String& name, const String& type)
+Window* WindowManager::createWindow(const String& type, const String& name)
 {
 	WindowFactoryMap::iterator pos = mWindowFactories.find(type);
 	if (pos == mWindowFactories.end())
@@ -57,7 +60,11 @@ Window* WindowManager::createWindow(const String& name, const String& type)
 							 "WindowManager::createWindow");
 	}
 
-	Window* window = pos->second->createInstance(name);
+	String windowName = name;
+	if (windowName.isEmpty())
+		windowName = generateUniqueWindowName();
+
+	Window* window = pos->second->createInstance(windowName);
 	if (window)
 		mWindows.push_back(window);
 
@@ -111,6 +118,15 @@ Window* WindowManager::loadLayoutFromFile(const String& fileName)
 	parser->parseXml(xmlHandler, *rawData.get());
 
 	return xmlHandler.getLayoutRootWindow();
+}
+
+
+String WindowManager::generateUniqueWindowName()
+{
+	String windowNameBase("__uid_win_");
+	String windowName = windowNameBase + boost::lexical_cast<std::string>(mUidCounter).c_str();
+	++mUidCounter;
+	return windowName;
 }
 
 

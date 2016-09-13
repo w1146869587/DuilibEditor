@@ -27,12 +27,23 @@ const std::vector<Window*>& Window::getChildren() const
 
 void Window::setParent(Window* parent)
 {
-	mParent = parent;
-
 	// 更新父窗口的子窗口列表
-	std::vector<Window*>& children = parent->getChildren();
-	if (std::find(children.begin(), children.end(), this) == children.end())
-		children.push_back(this);
+	if(parent == NULL)
+	{
+		std::vector<Window*>& children = mParent->getChildren();
+		std::vector<Window*>::iterator pos = std::find(children.begin(), children.end(), this);
+		if (pos != children.end())
+			children.erase(pos);
+
+	}
+	else
+	{
+		std::vector<Window*>& children = parent->getChildren();
+		if (std::find(children.begin(), children.end(), this) == children.end())
+			children.push_back(this);
+	}
+
+	mParent = parent;
 }
 
 

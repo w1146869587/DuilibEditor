@@ -11,7 +11,7 @@ class DUILIB2SHARED_EXPORT Property
 {
 public:
 	Property();
-	Property(const String& name, const String& value);
+	Property(const String& name, const String& value, const String& type);
 	~Property();
 
 	/**
@@ -22,9 +22,6 @@ public:
 	 *     The name of the property.
 	 */
 	String getName() const;
-
-	// ...
-	String getType() const;
 
 	/**
 	 * @brief
@@ -37,15 +34,21 @@ public:
 
 	/**
 	 * @brief
+	 *     Get the type of the property.
+	 *
+	 * @return
+	 *     The type of the property.
+	 */
+	String getType() const;
+
+	/**
+	 * @brief
 	 *     Set the name of the property.
 	 *
 	 * @param name
 	 *     The name of the property.
 	 */
 	void setName(const String& name);
-
-	// ...
-	void setType(const String& type);
 
 	/**
 	 * @brief
@@ -56,9 +59,19 @@ public:
 	 */
 	void setValue(const String& value);
 
+	/**
+	 * @brief
+	 *     Set the type of the property.
+	 *
+	 * @param type
+	 *     The type of the property.
+	 */
+	void setType(const String& type);
+
 private:
 	String mName;
 	String mValue;
+	String mType;
 	boost::any mAnyValue;
 };
 
