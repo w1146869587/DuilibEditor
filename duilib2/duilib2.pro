@@ -33,7 +33,10 @@ SOURCES += \
     src/SystemImpl/QtSystemImpl.cpp \
     src/Archives/FileSystemArchive.cpp \
     src/Archives/QtResArchive.cpp \
-    src/Archives/ZipArchive.cpp
+    src/Archives/ZipArchive.cpp \
+    src/PropertyParserManager.cpp \
+    src/PropertyParsers.cpp \
+    src/PropertyTypes.cpp
 
 HEADERS +=\
     include/System.h \
@@ -62,7 +65,10 @@ HEADERS +=\
     include/WindowFactory.h \
     include/Archives/FileSystemArchive.h \
     include/Archives/QtResArchive.h \
-    include/Archives/ZipArchive.h
+    include/Archives/ZipArchive.h \
+    include/PropertyParserManager.h \
+    include/PropertyParsers.h \
+    include/PropertyTypes.h
 
 INCLUDEPATH += \
     include \
