@@ -20,7 +20,7 @@ public:
 
 	/**
 	 * @brief
-	 *     Add a property.
+	 *     Add a property, if already exists, modify the value.
 	 *
 	 * @param name
 	 *     The name of the property.
@@ -29,7 +29,7 @@ public:
 	 *     The value of the property.
 	 *
 	 * @param type
-	 *     The type of the property, e.g. String, Bool
+	 *     The type of the property, e.g. String, Bool. if it's empty, ignore it.
 	 */
 	void addProperty(const String& name, const String& value, const String& type = "");
 
@@ -44,15 +44,6 @@ public:
 	 *     The property.
 	 */
 	const Property& getProperty(const String& name) const;
-
-	/**
-	 * @brief
-	 *     Initialize the properties, parsing the 'value' string to the concrete type, e.g. Size, Color
-	 */
-	void initialize();
-
-private:
-	Property& getProperty(const String& name);
 
 private:
 	std::map<String, Property> mProperties;

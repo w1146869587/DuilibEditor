@@ -43,6 +43,16 @@ public:
 
 	/**
 	 * @brief
+	 *     Get concrete value.
+	 *
+	 * @return
+	 *     The concrete value.
+	 */
+	template<typename T>
+	T getAnyValue() const;
+
+	/**
+	 * @brief
 	 *     Set the name of the property.
 	 *
 	 * @param name
@@ -67,6 +77,22 @@ public:
 	 *     The type of the property.
 	 */
 	void setType(const String& type);
+
+	/**
+	 * @brief
+	 *     Set the concrete value.
+	 *
+	 * @param type
+	 *     The concrete value.
+	 */
+	template<typename T>
+	void setAnyValue(const T& value);
+
+	/**
+	 * @brief
+	 *     Parsing the value string, convert to the concrete type.
+	 */
+	void initialize();
 
 private:
 	String mName;
