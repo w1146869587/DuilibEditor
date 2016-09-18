@@ -101,6 +101,26 @@ private:
 	boost::any mAnyValue;
 };
 
+template<typename T>
+T Property::getAnyValue() const
+{
+	T* value = boost::any_cast<T>(&mAnyValue);
+	if (value == NULL)
+	{
+		DUILIB2_EXCEPT(Exception::ERR_INTERNAL_ERROR,
+							 "There is no value of this type",
+							 "Property::getAnyValue");
+	}
+
+	return *value;
+}
+
+template<typename T>
+void Property::setAnyValue(const T& value)
+{
+	mAnyValue = value;
+}
+
 }
 
 #endif // PROPERTY_H

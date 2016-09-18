@@ -38,20 +38,6 @@ String Property::getType() const
 	return mType;
 }
 
-template<typename T>
-T Property::getAnyValue() const
-{
-	T* value = boost::any_cast<T>(&mAnyValue);
-	if (value == NULL)
-	{
-		DUILIB2_EXCEPT(Exception::ERR_INTERNAL_ERROR,
-							 "There is no value of this type",
-							 "Property::getAnyValue");
-	}
-
-	return *value;
-}
-
 void Property::setName(const String& name)
 {
 	mName = name;
@@ -71,12 +57,6 @@ void Property::setType(const String& type)
 void Property::initialize()
 {
 	PropertyParserManager::getSingleton().parse(*this);
-}
-
-template<typename T>
-void Property::setAnyValue(const T& value)
-{
-	mAnyValue = value;
 }
 
 }
