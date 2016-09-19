@@ -21,6 +21,8 @@ void System::addArchiveFactories()
 void System::addWindowFactores()
 {
 	mWindowManager->addWindowFactory(new QtMainWindowFactory);
+	// 其他窗口、控件类型
+	// ...
 }
 
 }

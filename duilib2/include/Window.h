@@ -42,6 +42,8 @@ public:
 	 */
 	void setParent(Window* parent);
 
+	// void render(RenderTarget* renderTarget);
+
 private:
 	String mName;
 	Window* mParent;

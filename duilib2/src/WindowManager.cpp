@@ -80,7 +80,6 @@ void WindowManager::destroyWindow(Window* window)
 		destroyWindow(children[i]);
 	}
 
-
 	String type = window->getType();
 
 	WindowFactoryMap::iterator pos = mWindowFactories.find(type);

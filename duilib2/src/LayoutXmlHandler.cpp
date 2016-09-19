@@ -26,6 +26,13 @@ void LayoutXmlHandler::elementStart(const String& element, const XmlAttributes& 
 	if (mRootWindow == NULL)
 		mRootWindow = window;
 
+	// 设置父窗口
+	if (!mStack.empty())
+	{
+		Window* parent = mStack.top();
+		window->setParent(parent);
+	}
+
 	mStack.push(window);
 
 	// 添加属性
