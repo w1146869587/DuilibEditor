@@ -1,6 +1,5 @@
 #include <Property.h>
 #include <PropertyParserManager.h>
-#include <Exception.h>
 
 namespace duilib2
 {

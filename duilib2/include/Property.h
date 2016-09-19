@@ -3,6 +3,7 @@
 
 #include <duilib2_global.h>
 #include <boost/any.hpp>
+#include <Exception.h>
 
 namespace duilib2
 {
@@ -11,7 +12,7 @@ class DUILIB2SHARED_EXPORT Property
 {
 public:
 	Property();
-	Property(const String& name, const String& value, const String& type);
+	Property(const String& name, const String& value, const String& type = "");
 	~Property();
 
 	/**
@@ -104,7 +105,7 @@ private:
 template<typename T>
 T Property::getAnyValue() const
 {
-	T* value = boost::any_cast<T>(&mAnyValue);
+	const T* value = boost::any_cast<T>(&mAnyValue);
 	if (value == NULL)
 	{
 		DUILIB2_EXCEPT(Exception::ERR_INTERNAL_ERROR,
