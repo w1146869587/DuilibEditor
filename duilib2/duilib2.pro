@@ -36,7 +36,9 @@ SOURCES += \
     src/Archives/ZipArchive.cpp \
     src/PropertyParserManager.cpp \
     src/PropertyParsers.cpp \
-    src/PropertyTypes.cpp
+    src/PropertyTypes.cpp \
+    src/RenderSystems/QtRenderSystem.cpp \
+    src/RenderSystem.cpp
 
 HEADERS +=\
     include/System.h \
@@ -68,7 +70,9 @@ HEADERS +=\
     include/Archives/ZipArchive.h \
     include/PropertyParserManager.h \
     include/PropertyParsers.h \
-    include/PropertyTypes.h
+    include/PropertyTypes.h \
+    include/RenderSystems/QtRenderSystem.h \
+    include/RenderSystem.h
 
 INCLUDEPATH += \
     include \
