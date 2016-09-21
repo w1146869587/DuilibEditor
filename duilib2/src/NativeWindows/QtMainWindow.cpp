@@ -1,4 +1,6 @@
 #include <NativeWindows/QtMainWindow.h>
+#include <memory>
+#include <RenderTargets/QtPaintDeviceRenderTarget.h>
 
 namespace duilib2
 {
@@ -12,6 +14,18 @@ QtMainWindow::QtMainWindow(const String& name)
 QtMainWindow::~QtMainWindow()
 {
 
+}
+
+void QtMainWindow::paintEvent(QPaintEvent* /*event*/)
+{
+	std::auto_ptr<RenderTarget> renderTarget(new QtPaintDeviceRenderTarget(this));
+	MainWindow::render(renderTarget.get());
+}
+
+String QtMainWindow::showModal()
+{
+	exec();
+	return String();
 }
 
 QtMainWindowFactory::QtMainWindowFactory()

@@ -4,6 +4,7 @@
 #include <duilib2_global.h>
 #include <vector>
 #include <PropertySet.h>
+#include <RenderTarget.h>
 
 namespace duilib2
 {
@@ -24,6 +25,12 @@ public:
 	virtual String getType() const = 0;
 
 	/**
+	 * @brief showModal
+	 * @return
+	 */
+	virtual String showModal();
+
+	/**
 	 * @brief
 	 *     Get children windows of this window.
 	 *
@@ -42,7 +49,15 @@ public:
 	 */
 	void setParent(Window* parent);
 
-	// void render(RenderTarget* renderTarget);
+
+protected:
+	/**
+	 * @brief
+	 *     Render the window's content.
+	 *
+	 * @param renderTarget
+	 */
+	virtual void render(RenderTarget* renderTarget);
 
 private:
 	String mName;

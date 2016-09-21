@@ -37,8 +37,10 @@ SOURCES += \
     src/PropertyParserManager.cpp \
     src/PropertyParsers.cpp \
     src/PropertyTypes.cpp \
+    src/RenderSystem.cpp \
     src/RenderSystems/QtRenderSystem.cpp \
-    src/RenderSystem.cpp
+    src/RenderTargets/QtPaintDeviceRenderTarget.cpp \
+    src/RenderTarget.cpp
 
 HEADERS +=\
     include/System.h \
@@ -72,7 +74,9 @@ HEADERS +=\
     include/PropertyParsers.h \
     include/PropertyTypes.h \
     include/RenderSystems/QtRenderSystem.h \
-    include/RenderSystem.h
+    include/RenderSystem.h \
+    include/RenderTargets/QtPaintDeviceRenderTarget.h \
+    include/RenderTarget.h
 
 INCLUDEPATH += \
     include \

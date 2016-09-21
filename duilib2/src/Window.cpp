@@ -46,5 +46,24 @@ void Window::setParent(Window* parent)
 	mParent = parent;
 }
 
+String Window::showModal()
+{
+	// 控件无法显示自己必须有一个顶层的MainWindow
+	// 如果控件没有MainWindow父窗口，需要创建一个，并显示该MainWindow
+	// MainWindow需要重写该函数
+	// ToDo
+	// ...
+	return String();
+}
+
+void Window::render(RenderTarget* renderTarget)
+{
+	std::vector<Window*>& children = getChildren();
+	for (int i = 0; i < (int)children.size(); ++i)
+	{
+		children[i]->render(renderTarget);
+	}
+}
+
 
 } // namespace duilib2

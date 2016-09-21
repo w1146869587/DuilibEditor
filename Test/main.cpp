@@ -10,18 +10,76 @@ using namespace duilib2;
 #include <QTextStream>
 #include <PropertyParsers.h>
 #include <PropertyTypes.h>
+#include <QtDebug>
+#include <QDialog>
+#include <QPainter>
+#include <NativeWindows/QtMainWindow.h>
 
 void testQtXmlParser();
 void testPropertyParsers();
+void testQtMainWindow();
+
+
+class MyWidget2 : public QDialog
+{
+public:
+	MyWidget2(QWidget* parent)
+		: QDialog(parent)
+	{
+	}
+
+	virtual void paintEvent(QPaintEvent *event)
+	{
+		QPainter painter(this);
+		painter.setPen(QColor(255, 0, 0));
+		painter.drawLine(0, 0, 50, 50);
+
+	}
+
+};
+
+class MyWidget : public QDialog
+{
+public:
+	MyWidget(QWidget* parent)
+		: QDialog(parent)
+	{
+		QDialog* child = new MyWidget2(this);
+		child->setWindowFlags(Qt::Widget);
+		child->setGeometry(60, 60, 200, 200);
+		child->show();
+	}
+
+	virtual void paintEvent(QPaintEvent *event)
+	{
+		QPainter painter(this);
+		painter.setPen(QColor(255, 0, 0));
+		painter.drawLine(0, 0, 50, 50);
+
+	}
+
+//	void showModal()
+//	{
+//		//show();
+//		//qApp->exec();
+//	}
+};
 
 int main(int argc, char *argv[])
 {
 	QApplication a(argc, argv);
-	MainWindow w;
-	w.show();
+	//a.setQuitOnLastWindowClosed(true);
+	//MainWindow w;
+	//w.show();
+
+	//MyWidget w(NULL);
+	//w.setWindowModality(Qt::WindowModal);
+	//w.exec();
+	qDebug() << "Hello";
 
 	//testQtXmlParser();
-	testPropertyParsers();
+	//testPropertyParsers();
+	testQtMainWindow();
 
 	/*
 	System::create();
@@ -138,4 +196,22 @@ void testPropertyParsers()
 		std::cout << "Catch Exception, OK!" << std::endl;
 	}
 
+}
+
+void testQtMainWindow()
+{
+	System::create();
+
+	try
+	{
+		QtMainWindowFactory f;
+		Window* mainWindow = f.createInstance("name1");
+		mainWindow->showModal();
+	}
+	catch (Exception& e)
+	{
+		std::cout << e.getFullDescription().toLocal8Bit().data() << std::endl;
+	}
+
+	System::destroy();
 }

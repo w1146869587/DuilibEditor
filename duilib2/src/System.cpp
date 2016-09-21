@@ -13,6 +13,7 @@ System::System()
 	mArchiveManager = new ArchiveManager;
 	mResourceManager = new ResourceManager;
 	mWindowManager = new WindowManager;
+	mPropertyParserManager = new PropertyParserManager;
 
 	addArchiveFactories();
 	createXmlParser();
@@ -21,6 +22,7 @@ System::System()
 
 System::~System()
 {
+	delete mPropertyParserManager;
 	delete mWindowManager;
 	delete mResourceManager;
 	delete mXmlParser;
@@ -39,6 +41,11 @@ void System::destroy()
 XmlParser* System::getXmlParser() const
 {
 	return mXmlParser;
+}
+
+RenderSystem* System::getRenderSystem() const
+{
+	return mRenderSystem;
 }
 
 } // duilib2

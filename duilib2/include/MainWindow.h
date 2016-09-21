@@ -22,6 +22,9 @@ public:
 	/// @copydoc Window::getType
 	virtual String getType() const;
 
+protected:
+	virtual void render(RenderTarget* renderTarget);
+
 private:
 	static String sTypeName;
 	// ... properties

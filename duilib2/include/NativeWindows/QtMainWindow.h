@@ -4,20 +4,30 @@
 #include <duilib2_global.h>
 #include <MainWindow.h>
 #include <WindowFactory.h>
+#include <QDialog>
 
 namespace duilib2
 {
 
-class QtMainWindow : public MainWindow
+class DUILIB2SHARED_EXPORT QtMainWindow : public QDialog, public MainWindow
 {
+	Q_OBJECT
+
 public:
 	QtMainWindow(const String& name);
 	virtual ~QtMainWindow();
 
+	// virtual functions from QDialog
+	virtual void paintEvent(QPaintEvent* event);
+
+	/// @copydoc Window::showModal
+	virtual String showModal();
+
+private:
 };
 
 
-class QtMainWindowFactory : public WindowFactory
+class DUILIB2SHARED_EXPORT QtMainWindowFactory : public WindowFactory
 {
 public:
 	QtMainWindowFactory();

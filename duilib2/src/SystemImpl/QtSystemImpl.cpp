@@ -25,4 +25,9 @@ void System::addWindowFactores()
 	// ...
 }
 
+void System::createRenderSystem()
+{
+	//mRenderSystem = new QtPainterRenderSystem;
+}
+
 }

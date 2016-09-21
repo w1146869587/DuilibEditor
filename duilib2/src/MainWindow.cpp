@@ -1,5 +1,7 @@
 #include <MainWindow.h>
 
+#include <iostream>
+
 namespace duilib2
 {
 
@@ -33,6 +35,14 @@ MainWindow::~MainWindow()
 String MainWindow::getType() const
 {
 	return sTypeName;
+}
+
+void MainWindow::render(RenderTarget* renderTarget)
+{
+	// test
+	std::cout << "from MainWindow::render()" << std::endl;
+
+	Window::render(renderTarget);
 }
 
 } // namespace duilib2
