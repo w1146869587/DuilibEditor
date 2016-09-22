@@ -6,26 +6,31 @@ namespace duilib2
 System* Singleton<System>::mSingleton = NULL;
 
 System::System()
-	: mXmlParser(0)
+	: mArchiveManager(0)
+	, mResourceManager(0)
+	, mWindowManager(0)
+	, mPropertyParserManager(0)
+	, mXmlParser(0)
+	, mRenderSystem(0)
 {
-	// 初始化ResourceManager等
-
 	mArchiveManager = new ArchiveManager;
 	mResourceManager = new ResourceManager;
 	mWindowManager = new WindowManager;
 	mPropertyParserManager = new PropertyParserManager;
 
-	addArchiveFactories();
 	createXmlParser();
-
+	createRenderSystem();
+	addArchiveFactories();
 }
 
 System::~System()
 {
+	delete mRenderSystem;
+	delete mXmlParser;
 	delete mPropertyParserManager;
 	delete mWindowManager;
 	delete mResourceManager;
-	delete mXmlParser;
+	delete mArchiveManager;
 }
 
 System* System::create()

@@ -2,6 +2,7 @@
 #include <XmlParsers/QtXmlParser.h>
 #include <Archives/FileSystemArchive.h>
 #include <NativeWindows/QtMainWindow.h>
+#include <RenderSystems/QtPainterRenderSystem.h>
 
 namespace duilib2
 {
@@ -27,7 +28,7 @@ void System::addWindowFactores()
 
 void System::createRenderSystem()
 {
-	//mRenderSystem = new QtPainterRenderSystem;
+	mRenderSystem = new QtPainterRenderSystem;
 }
 
 }
