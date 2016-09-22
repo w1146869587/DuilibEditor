@@ -13,9 +13,16 @@ public:
 	QtXmlParser();
 	virtual ~QtXmlParser();
 
+	/// @copydoc XmlParser::getIdentifierString
 	virtual String getIdentifierString();
+
+	/// @copydoc XmlParser::parseXml
 	virtual void parseXml(XmlHandler& handler, const RawDataContainer& source);
+
+	/// @copydoc XmlParser::parseXmlFile
 	virtual void parseXmlFile(XmlHandler& handler, const String& fileName);
+
+	/// @copydoc XmlParser::parseXmlString
 	virtual void parseXmlString(XmlHandler& handler, const String& source);
 
 private:

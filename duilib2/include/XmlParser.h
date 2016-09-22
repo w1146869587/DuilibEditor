@@ -41,11 +41,59 @@ public:
 	XmlParser() {}
 	virtual ~XmlParser() {}
 
+	/**
+	 * @brief initialise
+	 */
 	virtual void initialise() {}
+
+	/**
+	 * @brief cleanup
+	 */
 	virtual void cleanup() {}
+
+	/**
+	 * @brief
+	 *     Get the identifier string of this xml parser.
+	 *
+	 * @return
+	 *     The identifier string.
+	 */
 	virtual String getIdentifierString() = 0;
+
+	/**
+	 * @brief
+	 *     Parsing xml from rawdata.
+	 *
+	 * @param handler
+	 *     The handler for parsing xml.
+	 *
+	 * @param source
+	 *     The rawdata(file text stream).
+	 */
 	virtual void parseXml(XmlHandler& handler, const RawDataContainer& source) = 0;
+
+	/**
+	 * @brief
+	 *     Parsing xml from file.
+	 *
+	 * @param handler
+	 *     The handler for parsing xml.
+	 *
+	 * @param fileName
+	 *     The file name.
+	 */
 	virtual void parseXmlFile(XmlHandler& handler, const String& fileName) = 0;
+
+	/**
+	 * @brief
+	 *     Parsing xml from string, similar to \a parseXml().
+	 *
+	 * @param handler
+	 *     The handler for parsing xml.
+	 *
+	 * @param source
+	 *     The file text string.
+	 */
 	virtual void parseXmlString(XmlHandler& handler, const String& source) = 0;
 };
 
