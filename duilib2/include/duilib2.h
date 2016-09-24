@@ -12,6 +12,5 @@
 #include <PropertyTypes.h>
 #include <RawDataContainer.h>
 #include <RenderTarget.h>
-#include <PushButton.h>
 
 #endif // DUILIB2_H

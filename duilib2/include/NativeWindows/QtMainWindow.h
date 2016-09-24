@@ -24,6 +24,7 @@ public:
 	virtual String showModal();
 
 private:
+	void initWindow();
 };
 
 

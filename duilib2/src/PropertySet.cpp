@@ -16,7 +16,9 @@ PropertySet::~PropertySet()
 
 void PropertySet::addProperty(const String& name, const String& value, const String& type)
 {
-	std::map<String, Property>::iterator pos = mProperties.find(name);
+	String lowerName  = name.toLower();
+
+	std::map<String, Property>::iterator pos = mProperties.find(lowerName);
 	if (pos != mProperties.end())
 	{
 		pos->second.setValue(value);
@@ -24,14 +26,16 @@ void PropertySet::addProperty(const String& name, const String& value, const Str
 			pos->second.setType(type);
 	}
 	else
-		mProperties[name] = Property(name, value, type);
+		mProperties[lowerName] = Property(lowerName, value, type);
 
-	mProperties[name].initialize();
+	mProperties[lowerName].initialize();
 }
 
 const Property& PropertySet::getProperty(const String& name) const
 {
-	std::map<String, Property>::const_iterator pos = mProperties.find(name);
+	String lowerName  = name.toLower();
+
+	std::map<String, Property>::const_iterator pos = mProperties.find(lowerName);
 	if (pos == mProperties.end())
 	{
 		DUILIB2_EXCEPT(Exception::ERR_ITEM_NOT_FOUND,
