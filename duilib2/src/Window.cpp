@@ -56,6 +56,16 @@ String Window::showModal()
 	return String();
 }
 
+int Window::getWidth() const
+{
+	return 0;
+}
+
+int Window::getHeight() const
+{
+	return 0;
+}
+
 void Window::render(RenderTarget* renderTarget)
 {
 	std::vector<Window*>& children = getChildren();

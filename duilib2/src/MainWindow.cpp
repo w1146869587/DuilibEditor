@@ -1,5 +1,6 @@
 #include <MainWindow.h>
 #include <PropertyTypes.h>
+#include <System.h>
 
 namespace duilib2
 {
@@ -40,6 +41,18 @@ String MainWindow::getType() const
 	return sTypeName;
 }
 
+int MainWindow::getWidth() const
+{
+	Size size = getProperty("size").getAnyValue<Size>();
+	return size.mWidth;
+}
+
+int MainWindow::getHeight() const
+{
+	Size size = getProperty("size").getAnyValue<Size>();
+	return size.mHeight;
+}
+
 void MainWindow::setFrameless(bool enable)
 {
 	mFrameless = enable;
@@ -52,17 +65,20 @@ bool MainWindow::isFrameless() const
 
 void MainWindow::render(RenderTarget* renderTarget)
 {
-	//RenderSystem* rs = ...;
+	RenderSystem* rs = System::getSingleton().getRenderSystem();
+	rs->setRenderTarget(renderTarget);
 
 	// 是否使用静态透明背景
 	// 如果不使用，则绘制一个纯色背景
 	Bool bktrans = getProperty("bktrans").getAnyValue<Bool>();
 	if (!bktrans)
 	{
-		//if (mClippling)
-		//	rs.setClipRegion(mClipRegion);
+		if (mClipping)
+			rs->setClipRegion(mClipRegion);
+		else
+			rs->clearClipRegion();
 
-		//rs.fillRect(...);
+		rs->fillRect(0, 0, getWidth(), getHeight(), Color(128, 128, 128));
 	}
 
 	Window::render(renderTarget);
@@ -78,6 +94,17 @@ void MainWindow::setPosition(int x, int y)
 std::pair<int, int> MainWindow::getPosition() const
 {
 	return std::make_pair(mPosX, mPosY);
+}
+
+void MainWindow::setClipRegion(int x, int y, int width, int height, int xRadius, int yRadius)
+{
+	mClipping = true;
+	mClipRegion = RoundRect(x, y, width, height, xRadius, yRadius);
+}
+
+void MainWindow::clearClipRegion()
+{
+	mClipping = false;
 }
 
 bool MainWindow::userSetPosition() const

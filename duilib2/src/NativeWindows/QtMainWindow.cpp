@@ -39,8 +39,7 @@ void QtMainWindow::initWindow()
 		setWindowFlags(windowFlags() | Qt::FramelessWindowHint);
 
 	// 窗口初始大小
-	Size size = getProperty("size").getAnyValue<Size>();
-	resize(size.mWidth, size.mHeight);
+	resize(getWidth(), getHeight());
 
 	// 窗口位置
 	if (userSetPosition())
@@ -56,9 +55,10 @@ void QtMainWindow::initWindow()
 	if (roundCorner.mWidth != 0 && roundCorner.mHeight != 0)
 	{
 		// 设置剪裁区域
-		// setClipRegion(0, 0, width(), height(), roundCorner.mWidth, roundCorner.mHeight);
-
+		setClipRegion(0, 0, width(), height(), roundCorner.mWidth, roundCorner.mHeight);
 	}
+	else
+		clearClipRegion();
 
 	// ...
 

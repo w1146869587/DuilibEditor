@@ -4,6 +4,7 @@
 #include <duilib2_global.h>
 #include <Window.h>
 #include <utility>
+#include <RoundRect.h>
 
 namespace duilib2
 {
@@ -22,6 +23,12 @@ public:
 
 	/// @copydoc Window::getType
 	virtual String getType() const;
+
+	/// @copydoc Window::getWidth
+	virtual int getWidth() const;
+
+	/// @copydoc Window::getHeight
+	virtual int getHeight() const;
 
 	/**
 	 * @brief setFrameless
@@ -54,6 +61,22 @@ public:
 	 */
 	std::pair<int, int> getPosition() const;
 
+	/**
+	 * @brief setClipRegion
+	 * @param x
+	 * @param y
+	 * @param width
+	 * @param height
+	 * @param xRadius
+	 * @param yRadius
+	 */
+	void setClipRegion(int x, int y, int width, int height, int xRadius, int yRadius);
+
+	/**
+	 * @brief clearClipRegion
+	 */
+	void clearClipRegion();
+
 
 protected:
 	virtual void render(RenderTarget* renderTarget);
@@ -66,8 +89,8 @@ private:
 	bool mUserSetPosition; // 是否用户指定了窗口位置
 	int  mPosX;            // 窗口位置，x坐标
 	int  mPosY;            // 窗口位置，y坐标
-	// RoundRect mClipRegion;   // 剪裁区域
-	// bool mClipping;     // 是否使用剪裁区域
+	bool mClipping;        // 是否使用剪裁区域
+	RoundRect mClipRegion; // 剪裁区域
 };
 
 }

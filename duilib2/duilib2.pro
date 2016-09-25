@@ -71,7 +71,8 @@ SOURCES += \
     src/Controls/TreeNode.cpp \
     src/Controls/TreeView.cpp \
     src/Controls/VerticalLayout.cpp \
-    src/Controls/WebBrowser.cpp
+    src/Controls/WebBrowser.cpp \
+    src/RoundRect.cpp
 
 HEADERS +=\
     include/System.h \
@@ -138,7 +139,8 @@ HEADERS +=\
     include/Controls/TreeNode.h \
     include/Controls/TreeView.h \
     include/Controls/VerticalLayout.h \
-    include/Controls/WebBrowser.h
+    include/Controls/WebBrowser.h \
+    include/RoundRect.h
 
 INCLUDEPATH += \
     include \

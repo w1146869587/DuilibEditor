@@ -32,6 +32,22 @@ public:
 
 	/**
 	 * @brief
+	 *     Get the width of the window.
+	 *
+	 * @return
+	 */
+	virtual int getWidth() const;
+
+	/**
+	 * @brief
+	 *     Get the height of the window.
+	 *
+	 * @return
+	 */
+	virtual int getHeight() const;
+
+	/**
+	 * @brief
 	 *     Get children windows of this window.
 	 *
 	 * @return
