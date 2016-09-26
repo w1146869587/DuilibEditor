@@ -69,6 +69,9 @@ void QtMainWindow::initWindow()
 	Size maxSize = getProperty("maxinfo").getAnyValue<Size>();
 	if (maxSize.mWidth != 0 && maxSize.mHeight != 0)
 		setMaximumSize(maxSize.mWidth, maxSize.mHeight);
+
+	// 允许拖动窗口的区域
+	mDragArea = getProperty("caption").getAnyValue<Rect>();
 }
 
 QtMainWindowFactory::QtMainWindowFactory()

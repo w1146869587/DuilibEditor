@@ -5,11 +5,14 @@
 #include <vector>
 #include <PropertySet.h>
 #include <RenderTarget.h>
+#include <EventSet.h>
 
 namespace duilib2
 {
 
-class DUILIB2SHARED_EXPORT Window : public PropertySet
+class DUILIB2SHARED_EXPORT Window
+		: public PropertySet
+		, public EventSet
 {
 public:
 	Window(const String& name);

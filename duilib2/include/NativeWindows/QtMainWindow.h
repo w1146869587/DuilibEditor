@@ -5,6 +5,7 @@
 #include <MainWindow.h>
 #include <WindowFactory.h>
 #include <QDialog>
+#include <PropertyTypes.h>
 
 namespace duilib2
 {
@@ -25,6 +26,9 @@ public:
 
 private:
 	void initWindow();
+
+private:
+	Rect mDragArea;  // 允许按住鼠标左键拖动窗口的区域
 };
 
 
