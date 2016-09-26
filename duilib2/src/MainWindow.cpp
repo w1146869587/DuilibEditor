@@ -78,7 +78,8 @@ void MainWindow::render(RenderTarget* renderTarget)
 		else
 			rs->clearClipRegion();
 
-		rs->fillRect(0, 0, getWidth(), getHeight(), Color(128, 128, 128));
+		Byte alpha = getProperty("alpha").getAnyValue<Byte>();
+		rs->fillRect(0, 0, getWidth(), getHeight(), Color(128, 128, 128, alpha));
 	}
 
 	Window::render(renderTarget);

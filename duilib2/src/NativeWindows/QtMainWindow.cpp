@@ -60,8 +60,15 @@ void QtMainWindow::initWindow()
 	else
 		clearClipRegion();
 
-	// ...
+	// 窗口最小大小
+	Size minSize = getProperty("mininfo").getAnyValue<Size>();
+	if (minSize.mWidth != 0 && minSize.mHeight != 0)
+		setMinimumSize(minSize.mWidth, minSize.mHeight);
 
+	// 窗口最大大小
+	Size maxSize = getProperty("maxinfo").getAnyValue<Size>();
+	if (maxSize.mWidth != 0 && maxSize.mHeight != 0)
+		setMaximumSize(maxSize.mWidth, maxSize.mHeight);
 }
 
 QtMainWindowFactory::QtMainWindowFactory()
