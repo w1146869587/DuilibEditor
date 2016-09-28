@@ -74,7 +74,8 @@ SOURCES += \
     src/Controls/WebBrowser.cpp \
     src/RoundRect.cpp \
     src/Event.cpp \
-    src/EventSet.cpp
+    src/EventSet.cpp \
+    src/EventArgs.cpp
 
 HEADERS +=\
     include/System.h \
@@ -144,7 +145,8 @@ HEADERS +=\
     include/Controls/WebBrowser.h \
     include/RoundRect.h \
     include/Event.h \
-    include/EventSet.h
+    include/EventSet.h \
+    include/EventArgs.h
 
 INCLUDEPATH += \
     include \

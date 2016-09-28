@@ -31,6 +31,7 @@
 #include <duilib2_global.h>
 #include <vector>
 #include <boost/function.hpp>
+#include <EventArgs.h>
 
 namespace duilib2
 {
@@ -41,15 +42,37 @@ public:
 	Event(const String& name);
 	~Event();
 
+	typedef boost::function<bool (const EventArgs& args)> Subscriber;
+
+	/**
+	 * @brief
+	 *     Get the name of the event.
+	 *
+	 * @return
+	 *     The name of the event.
+	 */
 	String getName() const;
 
-	//void subscribe(const Subscriber& subscriber);
+	/**
+	 * @brief
+	 *     Subscribe a event handler.
+	 *
+	 * @param subscriber
+	 *     Event handler, it is a boost::function
+	 */
+	void subscribe(const Subscriber& subscriber);
 
-	// void fire(const EventArgs& args);
+	/**
+	 * @brief
+	 *     Fire the event, the subscriber(event handler) will be called
+	 *
+	 * @param args
+	 *     The arguments that will be passing in the subscriber.
+	 */
+	void fire(const EventArgs& args);
 
 private:
-	//typedef boost::function<bool (const EventArgs& args)> Subscriber;
-	//std::vector<Subscriber> mSubscribers;
+	std::vector<Subscriber> mSubscribers;
 	String mName;
 };
 
