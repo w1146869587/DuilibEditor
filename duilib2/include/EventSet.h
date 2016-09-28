@@ -32,6 +32,7 @@
 
 #include <duilib2_global.h>
 #include <Event.h>
+#include <map>
 
 namespace duilib2
 {
@@ -41,6 +42,31 @@ class DUILIB2SHARED_EXPORT EventSet
 public:
 	EventSet();
 	virtual ~EventSet();
+
+	/**
+	 * @brief subscribeEvent
+	 * @param name
+	 * @param subscriber
+	 */
+	void subscribeEvent(const String& name, const Event::Subscriber& subscriber);
+
+	/**
+	 * @brief fireEvent
+	 * @param name
+	 * @param args
+	 */
+	void fireEvent(const String& name, const EventArgs& args);
+
+	/**
+	 * @brief getEventObject
+	 * @param name
+	 * @param autoAdd
+	 * @return
+	 */
+	Event* getEventObject(const String& name, bool autoAdd = false);
+
+private:
+	std::map<String, Event*> mEvents;
 };
 
 } // namespace duilib2
