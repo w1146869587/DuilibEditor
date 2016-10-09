@@ -15,6 +15,14 @@ public:
 
 };
 
+class DUILIB2SHARED_EXPORT WindowEventArgs : public EventArgs
+{
+public:
+	WindowEventArgs();
+	virtual ~WindowEventArgs();
+
+};
+
 } // namespace duilib2
 
 #endif // EVENTARGS_H

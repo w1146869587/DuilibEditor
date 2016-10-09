@@ -13,4 +13,14 @@ EventArgs::~EventArgs()
 
 }
 
+WindowEventArgs::WindowEventArgs()
+{
+
+}
+
+WindowEventArgs::~WindowEventArgs()
+{
+
+}
+
 } // namespace duilib2
