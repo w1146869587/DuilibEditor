@@ -74,6 +74,15 @@ void QtMainWindow::initWindow()
 	mDragArea = getProperty("caption").getAnyValue<Rect>();
 }
 
+void QtMainWindow::mouseMoveEvent(QMouseEvent *event)
+{
+	// 调用Window::onMouseMove()
+	//   首先遍历children调用onMouseMove()
+	//   如果返回false继续处理，否则不再继续处理该事件
+	//   Tip: 同级的children应该可以设置z-order
+	//        待考虑的问题：键盘快捷键的支持，捕获鼠标
+}
+
 QtMainWindowFactory::QtMainWindowFactory()
 {
 

@@ -24,6 +24,8 @@ public:
 	/// @copydoc Window::showModal
 	virtual String showModal();
 
+	virtual void mouseMoveEvent(QMouseEvent *event);
+
 private:
 	void initWindow();
 

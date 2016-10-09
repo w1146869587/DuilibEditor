@@ -68,6 +68,14 @@ public:
 	 */
 	void setParent(Window* parent);
 
+//	virtual bool onLeftButtonDown();
+//	virtual bool onRightButtonDown();
+//	virtual bool onLeftButtonUp();
+//	virtual bool onRightButtonUp();
+//	virtual bool onLeftButtonClick();
+//	virtual bool onLeftButtonDoubleClick();
+//	virtual bool onMouseMove();
+
 
 protected:
 	/**
