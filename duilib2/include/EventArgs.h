@@ -15,11 +15,21 @@ public:
 
 };
 
-class DUILIB2SHARED_EXPORT WindowEventArgs : public EventArgs
+// 各种事件参数需要完善
+// 需要定义键盘各键的值#define KEY_A xx 等等
+
+class DUILIB2SHARED_EXPORT MouseEventArgs : public EventArgs
 {
 public:
-	WindowEventArgs();
-	virtual ~WindowEventArgs();
+	MouseEventArgs();
+	virtual ~MouseEventArgs();
+
+
+private:
+	int mScreenX;
+	int mScreenY;
+	int mLocalX;
+	int mLocalY;
 
 };
 

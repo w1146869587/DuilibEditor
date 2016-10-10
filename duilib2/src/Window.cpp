@@ -46,6 +46,23 @@ void Window::setParent(Window* parent)
 	mParent = parent;
 }
 
+bool Window::onMouseMove(const MouseEventArgs& eventArgs)
+{
+	//   首先遍历children调用onMouseMove()
+	//   如果返回false继续处理，否则不再继续处理该事件
+	//   Tip: 同级的children应该可以设置z-order
+	//        待考虑的问题：键盘快捷键的支持，捕获鼠标
+
+	std::vector<Window*>& children = getChildren();
+	for (int i = 0; i < (int)children.size(); ++i)
+	{
+		if (children[i]->onMouseMove(eventArgs))
+			return true;
+	}
+
+	return false;
+}
+
 String Window::showModal()
 {
 	// 控件无法显示自己必须有一个顶层的MainWindow

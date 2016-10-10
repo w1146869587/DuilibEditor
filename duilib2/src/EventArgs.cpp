@@ -13,12 +13,12 @@ EventArgs::~EventArgs()
 
 }
 
-WindowEventArgs::WindowEventArgs()
+MouseEventArgs::MouseEventArgs()
 {
 
 }
 
-WindowEventArgs::~WindowEventArgs()
+MouseEventArgs::~MouseEventArgs()
 {
 
 }

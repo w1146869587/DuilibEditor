@@ -74,7 +74,7 @@ public:
 //	virtual bool onRightButtonUp();
 //	virtual bool onLeftButtonClick();
 //	virtual bool onLeftButtonDoubleClick();
-//	virtual bool onMouseMove();
+	virtual bool onMouseMove(const MouseEventArgs& eventArgs);
 
 
 protected:
