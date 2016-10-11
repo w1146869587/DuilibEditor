@@ -6,6 +6,7 @@ namespace duilib2
 
 Window::Window(const String& name)
 	: mName(name)
+	, mParent(NULL)
 {
 
 }
@@ -46,6 +47,128 @@ void Window::setParent(Window* parent)
 	mParent = parent;
 }
 
+Window* Window::getParent()
+{
+	return mParent;
+}
+
+Point Window::screenToLocal(const Point& screenPos)
+{
+	Point localPos = screenPos;
+	localPos.mX -= getPosition().mX;
+	localPos.mY -= getPosition().mY;
+
+	Window* parent = getParent();
+	while (parent)
+	{
+		Point parentPos = parent->getPosition();
+		localPos.mX -= parentPos.mX;
+		localPos.mY -= parentPos.mY;
+
+		parent = parent->getParent();
+	}
+
+	return localPos;
+}
+
+Point Window::localToScreen(const Point& localPos)
+{
+	Point screenPos = localPos;
+	screenPos.mX += getPosition().mX;
+	screenPos.mY += getPosition().mY;
+
+	Window* parent = getParent();
+	while (parent)
+	{
+		Point parentPos = parent->getPosition();
+		screenPos.mX += parentPos.mX;
+		screenPos.mY += parentPos.mY;
+
+		parent = parent->getParent();
+	}
+
+	return screenPos;
+}
+
+bool Window::hitTest(const Point& screenPos) const
+{
+	Point windowPos = getPosition();
+	windowPos = localToScreen(windowPos);
+
+	Rect windowArea;
+	windowArea.mLeft = windowPos.mX;
+	windowArea.mTop = windowPos.mY;
+	windowArea.mRight = windowArea.mLeft + getWidth();
+	windowArea.mBottom = windowArea.mTop + getHeight();
+
+	return windowArea.contains(screenPos);
+}
+
+bool Window::onMouseLeftButtonDown(const MouseEventArgs& eventArgs)
+{
+	std::vector<Window*>& children = getChildren();
+	for (int i = 0; i < (int)children.size(); ++i)
+	{
+		bool hitTest = children[i]->hitTest(eventArgs.getScreenPos());
+		if (hitTest && children[i]->onMouseLeftButtonDown(eventArgs))
+			return true;
+	}
+
+	return true;
+}
+
+bool Window::onMouseLeftButtonUp(const MouseEventArgs& eventArgs)
+{
+	std::vector<Window*>& children = getChildren();
+	for (int i = 0; i < (int)children.size(); ++i)
+	{
+		bool hitTest = children[i]->hitTest(eventArgs.getScreenPos());
+		if (hitTest && children[i]->onMouseLeftButtonUp(eventArgs))
+			return true;
+	}
+
+	return true;
+}
+
+bool Window::onMouseRightButtonDown(const MouseEventArgs& eventArgs)
+{
+	std::vector<Window*>& children = getChildren();
+	for (int i = 0; i < (int)children.size(); ++i)
+	{
+		bool hitTest = children[i]->hitTest(eventArgs.getScreenPos());
+		if (hitTest && children[i]->onMouseRightButtonDown(eventArgs))
+			return true;
+	}
+
+	return true;
+}
+
+bool Window::onMouseRightButtonUp(const MouseEventArgs& eventArgs)
+{
+	std::vector<Window*>& children = getChildren();
+	for (int i = 0; i < (int)children.size(); ++i)
+	{
+		bool hitTest = children[i]->hitTest(eventArgs.getScreenPos());
+		if (hitTest && children[i]->onMouseRightButtonUp(eventArgs))
+			return true;
+	}
+
+	return true;
+}
+
+bool Window::onMouseLeftButtonDoubleClick(const MouseEventArgs& eventArgs)
+{
+	std::vector<Window*>& children = getChildren();
+	for (int i = 0; i < (int)children.size(); ++i)
+	{
+		bool hitTest = children[i]->hitTest(eventArgs.getScreenPos());
+		if (hitTest && children[i]->onMouseLeftButtonDoubleClick(eventArgs))
+			return true;
+	}
+
+	return true;
+}
+
 bool Window::onMouseMove(const MouseEventArgs& eventArgs)
 {
 	//   首先遍历children调用onMouseMove()
@@ -56,11 +179,12 @@ bool Window::onMouseMove(const MouseEventArgs& eventArgs)
 	std::vector<Window*>& children = getChildren();
 	for (int i = 0; i < (int)children.size(); ++i)
 	{
-		if (children[i]->onMouseMove(eventArgs))
+		bool hitTest = children[i]->hitTest(eventArgs.getScreenPos());
+		if (hitTest && children[i]->onMouseMove(eventArgs))
 			return true;
 	}
 
-	return false;
+	return true;
 }
 
 String Window::showModal()

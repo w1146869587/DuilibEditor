@@ -75,7 +75,8 @@ SOURCES += \
     src/RoundRect.cpp \
     src/Event.cpp \
     src/EventSet.cpp \
-    src/EventArgs.cpp
+    src/EventArgs.cpp \
+    src/Types.cpp
 
 HEADERS +=\
     include/System.h \
@@ -146,7 +147,8 @@ HEADERS +=\
     include/RoundRect.h \
     include/Event.h \
     include/EventSet.h \
-    include/EventArgs.h
+    include/EventArgs.h \
+    include/Types.h
 
 INCLUDEPATH += \
     include \

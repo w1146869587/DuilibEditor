@@ -68,12 +68,30 @@ public:
 	 */
 	void setParent(Window* parent);
 
-//	virtual bool onLeftButtonDown();
-//	virtual bool onRightButtonDown();
-//	virtual bool onLeftButtonUp();
-//	virtual bool onRightButtonUp();
-//	virtual bool onLeftButtonClick();
-//	virtual bool onLeftButtonDoubleClick();
+	/**
+	 * @brief
+	 *     Get parent window.
+	 *
+	 * @return
+	 *     The pointer of the parent window.
+	 */
+	Window* getParent();
+
+	Point screenToLocal(const Point& screenPos);
+	Point localToScreen(const Point& localPos);
+
+	/**
+	 * @brief hitTest
+	 * @param point
+	 * @return
+	 */
+	bool hitTest(const Point& screenPos) const;
+
+	virtual bool onMouseLeftButtonDown(const MouseEventArgs& eventArgs);
+	virtual bool onMouseLeftButtonUp(const MouseEventArgs& eventArgs);
+	virtual bool onMouseRightButtonDown(const MouseEventArgs& eventArgs);
+	virtual bool onMouseRightButtonUp(const MouseEventArgs& eventArgs);
+	virtual bool onMouseLeftButtonDoubleClick(const MouseEventArgs& eventArgs);
 	virtual bool onMouseMove(const MouseEventArgs& eventArgs);
 
 

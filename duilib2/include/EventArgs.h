@@ -2,6 +2,7 @@
 #define EVENTARGS_H
 
 #include <duilib2_global.h>
+#include <Types.h>
 
 namespace duilib2
 {
@@ -24,13 +25,10 @@ public:
 	MouseEventArgs();
 	virtual ~MouseEventArgs();
 
+	Point getScreenPos() const;
 
 private:
-	int mScreenX;
-	int mScreenY;
-	int mLocalX;
-	int mLocalY;
-
+	Point mScreenPos;
 };
 
 } // namespace duilib2

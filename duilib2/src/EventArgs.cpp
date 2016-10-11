@@ -23,4 +23,9 @@ MouseEventArgs::~MouseEventArgs()
 
 }
 
+Point MouseEventArgs::getScreenPos() const
+{
+	return mScreenPos;
+}
+
 } // namespace duilib2
