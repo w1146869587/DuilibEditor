@@ -52,13 +52,18 @@ Window* Window::getParent()
 	return mParent;
 }
 
-Point Window::screenToLocal(const Point& screenPos)
+const Window* Window::getParent() const
+{
+	return mParent;
+}
+
+Point Window::screenToLocal(const Point& screenPos) const
 {
 	Point localPos = screenPos;
 	localPos.mX -= getPosition().mX;
 	localPos.mY -= getPosition().mY;
 
-	Window* parent = getParent();
+	const Window* parent = getParent();
 	while (parent)
 	{
 		Point parentPos = parent->getPosition();
@@ -71,13 +76,13 @@ Point Window::screenToLocal(const Point& screenPos)
 	return localPos;
 }
 
-Point Window::localToScreen(const Point& localPos)
+Point Window::localToScreen(const Point& localPos) const
 {
 	Point screenPos = localPos;
 	screenPos.mX += getPosition().mX;
 	screenPos.mY += getPosition().mY;
 
-	Window* parent = getParent();
+	const Window* parent = getParent();
 	while (parent)
 	{
 		Point parentPos = parent->getPosition();
@@ -109,7 +114,7 @@ bool Window::onMouseLeftButtonDown(const MouseEventArgs& eventArgs)
 	std::vector<Window*>& children = getChildren();
 	for (int i = 0; i < (int)children.size(); ++i)
 	{
-		bool hitTest = children[i]->hitTest(eventArgs.getScreenPos());
+		bool hitTest = children[i]->hitTest(eventArgs.mScreenPos);
 		if (hitTest && children[i]->onMouseLeftButtonDown(eventArgs))
 			return true;
 	}
@@ -122,7 +127,7 @@ bool Window::onMouseLeftButtonUp(const MouseEventArgs& eventArgs)
 	std::vector<Window*>& children = getChildren();
 	for (int i = 0; i < (int)children.size(); ++i)
 	{
-		bool hitTest = children[i]->hitTest(eventArgs.getScreenPos());
+		bool hitTest = children[i]->hitTest(eventArgs.mScreenPos);
 		if (hitTest && children[i]->onMouseLeftButtonUp(eventArgs))
 			return true;
 	}
@@ -135,7 +140,7 @@ bool Window::onMouseRightButtonDown(const MouseEventArgs& eventArgs)
 	std::vector<Window*>& children = getChildren();
 	for (int i = 0; i < (int)children.size(); ++i)
 	{
-		bool hitTest = children[i]->hitTest(eventArgs.getScreenPos());
+		bool hitTest = children[i]->hitTest(eventArgs.mScreenPos);
 		if (hitTest && children[i]->onMouseRightButtonDown(eventArgs))
 			return true;
 	}
@@ -148,8 +153,34 @@ bool Window::onMouseRightButtonUp(const MouseEventArgs& eventArgs)
 	std::vector<Window*>& children = getChildren();
 	for (int i = 0; i < (int)children.size(); ++i)
 	{
-		bool hitTest = children[i]->hitTest(eventArgs.getScreenPos());
+		bool hitTest = children[i]->hitTest(eventArgs.mScreenPos);
 		if (hitTest && children[i]->onMouseRightButtonUp(eventArgs))
+			return true;
+	}
+
+	return true;
+}
+
+bool Window::onMouseMidButtonDown(const MouseEventArgs& eventArgs)
+{
+	std::vector<Window*>& children = getChildren();
+	for (int i = 0; i < (int)children.size(); ++i)
+	{
+		bool hitTest = children[i]->hitTest(eventArgs.mScreenPos);
+		if (hitTest && children[i]->onMouseMidButtonDown(eventArgs))
+			return true;
+	}
+
+	return true;
+}
+
+bool Window::onMouseMidButtonUp(const MouseEventArgs& eventArgs)
+{
+	std::vector<Window*>& children = getChildren();
+	for (int i = 0; i < (int)children.size(); ++i)
+	{
+		bool hitTest = children[i]->hitTest(eventArgs.mScreenPos);
+		if (hitTest && children[i]->onMouseMidButtonUp(eventArgs))
 			return true;
 	}
 
@@ -161,7 +192,7 @@ bool Window::onMouseLeftButtonDoubleClick(const MouseEventArgs& eventArgs)
 	std::vector<Window*>& children = getChildren();
 	for (int i = 0; i < (int)children.size(); ++i)
 	{
-		bool hitTest = children[i]->hitTest(eventArgs.getScreenPos());
+		bool hitTest = children[i]->hitTest(eventArgs.mScreenPos);
 		if (hitTest && children[i]->onMouseLeftButtonDoubleClick(eventArgs))
 			return true;
 	}
@@ -171,15 +202,10 @@ bool Window::onMouseLeftButtonDoubleClick(const MouseEventArgs& eventArgs)
 
 bool Window::onMouseMove(const MouseEventArgs& eventArgs)
 {
-	//   首先遍历children调用onMouseMove()
-	//   如果返回false继续处理，否则不再继续处理该事件
-	//   Tip: 同级的children应该可以设置z-order
-	//        待考虑的问题：键盘快捷键的支持，捕获鼠标
-
 	std::vector<Window*>& children = getChildren();
 	for (int i = 0; i < (int)children.size(); ++i)
 	{
-		bool hitTest = children[i]->hitTest(eventArgs.getScreenPos());
+		bool hitTest = children[i]->hitTest(eventArgs.mScreenPos);
 		if (hitTest && children[i]->onMouseMove(eventArgs))
 			return true;
 	}

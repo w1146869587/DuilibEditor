@@ -51,6 +51,14 @@ public:
 
 	/**
 	 * @brief
+	 *     Get the position of the window, relative to parent window.
+	 *
+	 * @return
+	 */
+	virtual Point getPosition() const = 0;
+
+	/**
+	 * @brief
 	 *     Get children windows of this window.
 	 *
 	 * @return
@@ -76,9 +84,7 @@ public:
 	 *     The pointer of the parent window.
 	 */
 	Window* getParent();
-
-	Point screenToLocal(const Point& screenPos);
-	Point localToScreen(const Point& localPos);
+	const Window* getParent() const;
 
 	/**
 	 * @brief hitTest
@@ -87,10 +93,16 @@ public:
 	 */
 	bool hitTest(const Point& screenPos) const;
 
+	Point screenToLocal(const Point& screenPos) const;
+	Point localToScreen(const Point& localPos) const;
+
+
 	virtual bool onMouseLeftButtonDown(const MouseEventArgs& eventArgs);
 	virtual bool onMouseLeftButtonUp(const MouseEventArgs& eventArgs);
 	virtual bool onMouseRightButtonDown(const MouseEventArgs& eventArgs);
 	virtual bool onMouseRightButtonUp(const MouseEventArgs& eventArgs);
+	virtual bool onMouseMidButtonDown(const MouseEventArgs& eventArgs);
+	virtual bool onMouseMidButtonUp(const MouseEventArgs& eventArgs);
 	virtual bool onMouseLeftButtonDoubleClick(const MouseEventArgs& eventArgs);
 	virtual bool onMouseMove(const MouseEventArgs& eventArgs);
 

@@ -16,19 +16,23 @@ public:
 
 };
 
-// 各种事件参数需要完善
-// 需要定义键盘各键的值#define KEY_A xx 等等
+enum MouseButton
+{
+	MB_NONE_BUTTON,
+	MB_LEFT_BUTTON,
+	MB_RIGHT_BUTTON,
+	MB_MID_BUTTON
+};
 
 class DUILIB2SHARED_EXPORT MouseEventArgs : public EventArgs
 {
 public:
-	MouseEventArgs();
+	MouseEventArgs(const Point& pos, MouseButton button);
 	virtual ~MouseEventArgs();
 
-	Point getScreenPos() const;
-
-private:
+public:
 	Point mScreenPos;
+	MouseButton mButton;
 };
 
 } // namespace duilib2

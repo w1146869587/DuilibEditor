@@ -2,6 +2,7 @@
 #include <memory>
 #include <RenderTargets/QtPaintDeviceRenderTarget.h>
 #include <PropertyTypes.h>
+#include <QMouseEvent>
 
 namespace duilib2
 {
@@ -30,6 +31,11 @@ String QtMainWindow::showModal()
 	return String();
 }
 
+Point QtMainWindow::getPosition() const
+{
+	return Point(geometry().left(), geometry().top());
+}
+
 void QtMainWindow::initWindow()
 {
 	setAttribute(Qt::WA_TranslucentBackground);
@@ -44,9 +50,9 @@ void QtMainWindow::initWindow()
 	// 窗口位置
 	if (userSetPosition())
 	{
-		std::pair<int, int> position = getPosition();
+		Point position = getUserSetPosition();
 		QRect clientRect = geometry();
-		clientRect.moveTo(position.first, position.second);
+		clientRect.moveTo(position.mX, position.mY);
 		setGeometry(clientRect);
 	}
 
@@ -74,12 +80,90 @@ void QtMainWindow::initWindow()
 	mDragArea = getProperty("caption").getAnyValue<Rect>();
 }
 
-void QtMainWindow::mouseMoveEvent(QMouseEvent *event)
+void QtMainWindow::mouseMoveEvent(QMouseEvent* event)
 {
-	MouseEventArgs eventArgs;
-	// ... 设置eventArgs成员
+	QPoint screenPos = event->screenPos().toPoint();
+	MouseEventArgs eventArgs(Point(screenPos.x(), screenPos.y()), MB_NONE_BUTTON);
 	MainWindow::onMouseMove(eventArgs);
 }
+
+void QtMainWindow::mousePressEvent(QMouseEvent* event)
+{
+	QPoint qtScreenPos = event->screenPos().toPoint();
+	Point screenPos(qtScreenPos.x(), qtScreenPos.y());
+
+	// MouseEventArgs是否还要加MouseButton成员？貌似没有必要
+
+	MouseButton button;
+	switch (event->button())
+	{
+	case Qt::LeftButton:
+		button = MB_LEFT_BUTTON;
+		MainWindow::onMouseLeftButtonDown(MouseEventArgs(screenPos, button));
+		break;
+
+	case Qt::RightButton:
+		button = MB_RIGHT_BUTTON;
+		MainWindow::onMouseRightButtonDown(MouseEventArgs(screenPos, button));
+		break;
+
+	case Qt::MidButton:
+		button = MB_MID_BUTTON;
+		MainWindow::onMouseMidButtonDown(MouseEventArgs(screenPos, button));
+		break;
+	}
+}
+
+void QtMainWindow::mouseReleaseEvent(QMouseEvent* event)
+{
+	QPoint qtScreenPos = event->screenPos().toPoint();
+	Point screenPos(qtScreenPos.x(), qtScreenPos.y());
+
+	MouseButton button;
+	switch (event->button())
+	{
+	case Qt::LeftButton:
+		button = MB_LEFT_BUTTON;
+		MainWindow::onMouseLeftButtonUp(MouseEventArgs(screenPos, button));
+		break;
+
+	case Qt::RightButton:
+		button = MB_RIGHT_BUTTON;
+		MainWindow::onMouseRightButtonUp(MouseEventArgs(screenPos, button));
+		break;
+
+	case Qt::MidButton:
+		button = MB_MID_BUTTON;
+		MainWindow::onMouseMidButtonUp(MouseEventArgs(screenPos, button));
+		break;
+	}
+}
+
+void QtMainWindow::mouseDoubleClickEvent(QMouseEvent* event)
+{
+	QPoint qtScreenPos = event->screenPos().toPoint();
+	Point screenPos(qtScreenPos.x(), qtScreenPos.y());
+
+	MouseButton button;
+	switch (event->button())
+	{
+	case Qt::LeftButton:
+		button = MB_LEFT_BUTTON;
+		MainWindow::onMouseLeftButtonDoubleClick(MouseEventArgs(screenPos, button));
+		break;
+
+	case Qt::RightButton:
+		button = MB_RIGHT_BUTTON;
+		//MainWindow::onMouseRightButtonDoubleClick(MouseEventArgs(screenPos, button));
+		break;
+
+	case Qt::MidButton:
+		button = MB_MID_BUTTON;
+		//MainWindow::onMouseMidButtonDoubleClick(MouseEventArgs(screenPos, button));
+		break;
+	}
+}
+
 
 QtMainWindowFactory::QtMainWindowFactory()
 {

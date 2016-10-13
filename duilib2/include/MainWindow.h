@@ -53,15 +53,6 @@ public:
 	void setPosition(int x, int y);
 
 	/**
-	 * @brief
-	 *     Get the position of the client area.
-	 *
-	 * @return
-	 *     The position
-	 */
-	std::pair<int, int> getPosition() const;
-
-	/**
 	 * @brief setClipRegion
 	 * @param x
 	 * @param y
@@ -81,6 +72,7 @@ public:
 protected:
 	virtual void render(RenderTarget* renderTarget);
 	bool userSetPosition() const;
+	Point getUserSetPosition() const;
 
 private:
 	static String sTypeName;

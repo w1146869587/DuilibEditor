@@ -92,9 +92,9 @@ void MainWindow::setPosition(int x, int y)
 	mUserSetPosition = true;
 }
 
-std::pair<int, int> MainWindow::getPosition() const
+Point MainWindow::getUserSetPosition() const
 {
-	return std::make_pair(mPosX, mPosY);
+	return Point(mPosX, mPosY);
 }
 
 void MainWindow::setClipRegion(int x, int y, int width, int height, int xRadius, int yRadius)

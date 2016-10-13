@@ -13,7 +13,9 @@ EventArgs::~EventArgs()
 
 }
 
-MouseEventArgs::MouseEventArgs()
+MouseEventArgs::MouseEventArgs(const Point& pos, MouseButton button)
+	: mScreenPos(pos)
+	, mButton(button)
 {
 
 }
@@ -21,11 +23,6 @@ MouseEventArgs::MouseEventArgs()
 MouseEventArgs::~MouseEventArgs()
 {
 
-}
-
-Point MouseEventArgs::getScreenPos() const
-{
-	return mScreenPos;
 }
 
 } // namespace duilib2

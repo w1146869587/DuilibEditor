@@ -20,10 +20,16 @@ public:
 
 	// virtual functions from QDialog
 	virtual void paintEvent(QPaintEvent* event);
-	virtual void mouseMoveEvent(QMouseEvent *event);
+	virtual void mouseMoveEvent(QMouseEvent* event);
+	virtual void mousePressEvent(QMouseEvent* event);
+	virtual void mouseReleaseEvent(QMouseEvent* event);
+	virtual void mouseDoubleClickEvent(QMouseEvent* event);
 
 	/// @copydoc Window::showModal
 	virtual String showModal();
+
+	/// @copydoc Window::getPosition
+	virtual Point getPosition() const;
 
 
 private:
