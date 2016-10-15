@@ -13,7 +13,7 @@ namespace duilib2
  * @brief
  *     Parsing from xml file and generate windows hierarchy
  */
-class LayoutXmlHandler : public XmlHandler
+class DUILIB2SHARED_EXPORT LayoutXmlHandler : public XmlHandler
 {
 public:
 	LayoutXmlHandler();

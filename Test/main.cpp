@@ -14,6 +14,7 @@ using namespace duilib2;
 #include <QDialog>
 #include <QPainter>
 #include <NativeWindows/QtMainWindow.h>
+#include <LayoutXmlHandler.h>
 
 void testQtXmlParser();
 void testPropertyParsers();
@@ -200,18 +201,29 @@ void testPropertyParsers()
 
 void testQtMainWindow()
 {
-	System::create();
-
 	try
 	{
-		QtMainWindowFactory f;
-		Window* mainWindow = f.createInstance("name1");
+
+		System::create();
+
+		// 资源
+		ResourceManager::getSingleton().addResourcePackage("default", "FileSystem", ".");
+		ResourceManager::getSingleton().setCurrentResourcePackage("default");
+
+		RawDataContainerPtr rawData = ResourceManager::getSingleton().getFileRawData("test.xml");
+
+		LayoutXmlHandler handler;
+		QtXmlParser parser;
+		parser.parseXml(handler, *rawData.get());
+
+		Window* mainWindow = handler.getLayoutRootWindow();
 		mainWindow->showModal();
+
+		System::destroy();
+
 	}
 	catch (Exception& e)
 	{
 		std::cout << e.getFullDescription().toLocal8Bit().data() << std::endl;
 	}
-
-	System::destroy();
 }

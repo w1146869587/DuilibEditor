@@ -21,6 +21,7 @@ System::System()
 	createXmlParser();
 	createRenderSystem();
 	addArchiveFactories();
+	addWindowFactores();
 }
 
 System::~System()
