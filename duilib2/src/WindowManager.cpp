@@ -56,7 +56,7 @@ Window* WindowManager::createWindow(const String& type, const String& name)
 	if (pos == mWindowFactories.end())
 	{
 		DUILIB2_EXCEPT(Exception::ERR_ITEM_NOT_FOUND,
-							 "Window factory named" + name + "is not exists",
+							 "Window factory named " + type + " is not exists",
 							 "WindowManager::createWindow");
 	}
 
@@ -86,7 +86,7 @@ void WindowManager::destroyWindow(Window* window)
 	if (pos == mWindowFactories.end())
 	{
 		DUILIB2_EXCEPT(Exception::ERR_ITEM_NOT_FOUND,
-							 "Window factory named" + type + "is not exists",
+							 "Window factory named " + type + " is not exists",
 							 "WindowManager::createWindow");
 	}
 

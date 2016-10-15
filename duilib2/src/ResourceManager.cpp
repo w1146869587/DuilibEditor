@@ -29,7 +29,7 @@ void ResourceManager::addResourcePackage(const String& name, const String& type,
 	if (pos != mResourcePackages.end())
 	{
 		DUILIB2_EXCEPT(Exception::ERR_DUPLICATE_ITEM,
-							 "Resource package named" + name + "is already exists",
+							 "Resource package named " + name + " is already exists",
 							 "ResourceManager::addResourcePackage");
 	}
 
@@ -56,7 +56,7 @@ void ResourceManager::setCurrentResourcePackage(const String& name)
 	if (pos == mResourcePackages.end())
 	{
 		DUILIB2_EXCEPT(Exception::ERR_ITEM_NOT_FOUND,
-							 "Resource package named" + name + "is not exists",
+							 "Resource package named " + name + " is not exists",
 							 "ResourceManager::setCurrentResourcePackage");
 	}
 
@@ -80,7 +80,7 @@ RawDataContainerPtr ResourceManager::getFileRawData(const String& fileName)
 	if (pos == mResourcePackages.end())
 	{
 		DUILIB2_EXCEPT(Exception::ERR_ITEM_NOT_FOUND,
-							 "Current resource package named" + mCurrentResourcePackage + "is not exists",
+							 "Current resource package named " + mCurrentResourcePackage + " is not exists",
 							 "ResourceManager::getFileRawData");
 	}
 

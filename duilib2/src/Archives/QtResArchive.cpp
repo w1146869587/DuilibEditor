@@ -1,1 +1,1 @@
-#include <QtResArchive.h>
+#include <Archives/QtResArchive.h>

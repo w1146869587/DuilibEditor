@@ -72,7 +72,7 @@ const String& Exception::getFullDescription() const
 			desc << " at " << mFile.toLocal8Bit().data() << " (line " << mLine << ")";
 		}
 
-		mFullDesc.fromLocal8Bit(desc.str().c_str());
+		mFullDesc = String::fromLocal8Bit(desc.str().c_str());
 	}
 
 	return mFullDesc;

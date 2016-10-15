@@ -98,7 +98,7 @@ public:
 	 * @return
 	 *     The name of the attribute at the requested index.
 	 */
-	const String& getName(int index) const;
+	String getName(int index) const;
 
 	/**
 	 * @brief
@@ -110,7 +110,7 @@ public:
 	 * @return
 	 *     The name of the attribute at the requested index.
 	 */
-	const String& getValue(int index) const;
+	String getValue(int index) const;
 
 	/**
 	 * @brief
@@ -122,7 +122,7 @@ public:
 	 * @return
 	 *     The value string for attribute \a name.
 	 */
-	const String& getValue(const String& name) const;
+	String getValue(const String& name) const;
 
 private:
 	typedef std::map<String, String> AttributeMap;

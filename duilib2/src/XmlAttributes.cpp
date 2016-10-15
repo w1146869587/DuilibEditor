@@ -63,7 +63,7 @@ int XmlAttributes::getCount() const
 	return mAttributes.size();
 }
 
-const String& XmlAttributes::getName(int index) const
+String XmlAttributes::getName(int index) const
 {
 	if (index < 0 || index >= mAttributes.size())
 		assert(false && "The index is out of range : XmlAttributes::getName(int index)");
@@ -74,7 +74,7 @@ const String& XmlAttributes::getName(int index) const
 	return iter->first;
 }
 
-const String& XmlAttributes::getValue(int index) const
+String XmlAttributes::getValue(int index) const
 {
 	if (index < 0 || index >= mAttributes.size())
 		assert(false && "The index is out of range : XmlAttributes::getName(int index)");
@@ -85,7 +85,7 @@ const String& XmlAttributes::getValue(int index) const
 	return iter->second;
 }
 
-const String& XmlAttributes::getValue(const String& name) const
+String XmlAttributes::getValue(const String& name) const
 {
 	AttributeMap::const_iterator pos = mAttributes.find(name);
 	if (pos != mAttributes.end())

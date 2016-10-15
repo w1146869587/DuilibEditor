@@ -39,7 +39,7 @@ Property& PropertyParserManager::parse(Property& property) const
 	if (parser == NULL)
 	{
 		DUILIB2_EXCEPT(Exception::ERR_ITEM_NOT_FOUND,
-					   "Cannot find property parser for type" + property.getType(),
+					   "Cannot find property parser for type " + property.getType(),
 					   "PropertyParserManager::parse");
 	}
 

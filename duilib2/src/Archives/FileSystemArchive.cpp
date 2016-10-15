@@ -1,4 +1,4 @@
-#include <FileSystemArchive.h>
+#include <Archives/FileSystemArchive.h>
 #include <Exception.h>
 #include <fstream>
 #include <sstream>
@@ -46,7 +46,7 @@ RawDataContainerPtr FileSystemArchive::open(const String& fileName)
 	if (!file)
 	{
 		DUILIB2_EXCEPT(Exception::ERR_FILE_NOT_FOUND,
-							 "Cannot open file" + fileName, "FileSystemArchive::open");
+							 "Cannot open file " + fileName, " FileSystemArchive::open");
 	}
 
 	std::ostringstream strStream;

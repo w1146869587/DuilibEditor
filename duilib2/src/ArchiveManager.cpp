@@ -53,7 +53,7 @@ ArchiveManager::~ArchiveManager()
 		if (iterF == mArchiveFactories.end())
 		{
 			DUILIB2_EXCEPT(Exception::ERR_ITEM_NOT_FOUND,
-								 "Cannot find archive factory for type" + archive->getType(),
+								 "Cannot find archive factory for type " + archive->getType(),
 								 "ArchiveManager::~ArchiveManager");
 		}
 		iterF->second->destroyInstance(archive);
@@ -80,7 +80,7 @@ Archive* ArchiveManager::load(const String& fileName, const String& archiveType)
 		if (iterFactory == mArchiveFactories.end())
 		{
 			DUILIB2_EXCEPT(Exception::ERR_ITEM_NOT_FOUND,
-								 "Cannot find an archive factory for type" + archiveType,
+								 "Cannot find an archive factory for type " + archiveType,
 								 "ArchiveManager::load");
 		}
 
@@ -113,7 +113,7 @@ void ArchiveManager::unload(const String& fileName)
 		if (iterFactory == mArchiveFactories.end())
 		{
 			DUILIB2_EXCEPT(Exception::ERR_ITEM_NOT_FOUND,
-								 "Cannot find an archive factory for type" + iter->second->getType(),
+								 "Cannot find an archive factory for type " + iter->second->getType(),
 								 "ArchiveManager::unload");
 		}
 

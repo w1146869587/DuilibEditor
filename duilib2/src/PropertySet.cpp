@@ -39,7 +39,7 @@ const Property& PropertySet::getProperty(const String& name) const
 	if (pos == mProperties.end())
 	{
 		DUILIB2_EXCEPT(Exception::ERR_ITEM_NOT_FOUND,
-							 "Property named" + name + "is not exists",
+							 "Property named " + name + " is not exists",
 							 "PropertySet::getProperty");
 	}
 	return pos->second;

@@ -96,7 +96,8 @@ int main(int argc, char *argv[])
 	System::destroy();
 	*/
 
-	return a.exec();
+	//return a.exec();
+	return 0;
 }
 
 
