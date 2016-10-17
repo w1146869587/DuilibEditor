@@ -6,6 +6,7 @@
 #include <WindowFactory.h>
 #include <QDialog>
 #include <PropertyTypes.h>
+#include <QPoint>
 
 namespace duilib2
 {
@@ -25,6 +26,10 @@ public:
 	virtual void mouseReleaseEvent(QMouseEvent* event);
 	virtual void mouseDoubleClickEvent(QMouseEvent* event);
 
+	virtual bool onMouseLeftButtonDown(const MouseEventArgs& eventArgs);
+	virtual bool onMouseLeftButtonUp(const MouseEventArgs& eventArgs);
+	virtual bool onMouseMove(const MouseEventArgs& eventArgs);
+
 	/// @copydoc Window::showModal
 	virtual String showModal();
 
@@ -36,7 +41,9 @@ private:
 	void initWindow();
 
 private:
-	Rect mDragArea;  // 允许按住鼠标左键拖动窗口的区域
+	Rect mDragArea;          // 允许按住鼠标左键拖动窗口的区域
+	QPoint mPressOffset;
+	bool mLeftButtonPressed;
 };
 
 

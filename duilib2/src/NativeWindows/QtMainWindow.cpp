@@ -3,12 +3,14 @@
 #include <RenderTargets/QtPaintDeviceRenderTarget.h>
 #include <PropertyTypes.h>
 #include <QMouseEvent>
+#include <QDebug>
 
 namespace duilib2
 {
 
 QtMainWindow::QtMainWindow(const String& name)
 	: MainWindow(name)
+	, mLeftButtonPressed(false)
 {
 
 }
@@ -78,13 +80,15 @@ void QtMainWindow::initWindow()
 
 	// 允许拖动窗口的区域
 	mDragArea = getProperty("caption").getAnyValue<Rect>();
+	// caption属性第3个参数是距离右边框的距离
+	mDragArea.mRight = getWidth() - mDragArea.mRight;
 }
 
 void QtMainWindow::mouseMoveEvent(QMouseEvent* event)
 {
 	QPoint screenPos = event->screenPos().toPoint();
 	MouseEventArgs eventArgs(Point(screenPos.x(), screenPos.y()), MB_NONE_BUTTON);
-	MainWindow::onMouseMove(eventArgs);
+	onMouseMove(eventArgs);
 }
 
 void QtMainWindow::mousePressEvent(QMouseEvent* event)
@@ -99,17 +103,17 @@ void QtMainWindow::mousePressEvent(QMouseEvent* event)
 	{
 	case Qt::LeftButton:
 		button = MB_LEFT_BUTTON;
-		MainWindow::onMouseLeftButtonDown(MouseEventArgs(screenPos, button));
+		onMouseLeftButtonDown(MouseEventArgs(screenPos, button));
 		break;
 
 	case Qt::RightButton:
 		button = MB_RIGHT_BUTTON;
-		MainWindow::onMouseRightButtonDown(MouseEventArgs(screenPos, button));
+		onMouseRightButtonDown(MouseEventArgs(screenPos, button));
 		break;
 
 	case Qt::MidButton:
 		button = MB_MID_BUTTON;
-		MainWindow::onMouseMidButtonDown(MouseEventArgs(screenPos, button));
+		onMouseMidButtonDown(MouseEventArgs(screenPos, button));
 		break;
 	}
 }
@@ -124,17 +128,17 @@ void QtMainWindow::mouseReleaseEvent(QMouseEvent* event)
 	{
 	case Qt::LeftButton:
 		button = MB_LEFT_BUTTON;
-		MainWindow::onMouseLeftButtonUp(MouseEventArgs(screenPos, button));
+		onMouseLeftButtonUp(MouseEventArgs(screenPos, button));
 		break;
 
 	case Qt::RightButton:
 		button = MB_RIGHT_BUTTON;
-		MainWindow::onMouseRightButtonUp(MouseEventArgs(screenPos, button));
+		onMouseRightButtonUp(MouseEventArgs(screenPos, button));
 		break;
 
 	case Qt::MidButton:
 		button = MB_MID_BUTTON;
-		MainWindow::onMouseMidButtonUp(MouseEventArgs(screenPos, button));
+		onMouseMidButtonUp(MouseEventArgs(screenPos, button));
 		break;
 	}
 }
@@ -149,21 +153,72 @@ void QtMainWindow::mouseDoubleClickEvent(QMouseEvent* event)
 	{
 	case Qt::LeftButton:
 		button = MB_LEFT_BUTTON;
-		MainWindow::onMouseLeftButtonDoubleClick(MouseEventArgs(screenPos, button));
+		onMouseLeftButtonDoubleClick(MouseEventArgs(screenPos, button));
 		break;
 
 	case Qt::RightButton:
 		button = MB_RIGHT_BUTTON;
-		//MainWindow::onMouseRightButtonDoubleClick(MouseEventArgs(screenPos, button));
+		//onMouseRightButtonDoubleClick(MouseEventArgs(screenPos, button));
 		break;
 
 	case Qt::MidButton:
 		button = MB_MID_BUTTON;
-		//MainWindow::onMouseMidButtonDoubleClick(MouseEventArgs(screenPos, button));
+		//onMouseMidButtonDoubleClick(MouseEventArgs(screenPos, button));
 		break;
 	}
 }
 
+bool QtMainWindow::onMouseLeftButtonDown(const MouseEventArgs& eventArgs)
+{
+	if (MainWindow::onMouseLeftButtonDown(eventArgs))
+		return true;
+
+	Point localPoint = screenToLocal(eventArgs.mScreenPos);
+	if (mDragArea.contains(localPoint))
+	{
+		// 获得屏幕坐标下的窗口位置
+		Point windowPosInParent(geometry().left(), geometry().top());
+		Point windowPosScreen = windowPosInParent;
+		if (getParent())
+			windowPosScreen = getParent()->localToScreen(windowPosInParent);
+
+		QPoint mousePos(eventArgs.mScreenPos.mX, eventArgs.mScreenPos.mY);
+		QPoint windowPos(windowPosScreen.mX, windowPosScreen.mY);
+		mPressOffset = windowPos - mousePos;
+		mLeftButtonPressed = true;
+	}
+
+	return true;
+}
+
+bool QtMainWindow::onMouseLeftButtonUp(const MouseEventArgs& eventArgs)
+{
+	if (MainWindow::onMouseLeftButtonUp(eventArgs))
+		return true;
+
+	mLeftButtonPressed = false;
+}
+
+bool QtMainWindow::onMouseMove(const MouseEventArgs& eventArgs)
+{
+	if (MainWindow::onMouseMove(eventArgs))
+		return true;
+
+	if (mLeftButtonPressed)
+	{
+		Point pos = eventArgs.mScreenPos;
+		QPoint mousePos(pos.mX, pos.mY);
+		QPoint windowPos = mousePos + mPressOffset;
+
+		Point windowPosScreen(windowPos.x(), windowPos.y());
+		Point windowPosLocal = windowPosScreen;
+		if (getParent())
+			windowPosLocal = getParent()->screenToLocal(windowPosScreen);
+
+		setGeometry(windowPosLocal.mX, windowPosLocal.mY, geometry().width(), geometry().height());
+	}
+	return true;
+}
 
 QtMainWindowFactory::QtMainWindowFactory()
 {

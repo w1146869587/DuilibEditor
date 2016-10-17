@@ -119,7 +119,7 @@ bool Window::onMouseLeftButtonDown(const MouseEventArgs& eventArgs)
 			return true;
 	}
 
-	return true;
+	return false;
 }
 
 bool Window::onMouseLeftButtonUp(const MouseEventArgs& eventArgs)
@@ -132,7 +132,7 @@ bool Window::onMouseLeftButtonUp(const MouseEventArgs& eventArgs)
 			return true;
 	}
 
-	return true;
+	return false;
 }
 
 bool Window::onMouseRightButtonDown(const MouseEventArgs& eventArgs)
@@ -145,7 +145,7 @@ bool Window::onMouseRightButtonDown(const MouseEventArgs& eventArgs)
 			return true;
 	}
 
-	return true;
+	return false;
 }
 
 bool Window::onMouseRightButtonUp(const MouseEventArgs& eventArgs)
@@ -158,7 +158,7 @@ bool Window::onMouseRightButtonUp(const MouseEventArgs& eventArgs)
 			return true;
 	}
 
-	return true;
+	return false;
 }
 
 bool Window::onMouseMidButtonDown(const MouseEventArgs& eventArgs)
@@ -171,7 +171,7 @@ bool Window::onMouseMidButtonDown(const MouseEventArgs& eventArgs)
 			return true;
 	}
 
-	return true;
+	return false;
 }
 
 bool Window::onMouseMidButtonUp(const MouseEventArgs& eventArgs)
@@ -184,7 +184,7 @@ bool Window::onMouseMidButtonUp(const MouseEventArgs& eventArgs)
 			return true;
 	}
 
-	return true;
+	return false;
 }
 
 bool Window::onMouseLeftButtonDoubleClick(const MouseEventArgs& eventArgs)
@@ -197,7 +197,7 @@ bool Window::onMouseLeftButtonDoubleClick(const MouseEventArgs& eventArgs)
 			return true;
 	}
 
-	return true;
+	return false;
 }
 
 bool Window::onMouseMove(const MouseEventArgs& eventArgs)
@@ -210,7 +210,7 @@ bool Window::onMouseMove(const MouseEventArgs& eventArgs)
 			return true;
 	}
 
-	return true;
+	return false;
 }
 
 String Window::showModal()
