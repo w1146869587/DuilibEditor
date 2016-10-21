@@ -213,6 +213,11 @@ bool Window::onMouseMove(const MouseEventArgs& eventArgs)
 	return false;
 }
 
+Window::PropertyMaps Window::_getProperties() const
+{
+	return PropertyMaps();
+}
+
 String Window::showModal()
 {
 	// 控件无法显示自己必须有一个顶层的MainWindow

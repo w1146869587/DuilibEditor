@@ -106,6 +106,11 @@ public:
 	virtual bool onMouseLeftButtonDoubleClick(const MouseEventArgs& eventArgs);
 	virtual bool onMouseMove(const MouseEventArgs& eventArgs);
 
+	// some functions used by DuilibEditor
+	typedef std::map<String, Property> PropertyMap;
+	typedef std::vector<std::pair<String, PropertyMap>> PropertyMaps;
+	// return properties categorised by class names
+	virtual PropertyMaps _getProperties() const;
 
 protected:
 	/**

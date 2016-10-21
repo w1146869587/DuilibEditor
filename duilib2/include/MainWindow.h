@@ -69,6 +69,8 @@ public:
 	void clearClipRegion();
 
 
+	virtual PropertyMaps _getProperties() const;
+
 protected:
 	virtual void render(RenderTarget* renderTarget);
 	bool userSetPosition() const;

@@ -5,6 +5,27 @@
 namespace duilib2
 {
 
+static String gMainWindowProperties[][3] =
+{
+	// default properties
+	// name               value         type
+	{"size",               "800, 600",   "Size"},
+	{"mininfo",            "0, 0",       "Size"},
+	{"maxinfo",            "0, 0",       "Size"},
+	{"roundcorner",        "0, 0",       "Size"},
+	{"sizebox",            "8, 8, 8, 8", "Rect"},
+	{"caption",            "0, 0, 0, 0", "Rect"},
+	{"alpha",              "255",        "Byte"},
+	{"bktrans",            "false",      "Bool"},
+	{"showdirty",          "false",      "Bool"},
+	{"disabledfontcolor",  "0xFFA7A6AA", "Color"},
+	{"defaultfontcolor",   "0xFF000000", "Color"},
+	{"linkfontcolor",      "0xFF0000FF", "Color"},
+	{"linkhoverfontcolor", "0xFFD3215F", "Color"},
+	{"selectedcolor",      "0xFFBAE4FF", "Color"},
+	{"", "", ""}
+};
+
 String MainWindow::sTypeName = "Window";
 
 MainWindow::MainWindow(const String& name)
@@ -14,21 +35,12 @@ MainWindow::MainWindow(const String& name)
 	, mPosX(0)
 	, mPosY(0)
 {
-	// 默认属性
-	addProperty("size",               "800, 600",   "Size");
-	addProperty("mininfo",            "0, 0",       "Size");
-	addProperty("maxinfo",            "0, 0",       "Size");
-	addProperty("roundcorner",        "0, 0",       "Size");
-	addProperty("sizebox",            "8, 8, 8, 8", "Rect");
-	addProperty("caption",            "0, 0, 0, 0", "Rect");
-	addProperty("alpha",              "255",        "Byte");
-	addProperty("bktrans",            "false",      "Bool");
-	addProperty("showdirty",          "false",      "Bool");
-	addProperty("disabledfontcolor",  "0xFFA7A6AA", "Color");
-	addProperty("defaultfontcolor",   "0xFF000000", "Color");
-	addProperty("linkfontcolor",      "0xFF0000FF", "Color");
-	addProperty("linkhoverfontcolor", "0xFFD3215F", "Color");
-	addProperty("selectedcolor",      "0xFFBAE4FF", "Color");
+	String* property = &gMainWindowProperties[0][0];
+	while (!property->isEmpty())
+	{
+		addProperty(property[0], property[1], property[2]);
+		property += 3;
+	}
 }
 
 MainWindow::~MainWindow()
@@ -106,6 +118,21 @@ void MainWindow::setClipRegion(int x, int y, int width, int height, int xRadius,
 void MainWindow::clearClipRegion()
 {
 	mClipping = false;
+}
+
+Window::PropertyMaps MainWindow::_getProperties() const
+{
+	PropertyMaps propertyMaps = Window::_getProperties();
+	PropertyMap  properties;
+
+	String* property = &gMainWindowProperties[0][0];
+	while (!property->isEmpty())
+	{
+		properties[property[0]] = Property(property[0], property[1], property[2]);
+		property += 3;
+	}
+	propertyMaps.push_back(std::make_pair(String("Window"), properties));
+	return propertyMaps;
 }
 
 bool MainWindow::userSetPosition() const
