@@ -42,6 +42,9 @@ static String gControlProperties[][3] =
 	{"", "", ""}
 };
 
+
+String Control::sTypeName = "Control";
+
 Control::Control(const String& name)
 	: Window(name)
 {
@@ -54,6 +57,41 @@ Control::Control(const String& name)
 }
 
 Control::~Control()
+{
+
+}
+
+String Control::getType() const
+{
+	return sTypeName;
+}
+
+String Control::showModal()
+{
+	// 控件无法显示自己必须有一个顶层的MainWindow
+	// 如果控件没有MainWindow父窗口，需要创建一个，并显示该MainWindow
+	// MainWindow需要重写该函数
+	// ToDo
+	// ...
+	return String();
+}
+
+int Control::getWidth() const
+{
+
+}
+
+int Control::getHeight() const
+{
+
+}
+
+Point Control::getPosition() const
+{
+
+}
+
+void Control::render(RenderTarget* renderTarget)
 {
 
 }

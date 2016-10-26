@@ -220,11 +220,6 @@ Window::PropertyMaps Window::_getProperties() const
 
 String Window::showModal()
 {
-	// 控件无法显示自己必须有一个顶层的MainWindow
-	// 如果控件没有MainWindow父窗口，需要创建一个，并显示该MainWindow
-	// MainWindow需要重写该函数
-	// ToDo
-	// ...
 	return String();
 }
 
