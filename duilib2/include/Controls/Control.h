@@ -2,6 +2,7 @@
 #define CONTROL_H
 
 #include <duilib2_global.h>
+#include <WindowFactory.h>
 #include <Window.h>
 
 namespace duilib2
@@ -35,7 +36,24 @@ private:
 	static String sTypeName;
 };
 
-} // namespace duilib2
+class DUILIB2SHARED_EXPORT ControlFactory : public WindowFactory
+{
+public:
+	ControlFactory();
+	virtual ~ControlFactory();
 
+	/// @copydoc WindowFactory::getType
+	virtual String getType() const;
+
+	/// @copydoc WindowFactory::createInstance
+	virtual Window* createInstance(const String& name);
+
+	/// @copydoc WindowFactory::destroyInstance
+	virtual void destroyInstance(Window* window);
+
+private:
+};
+
+} // namespace duilib2
 
 #endif  // CONTROL_H

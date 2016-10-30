@@ -12,9 +12,44 @@ class DUILIB2SHARED_EXPORT VerticalLayout : public Container
 public:
 	VerticalLayout(const String& name);
 	virtual ~VerticalLayout();
+
+	/// @copydoc Window::getType
+	virtual String getType() const;
+
+	/// @copydoc Window::getWidth
+	virtual int getWidth() const;
+
+	/// @copydoc Window::getHeight
+	virtual int getHeight() const;
+
+	/// @copydoc Window::getPosition
+	virtual Point getPosition() const;
+
+protected:
+	virtual void render(RenderTarget* renderTarget);
+
+private:
+	static String sTypeName;
+};
+
+class DUILIB2SHARED_EXPORT VerticalLayoutFactory : public WindowFactory
+{
+public:
+	VerticalLayoutFactory();
+	virtual ~VerticalLayoutFactory();
+
+	/// @copydoc WindowFactory::getType
+	virtual String getType() const;
+
+	/// @copydoc WindowFactory::createInstance
+	virtual Window* createInstance(const String& name);
+
+	/// @copydoc WindowFactory::destroyInstance
+	virtual void destroyInstance(Window* window);
+
+private:
 };
 
 } // namespace duilib2
-
 
 #endif  // VERTICALLAYOUT_H

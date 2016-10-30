@@ -197,6 +197,7 @@ bool QtMainWindow::onMouseLeftButtonUp(const MouseEventArgs& eventArgs)
 		return true;
 
 	mLeftButtonPressed = false;
+	return true;
 }
 
 bool QtMainWindow::onMouseMove(const MouseEventArgs& eventArgs)

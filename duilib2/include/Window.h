@@ -6,7 +6,6 @@
 #include <PropertySet.h>
 #include <RenderTarget.h>
 #include <EventSet.h>
-#include <WindowFactory.h>
 
 namespace duilib2
 {
