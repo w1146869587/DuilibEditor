@@ -48,7 +48,7 @@ Point TileLayout::getPosition() const
 	return Point();
 }
 
-void TileLayout::render(RenderTarget* renderTarget)
+void TileLayout::render()
 {
 
 }

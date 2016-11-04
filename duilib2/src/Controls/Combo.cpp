@@ -48,7 +48,7 @@ Point Combo::getPosition() const
 	return Point();
 }
 
-void Combo::render(RenderTarget* renderTarget)
+void Combo::render()
 {
 
 }

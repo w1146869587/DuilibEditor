@@ -48,7 +48,7 @@ Point Option::getPosition() const
 	return Point();
 }
 
-void Option::render(RenderTarget* renderTarget)
+void Option::render()
 {
 
 }

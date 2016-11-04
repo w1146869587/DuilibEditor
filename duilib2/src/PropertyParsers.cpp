@@ -9,6 +9,11 @@
 namespace duilib2
 {
 
+void PropertyParser::parse(Property& property) const
+{
+	property.setAnyValue(property.getValue());
+}
+
 void SizePropertyParser::parse(Property& property) const
 {
 	// e.g. "300, 400"

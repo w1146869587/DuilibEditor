@@ -48,7 +48,7 @@ Point Container::getPosition() const
 	return Point();
 }
 
-void Container::render(RenderTarget* renderTarget)
+void Container::render()
 {
 
 }

@@ -88,7 +88,7 @@ Point Control::getPosition() const
 	return Point();
 }
 
-void Control::render(RenderTarget* renderTarget)
+void Control::render()
 {
 
 }

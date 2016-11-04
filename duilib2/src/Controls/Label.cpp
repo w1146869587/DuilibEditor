@@ -48,7 +48,7 @@ Point Label::getPosition() const
 	return Point();
 }
 
-void Label::render(RenderTarget* renderTarget)
+void Label::render()
 {
 
 }

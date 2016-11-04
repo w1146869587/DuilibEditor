@@ -1,6 +1,6 @@
 #include <MainWindow.h>
 #include <PropertyTypes.h>
-#include <System.h>
+#include <RenderSystemProxy.h>
 
 namespace duilib2
 {
@@ -75,10 +75,9 @@ bool MainWindow::isFrameless() const
 	return mFrameless;
 }
 
-void MainWindow::render(RenderTarget* renderTarget)
+void MainWindow::render()
 {
-	RenderSystem* rs = System::getSingleton().getRenderSystem();
-	rs->setRenderTarget(renderTarget);
+	RenderSystemProxy rs(getRenderTarget());
 
 	// 是否使用静态透明背景
 	// 如果不使用，则绘制一个纯色背景
@@ -86,15 +85,15 @@ void MainWindow::render(RenderTarget* renderTarget)
 	if (!bktrans)
 	{
 		if (mClipping)
-			rs->setClipRegion(mClipRegion);
+			rs.setClipRegion(mClipRegion);
 		else
-			rs->clearClipRegion();
+			rs.clearClipRegion();
 
 		Byte alpha = getProperty("alpha").getAnyValue<Byte>();
-		rs->fillRect(0, 0, getWidth(), getHeight(), Color(128, 128, 128, alpha));
+		rs.fillRect(0, 0, getWidth(), getHeight(), Color(128, 128, 128, alpha));
 	}
 
-	Window::render(renderTarget);
+	Window::render();
 }
 
 void MainWindow::setPosition(int x, int y)

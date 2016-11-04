@@ -12,7 +12,7 @@ QtMainWindow::QtMainWindow(const String& name)
 	: MainWindow(name)
 	, mLeftButtonPressed(false)
 {
-
+	setRenderTarget(new QtPaintDeviceRenderTarget(this));
 }
 
 QtMainWindow::~QtMainWindow()
@@ -22,8 +22,7 @@ QtMainWindow::~QtMainWindow()
 
 void QtMainWindow::paintEvent(QPaintEvent* /*event*/)
 {
-	std::auto_ptr<RenderTarget> renderTarget(new QtPaintDeviceRenderTarget(this));
-	MainWindow::render(renderTarget.get());
+	MainWindow::render();
 }
 
 String QtMainWindow::showModal()

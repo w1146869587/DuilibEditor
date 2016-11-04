@@ -48,7 +48,7 @@ Point GifAnim::getPosition() const
 	return Point();
 }
 
-void GifAnim::render(RenderTarget* renderTarget)
+void GifAnim::render()
 {
 
 }

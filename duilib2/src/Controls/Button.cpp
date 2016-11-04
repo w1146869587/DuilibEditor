@@ -48,7 +48,7 @@ Point Button::getPosition() const
 	return Point();
 }
 
-void Button::render(RenderTarget* renderTarget)
+void Button::render()
 {
 
 }

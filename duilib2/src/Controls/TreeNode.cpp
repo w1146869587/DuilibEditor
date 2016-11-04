@@ -48,7 +48,7 @@ Point TreeNode::getPosition() const
 	return Point();
 }
 
-void TreeNode::render(RenderTarget* renderTarget)
+void TreeNode::render()
 {
 
 }

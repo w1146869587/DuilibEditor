@@ -26,7 +26,7 @@ public:
 	virtual Point getPosition() const;
 
 protected:
-	virtual void render(RenderTarget* renderTarget);
+	virtual void render();
 
 private:
 	static String sTypeName;

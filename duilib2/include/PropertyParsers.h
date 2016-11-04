@@ -17,7 +17,7 @@ public:
 	 * @param property
 	 *     Property to be parsed.
 	 */
-	virtual void parse(Property& property) const = 0;
+	virtual void parse(Property& property) const;
 };
 
 class DUILIB2SHARED_EXPORT SizePropertyParser : public PropertyParser

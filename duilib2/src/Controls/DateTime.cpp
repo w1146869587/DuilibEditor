@@ -48,7 +48,7 @@ Point DateTime::getPosition() const
 	return Point();
 }
 
-void DateTime::render(RenderTarget* renderTarget)
+void DateTime::render()
 {
 
 }

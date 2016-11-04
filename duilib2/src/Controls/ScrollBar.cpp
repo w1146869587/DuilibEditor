@@ -48,7 +48,7 @@ Point ScrollBar::getPosition() const
 	return Point();
 }
 
-void ScrollBar::render(RenderTarget* renderTarget)
+void ScrollBar::render()
 {
 
 }

@@ -7,13 +7,15 @@ namespace duilib2
 Window::Window(const String& name)
 	: mName(name)
 	, mParent(NULL)
+	, mRenderTarget(NULL)
 {
 
 }
 
 Window::~Window()
 {
-
+	if (mRenderTarget)
+		delete mRenderTarget;
 }
 
 std::vector<Window*>& Window::getChildren()
@@ -107,6 +109,25 @@ bool Window::hitTest(const Point& screenPos) const
 	windowArea.mBottom = windowArea.mTop + getHeight();
 
 	return windowArea.contains(screenPos);
+}
+
+RenderTarget* Window::getRenderTarget()
+{
+	if (mRenderTarget)
+		return mRenderTarget;
+
+	if (getParent() != NULL)
+		return getParent()->getRenderTarget();
+
+	return NULL;
+}
+
+void Window::setRenderTarget(RenderTarget* renderTarget)
+{
+	if (mRenderTarget)
+		delete mRenderTarget;
+
+	mRenderTarget = renderTarget;
 }
 
 bool Window::onMouseLeftButtonDown(const MouseEventArgs& eventArgs)
@@ -233,12 +254,12 @@ int Window::getHeight() const
 	return 0;
 }
 
-void Window::render(RenderTarget* renderTarget)
+void Window::render()
 {
 	std::vector<Window*>& children = getChildren();
 	for (int i = 0; i < (int)children.size(); ++i)
 	{
-		children[i]->render(renderTarget);
+		children[i]->render();
 	}
 }
 

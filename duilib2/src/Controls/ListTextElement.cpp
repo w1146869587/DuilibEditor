@@ -48,7 +48,7 @@ Point ListTextElement::getPosition() const
 	return Point();
 }
 
-void ListTextElement::render(RenderTarget* renderTarget)
+void ListTextElement::render()
 {
 
 }

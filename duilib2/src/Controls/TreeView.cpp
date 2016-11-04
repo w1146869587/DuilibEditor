@@ -48,7 +48,7 @@ Point TreeView::getPosition() const
 	return Point();
 }
 
-void TreeView::render(RenderTarget* renderTarget)
+void TreeView::render()
 {
 
 }

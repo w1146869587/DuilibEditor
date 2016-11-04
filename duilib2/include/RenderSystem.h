@@ -13,7 +13,12 @@ class DUILIB2SHARED_EXPORT RenderSystem
 {
 public:
 	RenderSystem();
-	virtual ~RenderSystem();
+	~RenderSystem();
+
+	/**
+	 * @brief reset
+	 */
+	virtual void reset();
 
 	/**
 	 * @brief fillRect
@@ -29,36 +34,36 @@ public:
 	 * @brief setRenderTarget
 	 * @param renderTarget
 	 */
-	void setRenderTarget(RenderTarget* renderTarget);
+	virtual void setRenderTarget(RenderTarget* renderTarget);
 
 	/**
 	 * @brief getRenderTarget
 	 * @return
 	 */
-	RenderTarget* getRenderTarget();
+	virtual RenderTarget* getRenderTarget();
 
 	/**
 	 * @brief clearClipRegion
 	 */
-	void clearClipRegion();
+	virtual void clearClipRegion();
 
 	/**
 	 * @brief setClipRegion
 	 * @param clipRegion
 	 */
-	void setClipRegion(const RoundRect& clipRegion);
+	virtual void setClipRegion(const RoundRect& clipRegion);
 
 	/**
 	 * @brief getClipRegion
 	 * @return
 	 */
-	RoundRect getClipRegion() const;
+	virtual RoundRect getClipRegion() const;
 
 	/**
 	 * @brief hasClipRegion
 	 * @return
 	 */
-	bool hasClipRegion() const;
+	virtual bool hasClipRegion() const;
 
 
 private:

@@ -48,7 +48,7 @@ Point CheckBox::getPosition() const
 	return Point();
 }
 
-void CheckBox::render(RenderTarget* renderTarget)
+void CheckBox::render()
 {
 
 }

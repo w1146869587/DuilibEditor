@@ -48,7 +48,7 @@ Point VerticalLayout::getPosition() const
 	return Point();
 }
 
-void VerticalLayout::render(RenderTarget* renderTarget)
+void VerticalLayout::render()
 {
 
 }

@@ -15,6 +15,7 @@ PropertyParserManager::PropertyParserManager()
 	mPropertyParsers.insert(std::make_pair(String("Byte"), new BytePropertyParser));
 	mPropertyParsers.insert(std::make_pair(String("Bool"), new BoolPropertyParser));
 	mPropertyParsers.insert(std::make_pair(String("Color"), new ColorPropertyParser));
+	mPropertyParsers.insert(std::make_pair(String("String"), new PropertyParser));
 }
 
 PropertyParserManager::~PropertyParserManager()

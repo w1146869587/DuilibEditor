@@ -76,7 +76,8 @@ SOURCES += \
     src/Event.cpp \
     src/EventSet.cpp \
     src/EventArgs.cpp \
-    src/Types.cpp
+    src/Types.cpp \
+    src/RenderSystemProxy.cpp
 
 HEADERS +=\
     include/System.h \
@@ -148,7 +149,8 @@ HEADERS +=\
     include/Event.h \
     include/EventSet.h \
     include/EventArgs.h \
-    include/Types.h
+    include/Types.h \
+    include/RenderSystemProxy.h
 
 INCLUDEPATH += \
     include \

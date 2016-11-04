@@ -48,7 +48,7 @@ Point ChildLayout::getPosition() const
 	return Point();
 }
 
-void ChildLayout::render(RenderTarget* renderTarget)
+void ChildLayout::render()
 {
 
 }

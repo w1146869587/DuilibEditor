@@ -48,7 +48,7 @@ Point ActiveX::getPosition() const
 	return Point();
 }
 
-void ActiveX::render(RenderTarget* renderTarget)
+void ActiveX::render()
 {
 
 }

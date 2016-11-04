@@ -48,7 +48,7 @@ Point Progress::getPosition() const
 	return Point();
 }
 
-void Progress::render(RenderTarget* renderTarget)
+void Progress::render()
 {
 
 }

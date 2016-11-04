@@ -15,6 +15,12 @@ RenderSystem::~RenderSystem()
 
 }
 
+void RenderSystem::reset()
+{
+	clearClipRegion();
+	setRenderTarget(NULL);
+}
+
 void RenderSystem::setRenderTarget(RenderTarget* renderTarget)
 {
 	mRenderTarget = renderTarget;

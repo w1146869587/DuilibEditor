@@ -48,7 +48,7 @@ Point Edit::getPosition() const
 	return Point();
 }
 
-void Edit::render(RenderTarget* renderTarget)
+void Edit::render()
 {
 
 }

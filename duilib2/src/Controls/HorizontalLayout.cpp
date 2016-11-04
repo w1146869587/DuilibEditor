@@ -48,7 +48,7 @@ Point HorizontalLayout::getPosition() const
 	return Point();
 }
 
-void HorizontalLayout::render(RenderTarget* renderTarget)
+void HorizontalLayout::render()
 {
 
 }

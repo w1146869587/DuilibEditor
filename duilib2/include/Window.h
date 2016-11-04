@@ -93,6 +93,19 @@ public:
 	 */
 	bool hitTest(const Point& screenPos) const;
 
+	/**
+	 * @brief getRenderTarget
+	 * @return
+	 */
+	RenderTarget* getRenderTarget();
+
+	/**
+	 * @brief setRenderTarget
+	 * @param renderTarget
+	 */
+	void setRenderTarget(RenderTarget* renderTarget);
+
+
 	Point screenToLocal(const Point& screenPos) const;
 	Point localToScreen(const Point& localPos) const;
 
@@ -116,15 +129,14 @@ protected:
 	/**
 	 * @brief
 	 *     Render the window's content.
-	 *
-	 * @param renderTarget
 	 */
-	virtual void render(RenderTarget* renderTarget);
+	virtual void render();
 
 private:
 	String mName;
 	Window* mParent;
 	std::vector<Window*> mChildren;
+	RenderTarget* mRenderTarget;
 };
 
 } // namespace duilib2

@@ -48,7 +48,7 @@ Point List::getPosition() const
 	return Point();
 }
 
-void List::render(RenderTarget* renderTarget)
+void List::render()
 {
 
 }

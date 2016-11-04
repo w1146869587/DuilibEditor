@@ -72,7 +72,7 @@ public:
 	virtual PropertyMaps _getProperties() const;
 
 protected:
-	virtual void render(RenderTarget* renderTarget);
+	virtual void render();
 	bool userSetPosition() const;
 	Point getUserSetPosition() const;
 

@@ -48,7 +48,7 @@ Point Text::getPosition() const
 	return Point();
 }
 
-void Text::render(RenderTarget* renderTarget)
+void Text::render()
 {
 
 }

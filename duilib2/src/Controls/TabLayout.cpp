@@ -48,7 +48,7 @@ Point TabLayout::getPosition() const
 	return Point();
 }
 
-void TabLayout::render(RenderTarget* renderTarget)
+void TabLayout::render()
 {
 
 }

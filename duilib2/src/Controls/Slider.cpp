@@ -48,7 +48,7 @@ Point Slider::getPosition() const
 	return Point();
 }
 
-void Slider::render(RenderTarget* renderTarget)
+void Slider::render()
 {
 
 }
