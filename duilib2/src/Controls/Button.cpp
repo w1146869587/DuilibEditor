@@ -5,7 +5,15 @@ namespace duilib2
 
 static String gButtonProperties[][3] =
 {
-	// name              value         type
+	// name               value         type
+	{"normalimage",       "",           "Image"},
+	{"hotimage",          "",           "Image"},
+	{"pushedimage",       "",           "Image"},
+	{"focusedimage",      "",           "Image"},
+	{"disabledimage",     "",           "Image"},
+	{"hottextcolor",      "0x00000000", "Color"},
+	{"pushedtextcolor",   "0x00000000", "Color"},
+	{"focusedtextcolor",  "0x00000000", "Color"},
 	{"", "", ""}
 };
 
