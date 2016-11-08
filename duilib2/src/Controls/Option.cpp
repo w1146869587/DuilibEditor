@@ -5,7 +5,12 @@ namespace duilib2
 
 static String gOptionProperties[][3] =
 {
-	// name              value         type
+	// name               value         type
+	{"selectedimage",     "",           "Image"},
+	{"foreimage",         "",           "Image"},
+	{"selectedtextcolor", "0x00000000", "Color"},
+	{"group",             "",           "String"},
+	{"selected",          "false",      "Bool"},
 	{"", "", ""}
 };
 

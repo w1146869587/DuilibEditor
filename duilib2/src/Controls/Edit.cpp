@@ -5,7 +5,15 @@ namespace duilib2
 
 static String gEditProperties[][3] =
 {
-	// name              value         type
+	// name              value      type
+	{"readonly",      "false",      "Bool"},
+	{"password",      "false",      "Bool"},
+	{"maxchar",       "255",        "Int"},
+	{"normalimage",   "",           "Image"},
+	{"hotimage",      "",           "Image"},
+	{"focusedimage",  "",           "Image"},
+	{"disabledimage", "",           "Image"},
+	{"nativebkcolor", "0x00000000", "Color"},
 	{"", "", ""}
 };
 
