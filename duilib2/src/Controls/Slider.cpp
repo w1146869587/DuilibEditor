@@ -5,7 +5,12 @@ namespace duilib2
 
 static String gSliderProperties[][3] =
 {
-	// name              value         type
+	// name              value      type
+	{"thumbimage",       "",        "Image"},
+	{"thumbhotimage",    "",        "Image"},
+	{"thumbpushedimage", "",        "Image"},
+	{"thumbsize",        "10,10",   "Size"},
+	{"step",             "1",       "Int"},
 	{"", "", ""}
 };
 

@@ -5,7 +5,13 @@ namespace duilib2
 
 static String gProgressProperties[][3] =
 {
-	// name              value         type
+	// name           value    type
+	{"foreimage",     "",      "Image"},
+	{"hor",           "true",  "Bool"},
+	{"min",           "0",     "Int"},
+	{"max",           "100",   "Int"},
+	{"value",         "0",     "Int"},
+	{"isstretchfore", "true",  "Bool"},
 	{"", "", ""}
 };
 

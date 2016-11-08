@@ -5,7 +5,12 @@ namespace duilib2
 
 static String gContainerProperties[][3] =
 {
-	// name              value         type
+	// name           value       type
+	{"mousechild",    "true",     "Bool"},
+	{"inset",         "0,0,0,0",  "Rect"},
+	{"vscrollbar",    "false",    "Bool"},
+	{"hscrollbar",    "false",    "Bool"},
+	{"childpadding",  "0",        "Int"},
 	{"", "", ""}
 };
 
