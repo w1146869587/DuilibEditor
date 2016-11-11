@@ -1,4 +1,5 @@
 #include <Controls/Control.h>
+#include <RenderSystemProxy.h>
 
 namespace duilib2
 {
@@ -93,6 +94,50 @@ void Control::render()
 
 }
 
+void Control::render()
+{
+	RenderTarget* rt = getRenderTarget();
+	if (rt == NULL)
+		return;
+
+	RenderSystemProxy rs(rt);
+
+	// setup clip region
+	//rs.setClipRegion(...);
+
+	drawBackgroundColor(&rs);
+	drawBackgroundImage(&rs);
+	drawStatusImage(&rs);
+	drawText(&rs);
+	drawBorder(&rs);
+
+	Window::render();
+}
+
+void Control::drawBackgroundColor(RenderSystem* /*rs*/)
+{
+
+}
+
+void Control::drawBackgroundImage(RenderSystem* /*rs*/)
+{
+
+}
+
+void Control::drawStatusImage(RenderSystem* /*rs*/)
+{
+
+}
+
+void Control::drawText(RenderSystem* /*rs*/)
+{
+
+}
+
+void Control::drawBorder(RenderSystem* /*rs*/)
+{
+
+}
 
 ControlFactory::ControlFactory()
 {

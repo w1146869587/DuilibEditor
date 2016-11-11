@@ -7,6 +7,15 @@
 namespace duilib2
 {
 
+enum ButtonStatus
+{
+	BS_NORMAL,
+	BS_HOT,    // Mouse hover
+	BS_PUSHED,
+	BS_FOCUSED,
+	BS_DISABLE
+};
+
 class DUILIB2SHARED_EXPORT Button : public Label
 {
 public:
@@ -26,10 +35,12 @@ public:
 	virtual Point getPosition() const;
 
 protected:
-	virtual void render();
+	virtual void drawStatusImage(RenderSystem* rs);
+	virtual void drawText(RenderSystem* rs);
 
 private:
 	static String sTypeName;
+	ButtonStatus mButtonStatus;
 };
 
 class DUILIB2SHARED_EXPORT ButtonFactory : public WindowFactory

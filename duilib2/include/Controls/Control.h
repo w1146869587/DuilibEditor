@@ -4,6 +4,7 @@
 #include <duilib2_global.h>
 #include <WindowFactory.h>
 #include <Window.h>
+#include <RenderSystem.h>
 
 namespace duilib2
 {
@@ -31,6 +32,11 @@ public:
 
 protected:
 	virtual void render();
+	virtual void drawBackgroundColor(RenderSystem* rs);
+	virtual void drawBackgroundImage(RenderSystem* rs);
+	virtual void drawStatusImage(RenderSystem* rs);
+	virtual void drawText(RenderSystem* rs);
+	virtual void drawBorder(RenderSystem* rs);
 
 private:
 	static String sTypeName;

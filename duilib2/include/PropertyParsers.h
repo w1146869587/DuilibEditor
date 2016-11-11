@@ -55,6 +55,13 @@ public:
 	virtual void parse(Property& property) const;
 };
 
+class DUILIB2SHARED_EXPORT ImagePropertyParser : public PropertyParser
+{
+public:
+	/// @copydoc PropertyParser::parse
+	virtual void parse(Property& property) const;
+};
+
 } // namespace duilib2
 
 #endif // PROPERTYPARSERS

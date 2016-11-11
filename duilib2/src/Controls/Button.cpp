@@ -22,6 +22,7 @@ String Button::sTypeName = "Button";
 
 Button::Button(const String& name)
 	: Label(name)
+	, mButtonStatus(BS_NORMAL)
 {
 	String* property = &gButtonProperties[0][0];
 	while (!property->isEmpty())
@@ -56,7 +57,41 @@ Point Button::getPosition() const
 	return Point();
 }
 
-void Button::render()
+void Button::drawStatusImage(RenderSystem* rs)
+{
+
+	String propertyName;
+	switch (mButtonStatus)
+	{
+	case BS_NORMAL:
+		propertyName = "normalimage";
+		break;
+
+	case BS_HOT:
+		propertyName = "hotimage";
+		break;
+
+	case BS_PUSHED:
+		propertyName = "pushedimage";
+		break;
+
+	case BS_FOCUSED:
+		propertyName = "focusedimage";
+		break;
+
+	case BS_DISABLE:
+		propertyName = "disabledimage";
+		break;
+
+	default:
+		return;
+	}
+
+	Image image = getProperty(propertyName).getAnyValue<Image>();
+	// rs->drawImage(x, y, width, height);
+}
+
+void Button::drawText(RenderSystem* rs)
 {
 
 }

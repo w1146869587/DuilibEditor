@@ -154,4 +154,9 @@ void ColorPropertyParser::parse(Property& property) const
 	}
 }
 
+void ImagePropertyParser::parse(Property& property) const
+{
+	// ...
+}
+
 } // namespace duilib2

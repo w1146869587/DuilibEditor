@@ -7,6 +7,7 @@ namespace duilib2
 RenderSystemProxy::RenderSystemProxy(RenderTarget* rt)
 {
 	mRenderSystem = System::getSingleton().getRenderSystem();
+	// assert(mRenderSystem);
 	mRenderSystem->setRenderTarget(rt);
 }
 
