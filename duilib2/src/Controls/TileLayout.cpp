@@ -48,11 +48,6 @@ Point TileLayout::getPosition() const
 	return Point();
 }
 
-void TileLayout::render()
-{
-
-}
-
 
 TileLayoutFactory::TileLayoutFactory()
 {

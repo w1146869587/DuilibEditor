@@ -8,8 +8,9 @@ namespace duilib2
 {
 
 typedef int Byte;
-
+typedef int Int;
 typedef bool Bool;
+
 
 } // namespace duilib2
 

@@ -28,7 +28,7 @@ public:
 	virtual int getHeight() const;
 
 	/// @copydoc Window::getPosition
-	virtual Point getPosition() const;
+	virtual Point getPosition(bool relativeToMainWindow = false) const;
 
 protected:
 	virtual void render();

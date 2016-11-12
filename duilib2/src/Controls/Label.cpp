@@ -72,11 +72,6 @@ Point Label::getPosition() const
 	return Point();
 }
 
-void Label::render()
-{
-
-}
-
 
 LabelFactory::LabelFactory()
 {

@@ -48,11 +48,6 @@ Point ListBody::getPosition() const
 	return Point();
 }
 
-void ListBody::render()
-{
-
-}
-
 
 ListBodyFactory::ListBodyFactory()
 {

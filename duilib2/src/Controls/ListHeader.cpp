@@ -48,11 +48,6 @@ Point ListHeader::getPosition() const
 	return Point();
 }
 
-void ListHeader::render()
-{
-
-}
-
 
 ListHeaderFactory::ListHeaderFactory()
 {

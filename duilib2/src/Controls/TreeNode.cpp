@@ -48,11 +48,6 @@ Point TreeNode::getPosition() const
 	return Point();
 }
 
-void TreeNode::render()
-{
-
-}
-
 
 TreeNodeFactory::TreeNodeFactory()
 {

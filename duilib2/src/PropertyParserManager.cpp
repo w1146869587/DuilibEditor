@@ -10,12 +10,14 @@ PropertyParserManager* Singleton<PropertyParserManager>::mSingleton = NULL;
 
 PropertyParserManager::PropertyParserManager()
 {
-	mPropertyParsers.insert(std::make_pair(String("Size"), new SizePropertyParser));
-	mPropertyParsers.insert(std::make_pair(String("Rect"), new RectPropertyParser));
-	mPropertyParsers.insert(std::make_pair(String("Byte"), new BytePropertyParser));
-	mPropertyParsers.insert(std::make_pair(String("Bool"), new BoolPropertyParser));
-	mPropertyParsers.insert(std::make_pair(String("Color"), new ColorPropertyParser));
+	mPropertyParsers.insert(std::make_pair(String("Size"),   new SizePropertyParser));
+	mPropertyParsers.insert(std::make_pair(String("Rect"),   new RectPropertyParser));
+	mPropertyParsers.insert(std::make_pair(String("Byte"),   new BytePropertyParser));
+	mPropertyParsers.insert(std::make_pair(String("Int"),    new BytePropertyParser));
+	mPropertyParsers.insert(std::make_pair(String("Bool"),   new BoolPropertyParser));
+	mPropertyParsers.insert(std::make_pair(String("Color"),  new ColorPropertyParser));
 	mPropertyParsers.insert(std::make_pair(String("String"), new PropertyParser));
+	mPropertyParsers.insert(std::make_pair(String("Image"),  new ImagePropertyParser));
 }
 
 PropertyParserManager::~PropertyParserManager()

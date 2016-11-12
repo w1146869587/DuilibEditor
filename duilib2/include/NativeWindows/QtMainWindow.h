@@ -34,7 +34,7 @@ public:
 	virtual String showModal();
 
 	/// @copydoc Window::getPosition
-	virtual Point getPosition() const;
+	virtual Point getPosition(bool relativeToMainWindow = false) const;
 
 
 private:

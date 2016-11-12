@@ -53,11 +53,6 @@ Point Slider::getPosition() const
 	return Point();
 }
 
-void Slider::render()
-{
-
-}
-
 
 SliderFactory::SliderFactory()
 {

@@ -32,8 +32,11 @@ String QtMainWindow::showModal()
 	return String();
 }
 
-Point QtMainWindow::getPosition() const
+Point QtMainWindow::getPosition(bool relativeToMainWindow) const
 {
+	if (relativeToMainWindow)
+		return Point(0, 0);
+
 	return Point(geometry().left(), geometry().top());
 }
 

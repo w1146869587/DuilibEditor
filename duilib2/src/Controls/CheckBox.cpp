@@ -48,11 +48,6 @@ Point CheckBox::getPosition() const
 	return Point();
 }
 
-void CheckBox::render()
-{
-
-}
-
 
 CheckBoxFactory::CheckBoxFactory()
 {

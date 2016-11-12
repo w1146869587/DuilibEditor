@@ -69,6 +69,9 @@ String Control::getType() const
 
 String Control::showModal()
 {
+	// if (getParent())
+	//     getParent()->showModal();
+	// else
 	// 需要构建一个父窗口显示自己
 	// ...
 	return String();
@@ -76,22 +79,27 @@ String Control::showModal()
 
 int Control::getWidth() const
 {
-	return 0;
+	return getProperty("width").getAnyValue<Int>();
 }
 
 int Control::getHeight() const
 {
-	return 0;
+	return getProperty("height").getAnyValue<Int>();
 }
 
-Point Control::getPosition() const
+Point Control::getPosition(bool relativeToMainWindow) const
 {
-	return Point();
-}
+	Rect posProperty = getProperty("pos").getAnyValue<Rect>();
+	Point pos(posProperty.mLeft, posProperty.mTop);
 
-void Control::render()
-{
+	if (relativeToMainWindow && getParent())
+	{
+		Point posParent = getParent()->getPosition(true);
+		pos.mX += posParent.mX;
+		pos.mY += posParent.mY;
+	}
 
+	return pos;
 }
 
 void Control::render()

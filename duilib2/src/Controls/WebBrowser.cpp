@@ -48,11 +48,6 @@ Point WebBrowser::getPosition() const
 	return Point();
 }
 
-void WebBrowser::render()
-{
-
-}
-
 
 WebBrowserFactory::WebBrowserFactory()
 {

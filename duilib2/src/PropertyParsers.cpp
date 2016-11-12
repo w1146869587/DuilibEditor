@@ -90,6 +90,24 @@ void BytePropertyParser::parse(Property& property) const
 	}
 }
 
+void IntPropertyParser::parse(Property& property) const
+{
+	// e.g. "100"
+	std::string value = property.getValue().toLocal8Bit();
+	boost::trim(value);
+
+	try
+	{
+		Int n = boost::lexical_cast<int>(value);
+		property.setAnyValue(n);
+	}
+	catch (boost::bad_lexical_cast&)
+	{
+		DUILIB2_EXCEPT(Exception::ERR_INTERNAL_ERROR,
+					   "Property value's format is wrong", "IntPropertyParser::parse");
+	}
+}
+
 void BoolPropertyParser::parse(Property& property) const
 {
 	// e.g. "true" "false"

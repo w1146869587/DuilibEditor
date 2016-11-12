@@ -41,6 +41,13 @@ public:
 	virtual void parse(Property& property) const;
 };
 
+class DUILIB2SHARED_EXPORT IntPropertyParser : public PropertyParser
+{
+public:
+	/// @copydoc PropertyParser::parse
+	virtual void parse(Property& property) const;
+};
+
 class DUILIB2SHARED_EXPORT BoolPropertyParser : public PropertyParser
 {
 public:

@@ -54,11 +54,6 @@ Point Progress::getPosition() const
 	return Point();
 }
 
-void Progress::render()
-{
-
-}
-
 
 ProgressFactory::ProgressFactory()
 {

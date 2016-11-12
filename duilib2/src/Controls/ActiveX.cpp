@@ -48,11 +48,6 @@ Point ActiveX::getPosition() const
 	return Point();
 }
 
-void ActiveX::render()
-{
-
-}
-
 
 ActiveXFactory::ActiveXFactory()
 {

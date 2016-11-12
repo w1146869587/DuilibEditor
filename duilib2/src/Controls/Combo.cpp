@@ -48,11 +48,6 @@ Point Combo::getPosition() const
 	return Point();
 }
 
-void Combo::render()
-{
-
-}
-
 
 ComboFactory::ComboFactory()
 {

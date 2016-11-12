@@ -48,11 +48,6 @@ Point ChildLayout::getPosition() const
 	return Point();
 }
 
-void ChildLayout::render()
-{
-
-}
-
 
 ChildLayoutFactory::ChildLayoutFactory()
 {

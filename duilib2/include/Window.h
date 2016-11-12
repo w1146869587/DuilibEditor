@@ -55,7 +55,7 @@ public:
 	 *
 	 * @return
 	 */
-	virtual Point getPosition() const = 0;
+	virtual Point getPosition(bool relativeToMainWindow = false) const = 0;
 
 	/**
 	 * @brief
@@ -106,7 +106,18 @@ public:
 	void setRenderTarget(RenderTarget* renderTarget);
 
 
+	/**
+	 * @brief Convert screen point to local point.
+	 * @param screenPos
+	 * @return
+	 */
 	Point screenToLocal(const Point& screenPos) const;
+
+	/**
+	 * @brief Convert local point to screen point.
+	 * @param localPos
+	 * @return
+	 */
 	Point localToScreen(const Point& localPos) const;
 
 

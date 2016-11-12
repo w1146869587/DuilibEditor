@@ -48,11 +48,6 @@ Point VerticalLayout::getPosition() const
 	return Point();
 }
 
-void VerticalLayout::render()
-{
-
-}
-
 
 VerticalLayoutFactory::VerticalLayoutFactory()
 {

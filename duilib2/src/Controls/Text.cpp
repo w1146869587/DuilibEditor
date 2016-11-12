@@ -48,11 +48,6 @@ Point Text::getPosition() const
 	return Point();
 }
 
-void Text::render()
-{
-
-}
-
 
 TextFactory::TextFactory()
 {

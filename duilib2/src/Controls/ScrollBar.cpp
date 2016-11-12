@@ -48,11 +48,6 @@ Point ScrollBar::getPosition() const
 	return Point();
 }
 
-void ScrollBar::render()
-{
-
-}
-
 
 ScrollBarFactory::ScrollBarFactory()
 {

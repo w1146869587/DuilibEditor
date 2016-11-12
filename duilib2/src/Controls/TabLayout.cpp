@@ -48,11 +48,6 @@ Point TabLayout::getPosition() const
 	return Point();
 }
 
-void TabLayout::render()
-{
-
-}
-
 
 TabLayoutFactory::TabLayoutFactory()
 {

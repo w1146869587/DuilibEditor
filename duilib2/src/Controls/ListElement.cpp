@@ -48,11 +48,6 @@ Point ListElement::getPosition() const
 	return Point();
 }
 
-void ListElement::render()
-{
-
-}
-
 
 ListElementFactory::ListElementFactory()
 {

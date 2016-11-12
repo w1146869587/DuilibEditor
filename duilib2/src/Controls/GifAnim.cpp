@@ -48,11 +48,6 @@ Point GifAnim::getPosition() const
 	return Point();
 }
 
-void GifAnim::render()
-{
-
-}
-
 
 GifAnimFactory::GifAnimFactory()
 {

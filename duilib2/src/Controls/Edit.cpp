@@ -56,11 +56,6 @@ Point Edit::getPosition() const
 	return Point();
 }
 
-void Edit::render()
-{
-
-}
-
 
 EditFactory::EditFactory()
 {

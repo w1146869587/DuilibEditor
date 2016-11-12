@@ -1,5 +1,5 @@
-#ifndef 
-#define 
+#ifndef WIN32MAINWINDOW_H
+#define WIN32MAINWINDOW_H
 
 
-#endif // 
+#endif // WIN32MAINWINDOW_H

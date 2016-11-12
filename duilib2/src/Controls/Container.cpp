@@ -53,11 +53,6 @@ Point Container::getPosition() const
 	return Point();
 }
 
-void Container::render()
-{
-
-}
-
 
 ContainerFactory::ContainerFactory()
 {

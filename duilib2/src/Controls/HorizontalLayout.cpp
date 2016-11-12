@@ -48,11 +48,6 @@ Point HorizontalLayout::getPosition() const
 	return Point();
 }
 
-void HorizontalLayout::render()
-{
-
-}
-
 
 HorizontalLayoutFactory::HorizontalLayoutFactory()
 {

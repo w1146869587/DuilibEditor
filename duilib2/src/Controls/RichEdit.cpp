@@ -48,11 +48,6 @@ Point RichEdit::getPosition() const
 	return Point();
 }
 
-void RichEdit::render()
-{
-
-}
-
 
 RichEditFactory::RichEditFactory()
 {
