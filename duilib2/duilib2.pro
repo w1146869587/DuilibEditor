@@ -77,7 +77,11 @@ SOURCES += \
     src/EventSet.cpp \
     src/EventArgs.cpp \
     src/Types.cpp \
-    src/RenderSystemProxy.cpp
+    src/RenderSystemProxy.cpp \
+    src/DefaultProperty.cpp \
+    src/DefaultPropertyManager.cpp \
+    src/Font.cpp \
+    src/FontManager.cpp
 
 HEADERS +=\
     include/System.h \
@@ -150,7 +154,11 @@ HEADERS +=\
     include/EventSet.h \
     include/EventArgs.h \
     include/Types.h \
-    include/RenderSystemProxy.h
+    include/RenderSystemProxy.h \
+    include/DefaultProperty.h \
+    include/DefaultPropertyManager.h \
+    include/Font.h \
+    include/FontManager.h
 
 INCLUDEPATH += \
     include \

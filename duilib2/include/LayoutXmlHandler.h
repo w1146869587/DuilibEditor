@@ -38,6 +38,10 @@ public:
 	virtual void text(const String& text);
 
 private:
+	void FontElementStart(const XmlAttributes& attributes);
+	void DefaultElementStart(const XmlAttributes& attributes);
+
+private:
 	Window* mRootWindow;
 	std::stack<Window*> mStack;
 };
