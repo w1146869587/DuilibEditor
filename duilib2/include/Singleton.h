@@ -21,7 +21,7 @@ public:
 		mSingleton = 0;
 	}
 
-	static T* getSingltonPtr()
+	static T* getSingletonPtr()
 	{
 		assert(mSingleton != 0);
 		return mSingleton;

@@ -6,11 +6,18 @@
 namespace duilib2
 {
 
-class Font
+class DUILIB2SHARED_EXPORT Font
 {
 public:
 	Font();
 	~Font();
+
+	/**
+	 * @brief setProperty
+	 * @param name
+	 * @param value
+	 */
+	void setProperty(const String& name, const String& value);
 };
 
 } // namespace duilib2

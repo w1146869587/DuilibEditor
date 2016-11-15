@@ -15,5 +15,10 @@ DefaultPropertyManager::~DefaultPropertyManager()
 
 }
 
+void DefaultPropertyManager::addDefaultProperty(const DefaultProperty& defaultProperty)
+{
+	// ...
+}
+
 } // namespace duilib2
 

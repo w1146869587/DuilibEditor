@@ -15,5 +15,10 @@ FontManager::~FontManager()
 
 }
 
+void FontManager::addFont(const Font& font)
+{
+	// ...
+}
+
 } // namespace duilib2
 
