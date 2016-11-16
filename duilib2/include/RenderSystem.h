@@ -20,21 +20,111 @@ public:
 	 */
 	virtual void reset();
 
-	virtual void drawArc(const Rect& rectangle, int startAngle, int spanAngle);
-	virtual void drawChord(const Rect& rectangle, int startAngle, int spanAngle);
-	virtual void drawEllipse(const Rect& rectangle);
-	virtual void drawImage(const Rect& rectangle, const Image& image, const Rect& source);
-	virtual void drawImage(const Point& point, const Image& image, const Rect& source);
-	virtual void drawImage(const Rect& rectangle, const Image& image);
-	virtual void drawImage(const Point& point, const Image& image);
-	virtual void drawLine(const Point& pt1, const Point& pt2);
-	virtual void drawPie(const Rect& rectangle, int startAngle, int spanAngle);
-	virtual void drawPoint(const Point& position);
-	virtual void drawPolygon(const std::vector<Point>& points);
-	virtual void drawPolyline(const std::vector<Point>& points);
-	virtual void drawRect(const Rect& rectangle);
-	virtual void drawRoundedRect(const Rect& rect, int xRadius, int yRadius);
-	virtual void drawText(const Rect& rectangle, const String& text);
+	/**
+	 * @brief drawArc
+	 * @param rectangle
+	 * @param startAngle
+	 * @param spanAngle
+	 */
+	virtual void drawArc(const Rect& rectangle, int startAngle, int spanAngle) = 0;
+
+	/**
+	 * @brief drawChord
+	 * @param rectangle
+	 * @param startAngle
+	 * @param spanAngle
+	 */
+	virtual void drawChord(const Rect& rectangle, int startAngle, int spanAngle) = 0;
+
+	/**
+	 * @brief drawEllipse
+	 * @param rectangle
+	 */
+	virtual void drawEllipse(const Rect& rectangle) = 0;
+
+	/**
+	 * @brief drawImage
+	 * @param rectangle
+	 * @param image
+	 * @param source
+	 */
+	virtual void drawImage(const Rect& rectangle, const Image& image, const Rect& source) = 0;
+
+	/**
+	 * @brief drawImage
+	 * @param point
+	 * @param image
+	 * @param source
+	 */
+	virtual void drawImage(const Point& point, const Image& image, const Rect& source) = 0;
+
+	/**
+	 * @brief drawImage
+	 * @param rectangle
+	 * @param image
+	 */
+	virtual void drawImage(const Rect& rectangle, const Image& image) = 0;
+
+	/**
+	 * @brief drawImage
+	 * @param point
+	 * @param image
+	 */
+	virtual void drawImage(const Point& point, const Image& image) = 0;
+
+	/**
+	 * @brief drawLine
+	 * @param pt1
+	 * @param pt2
+	 */
+	virtual void drawLine(const Point& pt1, const Point& pt2) = 0;
+
+	/**
+	 * @brief drawPie
+	 * @param rectangle
+	 * @param startAngle
+	 * @param spanAngle
+	 */
+	virtual void drawPie(const Rect& rectangle, int startAngle, int spanAngle) = 0;
+
+	/**
+	 * @brief drawPoint
+	 * @param position
+	 */
+	virtual void drawPoint(const Point& position) = 0;
+
+	/**
+	 * @brief drawPolygon
+	 * @param points
+	 */
+	virtual void drawPolygon(const std::vector<Point>& points) = 0;
+
+	/**
+	 * @brief drawPolyline
+	 * @param points
+	 */
+	virtual void drawPolyline(const std::vector<Point>& points) = 0;
+
+	/**
+	 * @brief drawRect
+	 * @param rectangle
+	 */
+	virtual void drawRect(const Rect& rectangle) = 0;
+
+	/**
+	 * @brief drawRoundedRect
+	 * @param rect
+	 * @param xRadius
+	 * @param yRadius
+	 */
+	virtual void drawRoundedRect(const Rect& rect, int xRadius, int yRadius) = 0;
+
+	/**
+	 * @brief drawText
+	 * @param rectangle
+	 * @param text
+	 */
+	virtual void drawText(const Rect& rectangle, const String& text) = 0;
 
 	/**
 	 * @brief fillRect

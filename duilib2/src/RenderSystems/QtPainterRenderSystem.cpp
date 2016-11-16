@@ -16,6 +16,81 @@ QtPainterRenderSystem::~QtPainterRenderSystem()
 
 }
 
+void QtPainterRenderSystem::drawArc(const Rect& rectangle, int startAngle, int spanAngle)
+{
+
+}
+
+void QtPainterRenderSystem::drawChord(const Rect& rectangle, int startAngle, int spanAngle)
+{
+
+}
+
+void QtPainterRenderSystem::drawEllipse(const Rect& rectangle)
+{
+
+}
+
+void QtPainterRenderSystem::drawImage(const Rect& rectangle, const Image& image, const Rect& source)
+{
+
+}
+
+void QtPainterRenderSystem::drawImage(const Point& point, const Image& image, const Rect& source)
+{
+
+}
+
+void QtPainterRenderSystem::drawImage(const Rect& rectangle, const Image& image)
+{
+
+}
+
+void QtPainterRenderSystem::drawImage(const Point& point, const Image& image)
+{
+
+}
+
+void QtPainterRenderSystem::drawLine(const Point& pt1, const Point& pt2)
+{
+
+}
+
+void QtPainterRenderSystem::drawPie(const Rect& rectangle, int startAngle, int spanAngle)
+{
+
+}
+
+void QtPainterRenderSystem::drawPoint(const Point& position)
+{
+
+}
+
+void QtPainterRenderSystem::drawPolygon(const std::vector<Point>& points)
+{
+
+}
+
+void QtPainterRenderSystem::drawPolyline(const std::vector<Point>& points)
+{
+
+}
+
+void QtPainterRenderSystem::drawRect(const Rect& rectangle)
+{
+
+}
+
+void QtPainterRenderSystem::drawRoundedRect(const Rect& rect, int xRadius, int yRadius)
+{
+
+}
+
+void QtPainterRenderSystem::drawText(const Rect& rectangle, const String& text)
+{
+
+}
+
 void QtPainterRenderSystem::fillRect(int x, int y, int width, int height, const Color& color)
 {
 	QtPaintDeviceRenderTarget* rt = dynamic_cast<QtPaintDeviceRenderTarget*>(getRenderTarget());
