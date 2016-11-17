@@ -73,6 +73,16 @@ bool Rect::contains(const Point& pt) const
 	return true;
 }
 
+int Rect::getWidth() const
+{
+	return mRight - mLeft;
+}
+
+int Rect::getHeight() const
+{
+	return mBottom - mTop;
+}
+
 Color::Color()
 	: mRed(0)
 	, mGreen(0)

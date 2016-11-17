@@ -45,6 +45,18 @@ public:
 	 */
 	bool contains(const Point& pt) const;
 
+	/**
+	 * @brief getWidth
+	 * @return
+	 */
+	int getWidth() const;
+
+	/**
+	 * @brief getHeight
+	 * @return
+	 */
+	int getHeight() const;
+
 	int mLeft;
 	int mTop;
 	int mRight;

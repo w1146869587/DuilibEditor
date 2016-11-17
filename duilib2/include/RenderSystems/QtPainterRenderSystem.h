@@ -2,6 +2,7 @@
 #define QTPAINTERRENDERSYSTEM_H
 
 #include <RenderSystem.h>
+#include <QPainter>
 
 namespace duilib2
 {
@@ -62,6 +63,7 @@ public:
 
 private:
 	void getPaintDevice();
+	void setupClipRegion(QPainter& painter);
 };
 
 } // namespace duilib2
