@@ -61,6 +61,7 @@ public:
 	virtual void fillRect(int x, int y, int width, int height, const Color& color);
 
 private:
+	void getPaintDevice();
 };
 
 } // namespace duilib2

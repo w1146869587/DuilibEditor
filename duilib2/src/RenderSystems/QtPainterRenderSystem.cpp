@@ -93,17 +93,7 @@ void QtPainterRenderSystem::drawText(const Rect& rectangle, const String& text)
 
 void QtPainterRenderSystem::fillRect(int x, int y, int width, int height, const Color& color)
 {
-	QtPaintDeviceRenderTarget* rt = dynamic_cast<QtPaintDeviceRenderTarget*>(getRenderTarget());
-	if (rt == NULL)
-	{
-		DUILIB2_EXCEPT(Exception::ERR_INTERNAL_ERROR,
-					   "The render target is not the expected type, "
-					   "the expected type is QtPaintDeviceRenderTarget",
-					   "QtPainterRenderSystem::fillRect");
-	}
-
-	QPaintDevice* paintDevice = rt->getPaintDevice();
-	QPainter painter(paintDevice);
+	QPainter painter(getPaintDevice());
 
 	// 设置剪裁区域
 	if (hasClipRegion())
@@ -118,6 +108,20 @@ void QtPainterRenderSystem::fillRect(int x, int y, int width, int height, const 
 
 	QColor qcolor(color.mRed, color.mGreen, color.mBlue, color.mAlpha);
 	painter.fillRect(x, y, width, height, QBrush(qcolor));
+}
+
+void QtPainterRenderSystem::getPaintDevice()
+{
+	QtPaintDeviceRenderTarget* rt = dynamic_cast<QtPaintDeviceRenderTarget*>(getRenderTarget());
+	if (rt == NULL)
+	{
+		DUILIB2_EXCEPT(Exception::ERR_INTERNAL_ERROR,
+					   "The render target is not the expected type, "
+					   "the expected type is QtPaintDeviceRenderTarget",
+					   "QtPainterRenderSystem::getPaintDevice");
+	}
+
+	return rt->getPaintDevice();
 }
 
 } // namespace duilib2
