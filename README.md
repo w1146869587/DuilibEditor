@@ -1,12 +1,9 @@
 # DuilibEditor
 
-这是一个所见即所得的[DuiLib](https://github.com/duilib/duilib)界面编辑器。
-
-开发进度：1%
+这是一个[DuiLib](https://github.com/duilib/duilib)界面编辑器。
 
 # 动机
 
-- 开发一个优秀的Duilib界面编辑器
 - 学习Qt
 - 学习OGRE、CEGUI的架构设计
 - 学习可用于Doxygen的代码注释风格
