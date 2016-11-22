@@ -68,6 +68,18 @@ public:
 	/// @copydoc RenderSystem::fillRect
 	virtual void fillRect(int x, int y, int width, int height, const Color& color);
 
+	/// @copydoc RenderSystem::setPenColor
+	virtual void setPenColor(const Color& color);
+
+	/// @copydoc RenderSystem::getPenColor
+	virtual Color getPenColor() const;
+
+	/// @copydoc RenderSystem::setBrushColor
+	virtual void setBrushColor(const Color& color);
+
+	/// @copydoc RenderSystem::getBrushColor
+	virtual Color getBrushColor() const;
+
 	/// @copydoc RenderSystem::setRenderTarget
 	virtual void setRenderTarget(RenderTarget* renderTarget);
 

@@ -137,6 +137,30 @@ public:
 	virtual void fillRect(int x, int y, int width, int height, const Color& color) = 0;
 
 	/**
+	 * @brief setPenColor
+	 * @param color
+	 */
+	virtual void setPenColor(const Color& color);
+
+	/**
+	 * @brief getPenColor
+	 * @param color
+	 */
+	virtual Color getPenColor() const;
+
+	/**
+	 * @brief setBrushColor
+	 * @param color
+	 */
+	virtual void setBrushColor(const Color& color);
+
+	/**
+	 * @brief getBrushColor
+	 * @return
+	 */
+	virtual Color getBrushColor() const;
+
+	/**
 	 * @brief setRenderTarget
 	 * @param renderTarget
 	 */
@@ -173,9 +197,11 @@ public:
 
 
 private:
-	bool mClipping;
-	RoundRect mClipRegion;
+	bool          mClipping;
+	RoundRect     mClipRegion;
 	RenderTarget* mRenderTarget;
+	Color         mPenColor;
+	Color         mBrushColor;
 };
 
 } // namespace duilib2

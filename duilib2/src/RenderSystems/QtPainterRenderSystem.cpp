@@ -18,6 +18,7 @@ QtPainterRenderSystem::~QtPainterRenderSystem()
 void QtPainterRenderSystem::drawArc(const Rect& rectangle, int startAngle, int spanAngle)
 {
 	QPainter painter(getPaintDevice());
+	initPainter(painter);
 	setupClipRegion(painter);
 
 	painter.drawArc(QRectF(rectangle.mLeft, rectangle.mTop, rectangle.getWidth(), rectangle.getHeight()),
@@ -27,6 +28,7 @@ void QtPainterRenderSystem::drawArc(const Rect& rectangle, int startAngle, int s
 void QtPainterRenderSystem::drawChord(const Rect& rectangle, int startAngle, int spanAngle)
 {
 	QPainter painter(getPaintDevice());
+	initPainter(painter);
 	setupClipRegion(painter);
 
 	painter.drawChord(QRectF(rectangle.mLeft, rectangle.mTop, rectangle.getWidth(), rectangle.getHeight()),
@@ -36,6 +38,7 @@ void QtPainterRenderSystem::drawChord(const Rect& rectangle, int startAngle, int
 void QtPainterRenderSystem::drawEllipse(const Rect& rectangle)
 {
 	QPainter painter(getPaintDevice());
+	initPainter(painter);
 	setupClipRegion(painter);
 
 	painter.drawEllipse(QRectF(rectangle.mLeft, rectangle.mTop, rectangle.getWidth(), rectangle.getHeight()));
@@ -64,6 +67,7 @@ void QtPainterRenderSystem::drawImage(const Point& point, const Image& image)
 void QtPainterRenderSystem::drawLine(const Point& pt1, const Point& pt2)
 {
 	QPainter painter(getPaintDevice());
+	initPainter(painter);
 	setupClipRegion(painter);
 
 	painter.drawLine(pt1.mX, pt1.mY, pt2.mX, pt2.mY);
@@ -72,6 +76,7 @@ void QtPainterRenderSystem::drawLine(const Point& pt1, const Point& pt2)
 void QtPainterRenderSystem::drawPie(const Rect& rectangle, int startAngle, int spanAngle)
 {
 	QPainter painter(getPaintDevice());
+	initPainter(painter);
 	setupClipRegion(painter);
 
 	painter.drawPie(QRectF(rectangle.mLeft, rectangle.mTop, rectangle.getWidth(), rectangle.getHeight()),
@@ -81,6 +86,7 @@ void QtPainterRenderSystem::drawPie(const Rect& rectangle, int startAngle, int s
 void QtPainterRenderSystem::drawPoint(const Point& position)
 {
 	QPainter painter(getPaintDevice());
+	initPainter(painter);
 	setupClipRegion(painter);
 
 	painter.drawPoint(position.mX, position.mY);
@@ -99,6 +105,7 @@ void QtPainterRenderSystem::drawPolyline(const std::vector<Point>& points)
 void QtPainterRenderSystem::drawRect(const Rect& rectangle)
 {
 	QPainter painter(getPaintDevice());
+	initPainter(painter);
 	setupClipRegion(painter);
 
 	painter.drawRect(QRectF(rectangle.mLeft, rectangle.mTop, rectangle.getWidth(), rectangle.getHeight()));
@@ -107,6 +114,7 @@ void QtPainterRenderSystem::drawRect(const Rect& rectangle)
 void QtPainterRenderSystem::drawRoundedRect(const Rect& rect, int xRadius, int yRadius)
 {
 	QPainter painter(getPaintDevice());
+	initPainter(painter);
 	setupClipRegion(painter);
 
 	painter.drawRoundedRect(
@@ -122,6 +130,7 @@ void QtPainterRenderSystem::drawText(const Rect& rectangle, const String& text)
 void QtPainterRenderSystem::fillRect(int x, int y, int width, int height, const Color& color)
 {
 	QPainter painter(getPaintDevice());
+	initPainter(painter);
 	setupClipRegion(painter);
 
 	QColor qcolor(color.mRed, color.mGreen, color.mBlue, color.mAlpha);
@@ -154,6 +163,14 @@ void QtPainterRenderSystem::setupClipRegion(QPainter& painter)
 								region.mXRadius, region.mYRadius);
 		painter.setClipPath(clipPath);
 	}
+}
+
+void QtPainterRenderSystem::initPainter(QPainter& painter)
+{
+	Color penColor = getPenColor();
+	Color brushColor = getBrushColor();
+	painter.setPen(QColor(penColor.mRed, penColor.mGreen, penColor.mBlue, penColor.mAlpha));
+	painter.setBrush(QBrush(QColor(brushColor.mRed, brushColor.mGreen, brushColor.mBlue, brushColor.mAlpha)));
 }
 
 } // namespace duilib2

@@ -6,6 +6,8 @@ namespace duilib2
 RenderSystem::RenderSystem()
 	: mClipping(false)
 	, mRenderTarget(NULL)
+	, mPenColor(0, 0, 0)
+	, mBrushColor(0, 0, 0)
 {
 
 }
@@ -19,6 +21,26 @@ void RenderSystem::reset()
 {
 	clearClipRegion();
 	setRenderTarget(NULL);
+}
+
+void RenderSystem::setPenColor(const Color& color)
+{
+	mPenColor = color;
+}
+
+Color RenderSystem::getPenColor() const
+{
+	return mPenColor;
+}
+
+void RenderSystem::setBrushColor(const Color& color)
+{
+	mBrushColor = color;
+}
+
+Color RenderSystem::getBrushColor() const
+{
+	return mBrushColor;
 }
 
 void RenderSystem::setRenderTarget(RenderTarget* renderTarget)

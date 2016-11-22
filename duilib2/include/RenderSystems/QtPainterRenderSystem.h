@@ -64,6 +64,7 @@ public:
 private:
 	void getPaintDevice();
 	void setupClipRegion(QPainter& painter);
+	void initPainter(QPainter& painter);
 };
 
 } // namespace duilib2

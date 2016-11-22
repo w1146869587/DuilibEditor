@@ -103,6 +103,26 @@ void RenderSystemProxy::fillRect(
 	mRenderSystem->fillRect(x, y, width, height, color);
 }
 
+void RenderSystemProxy::setPenColor(const Color& color)
+{
+	mRenderSystem->setPenColor(color);
+}
+
+Color RenderSystemProxy::getPenColor() const
+{
+	return mRenderSystem->getPenColor();
+}
+
+void RenderSystemProxy::setBrushColor(const Color& color)
+{
+	mRenderSystem->setBrushColor(color);
+}
+
+Color RenderSystemProxy::getBrushColor() const
+{
+	return mRenderSystem->getBrushColor();
+}
+
 void RenderSystemProxy::setRenderTarget(RenderTarget* renderTarget)
 {
 	mRenderSystem->setRenderTarget(renderTarget);
