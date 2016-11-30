@@ -18,19 +18,20 @@ public:
 
 	/**
 	 * @brief
-	 *     添加一个资源包，其中中包含图片、布局文件xml等
+	 *     Add a resource package that contains images, layout xml etc..
 	 *
 	 * @param name
-	 *     唯一标识一个资源包的ID，大小写敏感
+	 *     ID name, case sensitive.
 	 *
 	 * @param type
-	 *     资源包类型：
-	 *     zip         zip压缩文件
-	 *     filesystem  磁盘文件夹
-	 *     res         嵌入应用程序内的资源
+	 *     For example:
+	 *     zip         .zip file
+	 *     filesystem
+	 *     res         Resources that embedded in application.
 	 *
 	 * @param location
-	 *     资源包位置，比如zip文件的路径、filesystem文件夹的路径、嵌入资源的字符串ID
+	 *     Location of the resource package.
+	 *     If type is 'res', the location is the resource ID.
 	 */
 	void addResourcePackage(const String& name, const String& type, const String& location);
 
@@ -44,23 +45,22 @@ public:
 	void removeResourcePackage(const String& name);
 
 	/**
-	 * @brief
-	 *     设置当前使用的资源包，可以实现动态换肤
+	 * @brief setCurrentResourcePackage
 	 *
 	 * @param name
-	 *     addResourcePackage()函数中使用的资源包ID
+	 *     The ID name of the resource package.
 	 */
 	void setCurrentResourcePackage(const String& name);
 
 	/**
 	 * @brief
-	 *     在当前资源包中找到指定文件，获得该文件数据
+	 *     Get the raw data of the file in resource package.
 	 *
 	 * @param fileName
-	 *     文件名，大小写不敏感
+	 *     File name, case sensitive.
 	 *
 	 * @return
-	 *     整个文件二进制数据
+	 *     Raw data of the file (binary data).
 	 */
 	RawDataContainerPtr getFileRawData(const String& fileName);
 

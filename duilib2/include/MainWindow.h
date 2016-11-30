@@ -80,11 +80,11 @@ private:
 	static String sTypeName;
 
 	bool mFrameless;
-	bool mUserSetPosition; // 是否用户指定了窗口位置
-	int  mPosX;            // 窗口位置，x坐标
-	int  mPosY;            // 窗口位置，y坐标
-	bool mClipping;        // 是否使用剪裁区域
-	RoundRect mClipRegion; // 剪裁区域
+	bool mUserSetPosition; // The position is set by user
+	int  mPosX;            // Position of the window, x coord
+	int  mPosY;            // Position of the window, y coord
+	bool mClipping;        // Using clip region
+	RoundRect mClipRegion;
 };
 
 }

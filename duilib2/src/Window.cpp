@@ -30,7 +30,6 @@ const std::vector<Window*>& Window::getChildren() const
 
 void Window::setParent(Window* parent)
 {
-	// 更新父窗口的子窗口列表
 	if(parent == NULL)
 	{
 		std::vector<Window*>& children = mParent->getChildren();

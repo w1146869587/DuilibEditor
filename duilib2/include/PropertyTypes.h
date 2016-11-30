@@ -3,6 +3,7 @@
 
 #include <duilib2_global.h>
 #include <Types.h>
+#include <Image.h>
 
 namespace duilib2
 {

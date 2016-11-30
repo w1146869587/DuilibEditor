@@ -98,8 +98,6 @@ void WindowManager::destroyWindow(Window* window)
 
 void WindowManager::destroyAllWindows()
 {
-	// 因为destroyWindow()函数中在mWindows成员中移除了一个成员（对容器的修改将导致迭代器实效）
-	// 所以此处destroyWindow()之后需要重新获得迭代器
 	std::vector<Window*>::iterator iter = mWindows.begin();
 	while (iter != mWindows.end())
 	{

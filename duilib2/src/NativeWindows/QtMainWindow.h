@@ -41,7 +41,7 @@ private:
 	void initWindow();
 
 private:
-	Rect mDragArea;          // 允许按住鼠标左键拖动窗口的区域
+        Rect mDragArea;
 	QPoint mPressOffset;
 	bool mLeftButtonPressed;
 };

@@ -11,7 +11,10 @@
 #  define DUILIB2SHARED_EXPORT Q_DECL_IMPORT
 #endif
 
+#if defined(_MSC_VER)
+#  pragma warning(disable:4661)
+#endif
+
 typedef QString String;
-typedef QImage  Image;
 
 #endif // DUILIB2_GLOBAL_H
