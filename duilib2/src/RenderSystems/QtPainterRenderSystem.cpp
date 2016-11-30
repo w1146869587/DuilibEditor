@@ -1,6 +1,6 @@
-#include <RenderSystems/QtPainterRenderSystem.h>
-#include <RenderTargets/QtPaintDeviceRenderTarget.h>
 #include <Exception.h>
+#include "QtPainterRenderSystem.h"
+#include "../RenderTargets/QtPaintDeviceRenderTarget.h"
 
 namespace duilib2
 {
@@ -118,7 +118,7 @@ void QtPainterRenderSystem::drawRoundedRect(const Rect& rect, int xRadius, int y
 	setupClipRegion(painter);
 
 	painter.drawRoundedRect(
-				QRectF(rectangle.mLeft, rectangle.mTop, rectangle.getWidth(), rectangle.getHeight()),
+				QRectF(rect.mLeft, rect.mTop, rect.getWidth(), rect.getHeight()),
 				xRadius, yRadius);
 }
 
@@ -137,7 +137,7 @@ void QtPainterRenderSystem::fillRect(int x, int y, int width, int height, const 
 	painter.fillRect(x, y, width, height, QBrush(qcolor));
 }
 
-void QtPainterRenderSystem::getPaintDevice()
+QPaintDevice* QtPainterRenderSystem::getPaintDevice()
 {
 	QtPaintDeviceRenderTarget* rt = dynamic_cast<QtPaintDeviceRenderTarget*>(getRenderTarget());
 	if (rt == NULL)

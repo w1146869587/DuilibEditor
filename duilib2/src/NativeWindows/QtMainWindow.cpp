@@ -1,9 +1,9 @@
-#include <NativeWindows/QtMainWindow.h>
 #include <memory>
-#include <RenderTargets/QtPaintDeviceRenderTarget.h>
 #include <PropertyTypes.h>
 #include <QMouseEvent>
 #include <QDebug>
+#include "QtMainWindow.h"
+#include "../RenderTargets/QtPaintDeviceRenderTarget.h"
 
 namespace duilib2
 {

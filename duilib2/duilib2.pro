@@ -24,7 +24,6 @@ SOURCES += \
     src/Exception.cpp \
     src/LayoutXmlHandler.cpp \
     src/NativeWindows/QtMainWindow.cpp \
-    src/NativeWindows/Win32MainWindow.cpp \
     src/MainWindow.cpp \
     src/Property.cpp \
     src/PropertySet.cpp \
@@ -81,7 +80,9 @@ SOURCES += \
     src/DefaultProperty.cpp \
     src/DefaultPropertyManager.cpp \
     src/Font.cpp \
-    src/FontManager.cpp
+    src/FontManager.cpp \
+    src/ImageImpl/Qt_ImageImpl.cpp \
+    src/Image.cpp
 
 HEADERS +=\
     include/System.h \
@@ -91,7 +92,6 @@ HEADERS +=\
     include/WindowManager.h \
     include/ResourceManager.h \
     include/Qt/duilib2_global.h \
-    include/XmlParsers/QtXmlParser.h \
     include/XmlHandler.h \
     include/XmlParser.h \
     include/RawDataContainer.h \
@@ -101,8 +101,6 @@ HEADERS +=\
     include/ArchiveManager.h \
     include/Exception.h \
     include/LayoutXmlHandler.h \
-    include/NativeWindows/QtMainWindow.h \
-    include/NativeWindows/Win32MainWindow.h \
     include/MainWindow.h \
     include/Property.h \
     include/PropertySet.h \
@@ -114,9 +112,7 @@ HEADERS +=\
     include/PropertyParsers.h \
     include/PropertyTypes.h \
     include/RenderSystem.h \
-    include/RenderTargets/QtPaintDeviceRenderTarget.h \
     include/RenderTarget.h \
-    include/RenderSystems/QtPainterRenderSystem.h \
     include/Controls/ActiveX.h \
     include/Controls/Button.h \
     include/Controls/CheckBox.h \
@@ -158,7 +154,14 @@ HEADERS +=\
     include/DefaultProperty.h \
     include/DefaultPropertyManager.h \
     include/Font.h \
-    include/FontManager.h
+    include/FontManager.h \
+    include/Image.h \
+    src/ImageImpl/ImageImpl.h \
+    src/ImageImpl/Qt_ImageImpl.h \
+    src/NativeWindows/QtMainWindow.h \
+    src/RenderSystems/QtPainterRenderSystem.h \
+    src/RenderTargets/QtPaintDeviceRenderTarget.h \
+    src/XmlParsers/QtXmlParser.h
 
 INCLUDEPATH += \
     include \

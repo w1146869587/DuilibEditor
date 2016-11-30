@@ -1,6 +1,6 @@
-#include <XmlParsers/QtXmlParser.h>
 #include <ResourceManager.h>
 #include <QDomDocument>
+#include "QtXmlParser.h"
 
 namespace duilib2
 {

@@ -64,6 +64,8 @@ public:
 	 */
 	RawDataContainerPtr getFileRawData(const String& fileName);
 
+	//Image getImage(const String& fileName)
+
 private:
 	std::map<String, Archive*> mResourcePackages;
 	std::map<String, RawDataContainerPtr> mRawDataCaches;

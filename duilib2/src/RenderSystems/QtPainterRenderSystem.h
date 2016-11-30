@@ -62,7 +62,7 @@ public:
 	virtual void fillRect(int x, int y, int width, int height, const Color& color);
 
 private:
-	void getPaintDevice();
+	QPaintDevice* getPaintDevice();
 	void setupClipRegion(QPainter& painter);
 	void initPainter(QPainter& painter);
 };

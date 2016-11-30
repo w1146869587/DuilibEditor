@@ -1,8 +1,5 @@
 #include <System.h>
-#include <XmlParsers/QtXmlParser.h>
 #include <Archives/FileSystemArchive.h>
-#include <RenderSystems/QtPainterRenderSystem.h>
-#include <NativeWindows/QtMainWindow.h>
 #include <Controls/ActiveX.h>
 #include <Controls/Button.h>
 #include <Controls/CheckBox.h>
@@ -34,6 +31,9 @@
 #include <Controls/TreeNode.h>
 #include <Controls/TreeView.h>
 #include <Controls/WebBrowser.h>
+#include "../XmlParsers/QtXmlParser.h"
+#include "../RenderSystems/QtPainterRenderSystem.h"
+#include "../NativeWindows/QtMainWindow.h"
 
 namespace duilib2
 {
