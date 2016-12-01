@@ -25,6 +25,12 @@ public:
 	/// @copydoc Window::getPosition
 	virtual Point getPosition() const;
 
+	/**
+	 * @brief getChildPadding
+	 * @return
+	 */
+	int getChildPadding() const;
+
 protected:
 
 private:

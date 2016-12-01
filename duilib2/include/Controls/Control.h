@@ -30,6 +30,16 @@ public:
 	/// @copydoc Window::getPosition
 	virtual Point getPosition(bool relativeToMainWindow = false) const;
 
+	/**
+	 * @brief isFloat
+	 * @return
+	 */
+	bool isFloat() const;
+
+	void _setPosition(const Point& pos);
+	void _setWidth(int width);
+	void _setHeight(int height);
+
 protected:
 	virtual void render();
 	virtual void drawBackgroundColor(RenderSystem* rs);
@@ -40,6 +50,9 @@ protected:
 
 private:
 	static String sTypeName;
+	Point mPosition;
+	int mWidth;
+	int mHeight;
 };
 
 class DUILIB2SHARED_EXPORT ControlFactory : public WindowFactory

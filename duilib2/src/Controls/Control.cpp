@@ -1,5 +1,6 @@
 #include <Controls/Control.h>
 #include <RenderSystemProxy.h>
+#include <boost/random.hpp>
 
 namespace duilib2
 {
@@ -48,6 +49,9 @@ String Control::sTypeName = "Control";
 
 Control::Control(const String& name)
 	: Window(name)
+	, mPosition(0, 0)
+	, mWidth(0)
+	, mHeight(0)
 {
 	String* property = &gControlProperties[0][0];
 	while (!property->isEmpty())
@@ -79,18 +83,34 @@ String Control::showModal()
 
 int Control::getWidth() const
 {
-	return getProperty("width").getAnyValue<Int>();
+	int width = getProperty("width").getAnyValue<Int>();
+	if (width == 0 && isFloat())
+		width = mWidth;
+
+	return width;
 }
 
 int Control::getHeight() const
 {
-	return getProperty("height").getAnyValue<Int>();
+	int height = getProperty("height").getAnyValue<Int>();
+	if (height == 0 && isFloat())
+		height = mHeight;
+
+	return height;
 }
 
 Point Control::getPosition(bool relativeToMainWindow) const
 {
-	Rect posProperty = getProperty("pos").getAnyValue<Rect>();
-	Point pos(posProperty.mLeft, posProperty.mTop);
+	Point pos;
+	if (isFloat())
+	{
+		pos = mPosition;
+	}
+	else
+	{
+		Rect posProperty = getProperty("pos").getAnyValue<Rect>();
+		pos = Point(posProperty.mLeft, posProperty.mTop);
+	}
 
 	if (relativeToMainWindow && getParent())
 	{
@@ -102,6 +122,26 @@ Point Control::getPosition(bool relativeToMainWindow) const
 	return pos;
 }
 
+bool Control::isFloat() const
+{
+	return getProperty("float").getAnyValue<Bool>();
+}
+
+void Control::_setPosition(const Point& pos)
+{
+	mPosition = pos;
+}
+
+void Control::_setWidth(int width)
+{
+	mWidth = width;
+}
+
+void Control::_setHeight(int height)
+{
+	mHeight = height;
+}
+
 void Control::render()
 {
 	RenderTarget* rt = getRenderTarget();
@@ -110,8 +150,8 @@ void Control::render()
 
 	RenderSystemProxy rs(rt);
 
-	// setup clip region
-	//rs.setClipRegion(...);
+	// Setup clip region
+	//rs.setClipRegion();
 
 	drawBackgroundColor(&rs);
 	drawBackgroundImage(&rs);
@@ -122,9 +162,21 @@ void Control::render()
 	Window::render();
 }
 
-void Control::drawBackgroundColor(RenderSystem* /*rs*/)
+void Control::drawBackgroundColor(RenderSystem* rs)
 {
+	boost::random::mt19937 gen;
+	boost::random::uniform_int_distribution<> rand(0, 255);
 
+	// test
+	Color bgcolor;
+	bgcolor.mRed = rand(gen);
+	bgcolor.mGreen = rand(gen);
+	bgcolor.mBlue = rand(gen);
+
+	Point pos = getPosition(true);
+	int width = getWidth();
+	int height = getHeight();
+	rs->fillRect(pos.mX, pos.mY, width, height, bgcolor);
 }
 
 void Control::drawBackgroundImage(RenderSystem* /*rs*/)

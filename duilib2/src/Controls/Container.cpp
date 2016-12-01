@@ -53,6 +53,11 @@ Point Container::getPosition() const
 	return Point();
 }
 
+int Container::getChildPadding() const
+{
+	return getProperty("childpadding").getAnyValue<Int>();
+}
+
 
 ContainerFactory::ContainerFactory()
 {
