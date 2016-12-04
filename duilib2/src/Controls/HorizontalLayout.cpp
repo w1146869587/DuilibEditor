@@ -5,7 +5,9 @@ namespace duilib2
 
 static String gHorizontalLayoutProperties[][3] =
 {
-	// name              value         type
+	// name      value    type
+	{"sepwidth", "0",     "Int"},
+	{"sepimm",   "false", "Bool"},
 	{"", "", ""}
 };
 
@@ -35,17 +37,20 @@ String HorizontalLayout::getType() const
 
 int HorizontalLayout::getWidth() const
 {
-	return 0;
+	int width = Container::getWidth();
+	if (width == 0 && getParent())
+		width = getParent()->getWidth();
+
+	return width;
 }
 
 int HorizontalLayout::getHeight() const
 {
-	return 0;
-}
+	int height = Container::getHeight();
+	if (height == 0 && getParent())
+		height = getParent()->getHeight();
 
-Point HorizontalLayout::getPosition() const
-{
-	return Point();
+	return height;
 }
 
 

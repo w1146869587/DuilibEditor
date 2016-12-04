@@ -16,15 +16,6 @@ public:
 	/// @copydoc Window::getType
 	virtual String getType() const;
 
-	/// @copydoc Window::getWidth
-	virtual int getWidth() const;
-
-	/// @copydoc Window::getHeight
-	virtual int getHeight() const;
-
-	/// @copydoc Window::getPosition
-	virtual Point getPosition() const;
-
 	/**
 	 * @brief getChildPadding
 	 * @return

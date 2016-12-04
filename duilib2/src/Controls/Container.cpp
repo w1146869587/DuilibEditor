@@ -38,21 +38,6 @@ String Container::getType() const
 	return sTypeName;
 }
 
-int Container::getWidth() const
-{
-	return 0;
-}
-
-int Container::getHeight() const
-{
-	return 0;
-}
-
-Point Container::getPosition() const
-{
-	return Point();
-}
-
 int Container::getChildPadding() const
 {
 	return getProperty("childpadding").getAnyValue<Int>();

@@ -5,7 +5,9 @@ namespace duilib2
 
 static String gVerticalLayoutProperties[][3] =
 {
-	// name              value         type
+	// name       value    type
+	{"sepheight", "0",     "Int"},
+	{"sepimm",    "false", "Bool"},
 	{"", "", ""}
 };
 
@@ -35,17 +37,20 @@ String VerticalLayout::getType() const
 
 int VerticalLayout::getWidth() const
 {
-	return 0;
+	int width = Container::getWidth();
+	if (width == 0 && getParent())
+		width = getParent()->getWidth();
+
+	return width;
 }
 
 int VerticalLayout::getHeight() const
 {
-	return 0;
-}
+	int height = Container::getHeight();
+	if (height == 0 && getParent())
+		height = getParent()->getHeight();
 
-Point VerticalLayout::getPosition() const
-{
-	return Point();
+	return height;
 }
 
 

@@ -22,9 +22,6 @@ public:
 	/// @copydoc Window::getHeight
 	virtual int getHeight() const;
 
-	/// @copydoc Window::getPosition
-	virtual Point getPosition() const;
-
 protected:
 
 private:
