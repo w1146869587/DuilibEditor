@@ -23,6 +23,8 @@ public:
 	int getChildPadding() const;
 
 protected:
+	virtual void render();
+	virtual void updateLayout();
 
 private:
 	static String sTypeName;

@@ -53,6 +53,11 @@ int VerticalLayout::getHeight() const
 	return height;
 }
 
+void VerticalLayout::updateLayout()
+{
+
+}
+
 
 VerticalLayoutFactory::VerticalLayoutFactory()
 {

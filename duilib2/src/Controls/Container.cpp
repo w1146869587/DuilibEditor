@@ -43,6 +43,16 @@ int Container::getChildPadding() const
 	return getProperty("childpadding").getAnyValue<Int>();
 }
 
+void Container::render()
+{
+	updateLayout();
+	Control::render();
+}
+
+void Container::updateLayout()
+{
+}
+
 
 ContainerFactory::ContainerFactory()
 {

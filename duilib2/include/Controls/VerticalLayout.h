@@ -23,6 +23,7 @@ public:
 	virtual int getHeight() const;
 
 protected:
+	virtual void updateLayout();
 
 private:
 	static String sTypeName;
