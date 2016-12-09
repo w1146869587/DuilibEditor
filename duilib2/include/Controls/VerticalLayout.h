@@ -26,6 +26,9 @@ protected:
 	virtual void updateLayout();
 
 private:
+	int getControlHeight() const;
+
+private:
 	static String sTypeName;
 };
 
