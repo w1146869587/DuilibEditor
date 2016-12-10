@@ -83,7 +83,6 @@ void VerticalLayout::updateLayout()
 			posX = (totalWidth - width) / 2.0;
 
 		control->_setPosition(Point(posX, currentPosY));
-
 		currentPosY += offsetY + controlPadding;
 	}
 }
@@ -91,6 +90,7 @@ void VerticalLayout::updateLayout()
 int VerticalLayout::getControlHeight() const
 {
 	int count(0);
+	int unfloatCount(0);
 	int knownHeight(0);
 	std::vector<Window*> children = getChildren();
 	for (int i = 0; i < children.size(); ++i)
@@ -99,6 +99,8 @@ int VerticalLayout::getControlHeight() const
 		if (control == NULL || control->isFloat())
 			continue;
 
+		++unfloatCount;
+
 		int height = control->getProperty("height").getAnyValue<int>();
 		if (height == 0)
 			++count;
@@ -106,8 +108,11 @@ int VerticalLayout::getControlHeight() const
 			knownHeight += height;
 	}
 
+	if (count == 0)
+		return 0;
+
 	int totalHeight = getHeight();
-	int controlPadding = getChildPadding() * (children.size() - 1);
+	int controlPadding = getChildPadding() * (unfloatCount - 1);
 	int controlHeight = (totalHeight - knownHeight - controlPadding) / count;
 	if (controlHeight < 0)
 		controlHeight = 0;

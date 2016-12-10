@@ -23,6 +23,10 @@ public:
 	virtual int getHeight() const;
 
 protected:
+	virtual void updateLayout();
+
+private:
+	int getControlWidth() const;
 
 private:
 	static String sTypeName;
