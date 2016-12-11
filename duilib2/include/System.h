@@ -9,6 +9,8 @@
 #include <ArchiveManager.h>
 #include <PropertyParserManager.h>
 #include <RenderSystem.h>
+#include <FontManager.h>
+#include <DefaultPropertyManager.h>
 
 namespace duilib2
 {
@@ -59,6 +61,8 @@ private:
 	PropertyParserManager* mPropertyParserManager;
 	XmlParser*       mXmlParser;
 	RenderSystem*    mRenderSystem;
+	FontManager*     mFontManager;
+	DefaultPropertyManager* mDefaultPropertyManager;
 
 };
 

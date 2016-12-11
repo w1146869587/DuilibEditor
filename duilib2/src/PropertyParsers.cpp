@@ -50,7 +50,7 @@ void RectPropertyParser::parse(Property& property) const
 	std::vector<std::string> splitVec;
 	boost::split(splitVec, value, boost::is_any_of(","), boost::token_compress_on);
 
-	if (splitVec.size() != 4)
+	if (splitVec.size() != 1 && splitVec.size() != 4)
 	{
 		DUILIB2_EXCEPT(Exception::ERR_INTERNAL_ERROR,
 					   "Property value's format is wrong", "RectPropertyParser::parse");
@@ -59,10 +59,22 @@ void RectPropertyParser::parse(Property& property) const
 	try
 	{
 		Rect rect;
-		rect.mLeft = boost::lexical_cast<int>(boost::trim_copy(splitVec[0]));
-		rect.mTop = boost::lexical_cast<int>(boost::trim_copy(splitVec[1]));
-		rect.mRight = boost::lexical_cast<int>(boost::trim_copy(splitVec[2]));
-		rect.mBottom = boost::lexical_cast<int>(boost::trim_copy(splitVec[3]));
+		std::string left, top, right, bottom;
+		if (splitVec.size() == 1)
+		{
+			left = top = right = bottom = splitVec[0];
+		}
+		else
+		{
+			left = splitVec[0];
+			top = splitVec[1];
+			right = splitVec[2];
+			bottom = splitVec[3];
+		}
+		rect.mLeft = boost::lexical_cast<int>(boost::trim_copy(left));
+		rect.mTop = boost::lexical_cast<int>(boost::trim_copy(top));
+		rect.mRight = boost::lexical_cast<int>(boost::trim_copy(right));
+		rect.mBottom = boost::lexical_cast<int>(boost::trim_copy(bottom));
 		property.setAnyValue(rect);
 	}
 	catch (boost::bad_lexical_cast&)

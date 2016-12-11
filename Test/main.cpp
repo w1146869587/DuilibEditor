@@ -5,7 +5,7 @@
 using namespace duilib2;
 
 #include <QFile>
-#include <XmlParsers/QtXmlParser.h>
+#include <../src/XmlParsers/QtXmlParser.h>
 #include <iostream>
 #include <QTextStream>
 #include <PropertyParsers.h>
@@ -13,7 +13,7 @@ using namespace duilib2;
 #include <QtDebug>
 #include <QDialog>
 #include <QPainter>
-#include <NativeWindows/QtMainWindow.h>
+#include <../src/NativeWindows/QtMainWindow.h>
 #include <LayoutXmlHandler.h>
 
 void testQtXmlParser();

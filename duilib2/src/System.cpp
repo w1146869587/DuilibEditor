@@ -12,11 +12,15 @@ System::System()
 	, mPropertyParserManager(0)
 	, mXmlParser(0)
 	, mRenderSystem(0)
+	, mFontManager(0)
+	, mDefaultPropertyManager(0)
 {
 	mArchiveManager = new ArchiveManager;
 	mResourceManager = new ResourceManager;
 	mWindowManager = new WindowManager;
 	mPropertyParserManager = new PropertyParserManager;
+	mFontManager = new FontManager;
+	mDefaultPropertyManager = new DefaultPropertyManager;
 
 	createXmlParser();
 	createRenderSystem();
