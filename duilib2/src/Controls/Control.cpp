@@ -1,8 +1,6 @@
 #include <Controls/Control.h>
 #include <RenderSystemProxy.h>
-//#include <boost/random.hpp>
-#include <stdlib.h>
-#include <time.h>
+#include <boost/random.hpp>
 
 namespace duilib2
 {
@@ -166,21 +164,14 @@ void Control::render()
 
 void Control::drawBackgroundColor(RenderSystem* rs)
 {
-	//boost::random::mt19937 gen;
-	//boost::random::uniform_int_distribution<> rand(0, 255);
-
-	srand((unsigned int)time(0));
-
-
+	static boost::random::mt19937 gen;
+	boost::random::uniform_int_distribution<> rand(0, 255);
 
 	// test
 	Color bgcolor;
-	//bgcolor.mRed = rand(gen);
-	//bgcolor.mGreen = rand(gen);
-	//bgcolor.mBlue = rand(gen);
-	bgcolor.mRed = rand() % 256;
-	bgcolor.mGreen = rand() % 256;
-	bgcolor.mBlue = rand() % 256;
+	bgcolor.mRed = rand(gen);
+	bgcolor.mGreen = rand(gen);
+	bgcolor.mBlue = rand(gen);
 
 	Point pos = getPosition(true);
 	int width = getWidth();
