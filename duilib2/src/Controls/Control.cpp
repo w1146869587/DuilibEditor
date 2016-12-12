@@ -24,7 +24,7 @@ static String gControlProperties[][3] =
 	{"bottombordersize", "0",          "Int"},
 	{"borderstyle",      "0",          "Int"},
 	{"borderround",      "0,0",        "Size"},
-	{"bkimage",          "",           "String"},
+	{"bkimage",          "",           "Image"},
 	{"width",            "0",          "Int"},
 	{"height",           "0",          "Int"},
 	{"minwidth",         "0",          "Int"},

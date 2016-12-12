@@ -6,7 +6,6 @@ namespace duilib2
 static String gLabelProperties[][3] =
 {
 	// name               value             type
-	{"align",             "left",           "String"},
 	{"endellipsis",       "false",          "Bool"},
 	{"font",              "-1",             "Int"},
 	{"textcolor",         "0x00000000",     "Color"},

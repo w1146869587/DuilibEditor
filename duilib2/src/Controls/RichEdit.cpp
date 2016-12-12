@@ -6,6 +6,19 @@ namespace duilib2
 static String gRichEditProperties[][3] =
 {
 	// name              value         type
+	{"autovscroll",      "false",      "Bool"},
+	{"autohscroll",      "false",      "Bool"},
+	{"wanttab",          "true",       "Bool"},
+	{"wantreturn",       "true",       "Bool"},
+	{"wantctrlreturn",   "true",       "Bool"},
+	{"transparent",      "true",       "Bool"},
+	{"rich",             "true",       "Bool"},
+	{"multiline",        "true",       "Bool"},
+	{"readonly",         "false",      "Bool"},
+	{"password",         "false",      "Bool"},
+	{"align",            "left",       "String"},
+	{"font",             "-1",         "Font"},
+	{"textcolor",        "0xFF000000", "Color"},
 	{"", "", ""}
 };
 
