@@ -5,7 +5,8 @@ namespace duilib2
 
 static String gChildLayoutProperties[][3] =
 {
-	// name              value         type
+	// name     value  type
+	{"xmlfile", "",    "String"},
 	{"", "", ""}
 };
 

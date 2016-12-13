@@ -5,7 +5,9 @@ namespace duilib2
 
 static String gTileLayoutProperties[][3] =
 {
-	// name              value         type
+	// name      value  type
+	{"columns",  "1",   "Int"},
+	{"itemsize", "0,0", "Size"},
 	{"", "", ""}
 };
 

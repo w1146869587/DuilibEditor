@@ -5,7 +5,17 @@ namespace duilib2
 
 static String gTreeViewProperties[][3] =
 {
-	// name              value         type
+	// name                 value         type
+	{"multipleitem",        "true",       "Bool"},
+	{"itemcheckimgsize",    "0,0",        "Size"},
+	{"itemiconimgsize",     "0,0",        "Size"},
+	{"visiblefolderbtn",    "true",       "Bool"},
+	{"visiblecheckbtn",     "false",      "Bool"},
+	{"itemminwidth",        "0",          "Int"},
+	{"itemtextcolor",       "0x00000000", "Color"},
+	{"itemhottextcolor",    "0x00000000", "Color"},
+	{"selitemtextcolor",    "0x00000000", "Color"},
+	{"selitemhottextcolor", "0x00000000", "Color"},
 	{"", "", ""}
 };
 

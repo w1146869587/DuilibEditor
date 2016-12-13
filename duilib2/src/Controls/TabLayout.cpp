@@ -5,7 +5,8 @@ namespace duilib2
 
 static String gTabLayoutProperties[][3] =
 {
-	// name              value         type
+	// name        value  type
+	{"selectedid", "0",   "Int"},
 	{"", "", ""}
 };
 

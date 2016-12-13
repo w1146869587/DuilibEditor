@@ -5,7 +5,16 @@ namespace duilib2
 
 static String gTreeNodeProperties[][3] =
 {
-	// name              value         type
+	// name                 value         type
+	{"horizattr",           "",           "String"},
+	{"dotlineattr",         "",           "String"},
+	{"folderattr",          "",           "String"},
+	{"checkboxattr",        "",           "String"},
+	{"itemattr",            "",           "String"},
+	{"textcolor",           "0x00000000", "Color"},
+	{"texthotcolor",        "0x00000000", "Color"},
+	{"selitemtextcolor",    "0x00000000", "Color"},
+	{"selhotitemtextcolor", "0x00000000", "Color"},
 	{"", "", ""}
 };
 
