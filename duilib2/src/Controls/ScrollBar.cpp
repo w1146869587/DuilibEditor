@@ -5,7 +5,33 @@ namespace duilib2
 
 static String gScrollBarProperties[][3] =
 {
-	// name              value         type
+	// name                  value   type
+	{"button1normalimage",   "",     "Image"},
+	{"button1hotimage",      "",     "Image"},
+	{"button1pushedimage",   "",     "Image"},
+	{"button1disabledimage", "",     "Image"},
+	{"button2normalimage",   "",     "Image"},
+	{"button2hotimage",      "",     "Image"},
+	{"button2pushedimage",   "",     "Image"},
+	{"button2disabledimage", "",     "Image"},
+	{"thumbnormalimage",     "",     "Image"},
+	{"thumbhotimage",        "",     "Image"},
+	{"thumbpushedimage",     "",     "Image"},
+	{"thumbdisabledimage",   "",     "Image"},
+	{"railnormalimage",      "",     "Image"},
+	{"railhotimage",         "",     "Image"},
+	{"railpushedimage",      "",     "Image"},
+	{"raildisabledimage",    "",     "Image"},
+	{"bknormalimage",        "",     "Image"},
+	{"bkhotimage",           "",     "Image"},
+	{"bkpushedimage",        "",     "Image"},
+	{"bkdisabledimage",      "",     "Image"},
+	{"hor",                  "true", "Bool"},
+	{"linesize",             "8",    "Int"},
+	{"range",                "100",  "Int"},
+	{"value",                "0",    "Int"},
+	{"showbutton1",          "true", "Bool"},
+	{"showbutton2",          "true", "Bool"},
 	{"", "", ""}
 };
 

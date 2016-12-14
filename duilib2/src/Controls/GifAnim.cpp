@@ -5,7 +5,10 @@ namespace duilib2
 
 static String gGifAnimProperties[][3] =
 {
-	// name              value         type
+	// name      value    type
+	{"bkimage",  "",      "Image"},
+	{"autoplay", "true",  "Bool"},
+	{"autosize", "false", "Bool"},
 	{"", "", ""}
 };
 
