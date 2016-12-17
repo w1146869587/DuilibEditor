@@ -5,7 +5,11 @@ namespace duilib2
 
 static String gActiveXProperties[][3] =
 {
-	// name              value         type
+	// name         value   type
+	{"mousechild",  "true", "Bool"},
+	{"clsid",       "",     "String"},
+	{"modulename",  "",     "String"},
+	{"delaycreate", "true", "Bool"},
 	{"", "", ""}
 };
 

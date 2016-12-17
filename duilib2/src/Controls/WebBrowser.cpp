@@ -5,7 +5,9 @@ namespace duilib2
 
 static String gWebBrowserProperties[][3] =
 {
-	// name              value         type
+	// name      value   type
+	{"homepage", "",     "String"},
+	{"autonavi", "false","Bool"},
 	{"", "", ""}
 };
 

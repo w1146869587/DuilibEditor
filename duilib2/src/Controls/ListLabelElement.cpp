@@ -5,7 +5,8 @@ namespace duilib2
 
 static String gListLabelElementProperties[][3] =
 {
-	// name              value         type
+	// name      value    type
+	{"selected", "false", "Bool"},
 	{"", "", ""}
 };
 

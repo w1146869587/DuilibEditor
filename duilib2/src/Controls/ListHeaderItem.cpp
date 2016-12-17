@@ -5,7 +5,20 @@ namespace duilib2
 
 static String gListHeaderItemProperties[][3] =
 {
-	// name              value         type
+	// name          value          type
+	{"dragable",     "true",        "Bool"},
+	{"sepwidth",     "4",           "Int"},
+	{"align",        "left",        "String"},
+	{"endellipsis",  "false",       "Bool"},
+	{"font",         "-1",          "Font"},
+	{"textcolor",    "0x00000000",  "Color"},
+	{"textpadding",  "2,0,2,0",     "Rect"},
+	{"showhtml",     "false",       "Bool"},
+	{"normalimage",  "",            "Image"},
+	{"hotimage",     "",            "Image"},
+	{"pushedimage",  "",            "Image"},
+	{"focusedimage", "",            "Image"},
+	{"sepimage",     "",            "Image"},
 	{"", "", ""}
 };
 
