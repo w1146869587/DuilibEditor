@@ -44,22 +44,22 @@ void QtPainterRenderSystem::drawEllipse(const Rect& rectangle)
 	painter.drawEllipse(QRectF(rectangle.mLeft, rectangle.mTop, rectangle.getWidth(), rectangle.getHeight()));
 }
 
-void QtPainterRenderSystem::drawImage(const Rect& rectangle, const Image& image, const Rect& source)
+void QtPainterRenderSystem::drawImage(const Rect& rectangle, const QImage& image, const Rect& source)
 {
 
 }
 
-void QtPainterRenderSystem::drawImage(const Point& point, const Image& image, const Rect& source)
+void QtPainterRenderSystem::drawImage(const Point& point, const QImage& image, const Rect& source)
 {
 
 }
 
-void QtPainterRenderSystem::drawImage(const Rect& rectangle, const Image& image)
+void QtPainterRenderSystem::drawImage(const Rect& rectangle, const QImage& image)
 {
 
 }
 
-void QtPainterRenderSystem::drawImage(const Point& point, const Image& image)
+void QtPainterRenderSystem::drawImage(const Point& point, const QImage& image)
 {
 
 }

@@ -37,22 +37,22 @@ void RenderSystemProxy::drawEllipse(const Rect& rectangle)
 	mRenderSystem->drawEllipse(rectangle);
 }
 
-void RenderSystemProxy::drawImage(const Rect& rectangle, const Image& image, const Rect& source)
+void RenderSystemProxy::drawImage(const Rect& rectangle, const QImage& image, const Rect& source)
 {
 	mRenderSystem->drawImage(rectangle, image, source);
 }
 
-void RenderSystemProxy::drawImage(const Point& point, const Image& image, const Rect& source)
+void RenderSystemProxy::drawImage(const Point& point, const QImage& image, const Rect& source)
 {
 	mRenderSystem->drawImage(point, image, source);
 }
 
-void RenderSystemProxy::drawImage(const Rect& rectangle, const Image& image)
+void RenderSystemProxy::drawImage(const Rect& rectangle, const QImage& image)
 {
 	mRenderSystem->drawImage(rectangle, image);
 }
 
-void RenderSystemProxy::drawImage(const Point& point, const Image& image)
+void RenderSystemProxy::drawImage(const Point& point, const QImage& image)
 {
 	mRenderSystem->drawImage(point, image);
 }

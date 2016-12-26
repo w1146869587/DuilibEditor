@@ -6,6 +6,7 @@
 #include <RawDataContainer.h>
 #include <Archive.h>
 #include <map>
+#include <QImage>
 
 namespace duilib2
 {
@@ -64,7 +65,12 @@ public:
 	 */
 	RawDataContainerPtr getFileRawData(const String& fileName);
 
-	//Image getImage(const String& fileName)
+	/**
+	 * @brief getImage
+	 * @param fileName
+	 * @return
+	 */
+	QImage getImage(const String& fileName);
 
 private:
 	std::map<String, Archive*> mResourcePackages;

@@ -5,6 +5,7 @@
 #include <RenderTarget.h>
 #include <RoundRect.h>
 #include <PropertyTypes.h>
+#include <QImage>
 
 namespace duilib2
 {
@@ -48,7 +49,7 @@ public:
 	 * @param image
 	 * @param source
 	 */
-	virtual void drawImage(const Rect& rectangle, const Image& image, const Rect& source) = 0;
+	virtual void drawImage(const Rect& rectangle, const QImage& image, const Rect& source) = 0;
 
 	/**
 	 * @brief drawImage
@@ -56,21 +57,21 @@ public:
 	 * @param image
 	 * @param source
 	 */
-	virtual void drawImage(const Point& point, const Image& image, const Rect& source) = 0;
+	virtual void drawImage(const Point& point, const QImage& image, const Rect& source) = 0;
 
 	/**
 	 * @brief drawImage
 	 * @param rectangle
 	 * @param image
 	 */
-	virtual void drawImage(const Rect& rectangle, const Image& image) = 0;
+	virtual void drawImage(const Rect& rectangle, const QImage& image) = 0;
 
 	/**
 	 * @brief drawImage
 	 * @param point
 	 * @param image
 	 */
-	virtual void drawImage(const Point& point, const Image& image) = 0;
+	virtual void drawImage(const Point& point, const QImage& image) = 0;
 
 	/**
 	 * @brief drawLine

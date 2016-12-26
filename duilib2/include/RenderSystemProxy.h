@@ -27,16 +27,16 @@ public:
 	virtual void drawEllipse(const Rect& rectangle);
 
 	/// @copydoc RenderSystem::drawImage
-	virtual void drawImage(const Rect& rectangle, const Image& image, const Rect& source);
+	virtual void drawImage(const Rect& rectangle, const QImage& image, const Rect& source);
 
 	/// @copydoc RenderSystem::drawImage
-	virtual void drawImage(const Point& point, const Image& image, const Rect& source);
+	virtual void drawImage(const Point& point, const QImage& image, const Rect& source);
 
 	/// @copydoc RenderSystem::drawImage
-	virtual void drawImage(const Rect& rectangle, const Image& image);
+	virtual void drawImage(const Rect& rectangle, const QImage& image);
 
 	/// @copydoc RenderSystem::drawImage
-	virtual void drawImage(const Point& point, const Image& image);
+	virtual void drawImage(const Point& point, const QImage& image);
 
 	/// @copydoc RenderSystem::drawLine
 	virtual void drawLine(const Point& pt1, const Point& pt2);

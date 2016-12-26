@@ -80,8 +80,8 @@ RawDataContainerPtr ResourceManager::getFileRawData(const String& fileName)
 	if (pos == mResourcePackages.end())
 	{
 		DUILIB2_EXCEPT(Exception::ERR_ITEM_NOT_FOUND,
-							 "Current resource package named " + mCurrentResourcePackage + " is not exists",
-							 "ResourceManager::getFileRawData");
+					   "Current resource package named " + mCurrentResourcePackage + " is not exists",
+					   "ResourceManager::getFileRawData");
 	}
 
 	RawDataContainerPtr rawDataPtr = pos->second->open(fileName);
@@ -90,4 +90,18 @@ RawDataContainerPtr ResourceManager::getFileRawData(const String& fileName)
 	return rawDataPtr;
 }
 
+QImage ResourceManager::getImage(const String& fileName)
+{
+	RawDataContainerPtr rawData = getFileRawData(fileName);
+	QImage image;
+	if (!image.loadFromData(rawData->getData(), rawData->getSize()))
+	{
+		DUILIB2_EXCEPT(Exception::ERR_INTERNAL_ERROR,
+					   "Can\'t load image: " + fileName,
+					   "ResourceManager::getFileRawData");
+	}
+
+	return image;
 }
+
+} // namespace duilib2
