@@ -46,22 +46,41 @@ void QtPainterRenderSystem::drawEllipse(const Rect& rectangle)
 
 void QtPainterRenderSystem::drawImage(const Rect& rectangle, const QImage& image, const Rect& source)
 {
+	QPainter painter(getPaintDevice());
+	initPainter(painter);
+	setupClipRegion(painter);
 
+	painter.drawImage(QRectF(rectangle.mLeft, rectangle.mTop, rectangle.getWidth(), rectangle.getHeight()),
+					  image, QRectF(source.mLeft, source.mTop, source.getWidth(), source.getHeight()));
 }
 
 void QtPainterRenderSystem::drawImage(const Point& point, const QImage& image, const Rect& source)
 {
+	QPainter painter(getPaintDevice());
+	initPainter(painter);
+	setupClipRegion(painter);
 
+	painter.drawImage(QRectF(point.mX, point.mY, source.getWidth(), source.getHeight()),
+					  image, QRectF(source.mLeft, source.mTop, source.getWidth(), source.getHeight()));
 }
 
 void QtPainterRenderSystem::drawImage(const Rect& rectangle, const QImage& image)
 {
+	QPainter painter(getPaintDevice());
+	initPainter(painter);
+	setupClipRegion(painter);
 
+	painter.drawImage(QRectF(rectangle.mLeft, rectangle.mTop, rectangle.getWidth(), rectangle.getHeight()),
+					  image);
 }
 
 void QtPainterRenderSystem::drawImage(const Point& point, const QImage& image)
 {
+	QPainter painter(getPaintDevice());
+	initPainter(painter);
+	setupClipRegion(painter);
 
+	painter.drawImage(QRectF(point.mX, point.mY, image.width(), image.height()), image);
 }
 
 void QtPainterRenderSystem::drawLine(const Point& pt1, const Point& pt2)
@@ -94,12 +113,30 @@ void QtPainterRenderSystem::drawPoint(const Point& position)
 
 void QtPainterRenderSystem::drawPolygon(const std::vector<Point>& points)
 {
+	QPainter painter(getPaintDevice());
+	initPainter(painter);
+	setupClipRegion(painter);
 
+	QPoint* qpoints = new QPoint[points.size()];
+	for (int i = 0; i < (int)points.size(); ++i)
+		qpoints[i] = QPoint(points[i].mX, points[i].mY);
+
+	painter.drawPolygon(qpoints, (int)points.size());
+	delete[] qpoints;
 }
 
 void QtPainterRenderSystem::drawPolyline(const std::vector<Point>& points)
 {
+	QPainter painter(getPaintDevice());
+	initPainter(painter);
+	setupClipRegion(painter);
 
+	QPoint* qpoints = new QPoint[points.size()];
+	for (int i = 0; i < (int)points.size(); ++i)
+		qpoints[i] = QPoint(points[i].mX, points[i].mY);
+
+	painter.drawPolyline(qpoints, (int)points.size());
+	delete[] qpoints;
 }
 
 void QtPainterRenderSystem::drawRect(const Rect& rectangle)
@@ -124,7 +161,12 @@ void QtPainterRenderSystem::drawRoundedRect(const Rect& rect, int xRadius, int y
 
 void QtPainterRenderSystem::drawText(const Rect& rectangle, const String& text)
 {
+	QPainter painter(getPaintDevice());
+	initPainter(painter);
+	setupClipRegion(painter);
 
+	painter.drawText(QRectF(rectangle.mLeft, rectangle.mTop, rectangle.getWidth(), rectangle.getHeight()),
+					 text);
 }
 
 void QtPainterRenderSystem::fillRect(int x, int y, int width, int height, const Color& color)
