@@ -76,13 +76,11 @@ SOURCES += \
     src/EventSet.cpp \
     src/EventArgs.cpp \
     src/Types.cpp \
-    src/RenderSystemProxy.cpp \
     src/DefaultProperty.cpp \
     src/DefaultPropertyManager.cpp \
     src/Font.cpp \
     src/FontManager.cpp \
-    src/ImageImpl/Qt_ImageImpl.cpp \
-    src/Image.cpp
+    src/RenderSystemImpl.cpp
 
 HEADERS +=\
     include/System.h \
@@ -150,18 +148,15 @@ HEADERS +=\
     include/EventSet.h \
     include/EventArgs.h \
     include/Types.h \
-    include/RenderSystemProxy.h \
     include/DefaultProperty.h \
     include/DefaultPropertyManager.h \
     include/Font.h \
     include/FontManager.h \
-    include/Image.h \
-    src/ImageImpl/ImageImpl.h \
-    src/ImageImpl/Qt_ImageImpl.h \
     src/NativeWindows/QtMainWindow.h \
     src/RenderSystems/QtPainterRenderSystem.h \
     src/RenderTargets/QtPaintDeviceRenderTarget.h \
-    src/XmlParsers/QtXmlParser.h
+    src/XmlParsers/QtXmlParser.h \
+    include/RenderSystemImpl.h
 
 INCLUDEPATH += \
     include \

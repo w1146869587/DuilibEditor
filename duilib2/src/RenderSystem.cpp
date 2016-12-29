@@ -1,77 +1,148 @@
 #include <RenderSystem.h>
+#include "RenderSystems/QtPainterRenderSystem.h"
 
 namespace duilib2
 {
 
-RenderSystem::RenderSystem()
-	: mClipping(false)
-	, mRenderTarget(NULL)
-	, mPenColor(0, 0, 0)
-	, mBrushColor(0, 0, 0)
+RenderSystem::RenderSystem(RenderTarget* rt)
 {
-
+	// TODO, separate to another file
+	mRenderSystemImpl = new QtPainterRenderSystem(rt);
 }
 
 RenderSystem::~RenderSystem()
 {
+	delete mRenderSystemImpl;
+}
+
+void RenderSystem::drawArc(const Rect& rectangle, int startAngle, int spanAngle)
+{
 
 }
 
-void RenderSystem::reset()
+void RenderSystem::drawChord(const Rect& rectangle, int startAngle, int spanAngle)
 {
-	clearClipRegion();
-	setRenderTarget(NULL);
+
+}
+
+void RenderSystem::drawEllipse(const Rect& rectangle)
+{
+
+}
+
+void RenderSystem::drawImage(const Rect& rectangle, const Image& image, const Rect& source)
+{
+
+}
+
+void RenderSystem::drawImage(const Point& point, const Image& image, const Rect& source)
+{
+
+}
+
+void RenderSystem::drawImage(const Rect& rectangle, const Image& image)
+{
+
+}
+
+void RenderSystem::drawImage(const Point& point, const Image& image)
+{
+
+}
+
+void RenderSystem::drawLine(const Point& pt1, const Point& pt2)
+{
+
+}
+
+void RenderSystem::drawPie(const Rect& rectangle, int startAngle, int spanAngle)
+{
+
+}
+
+void RenderSystem::drawPoint(const Point& position)
+{
+
+}
+
+void RenderSystem::drawPolygon(const std::vector<Point>& points)
+{
+
+}
+
+void RenderSystem::drawPolyline(const std::vector<Point>& points)
+{
+
+}
+
+void RenderSystem::drawRect(const Rect& rectangle)
+{
+
+}
+
+void RenderSystem::drawRoundedRect(const Rect& rect, int xRadius, int yRadius)
+{
+
+}
+
+void RenderSystem::drawText(const Rect& rectangle, const String& text)
+{
+
+}
+
+void RenderSystem::fillRect(int x, int y, int width, int height, const Color& color)
+{
+
 }
 
 void RenderSystem::setPenColor(const Color& color)
 {
-	mPenColor = color;
+	mRenderSystemImpl->setPenColor(color);
 }
 
 Color RenderSystem::getPenColor() const
 {
-	return mPenColor;
+	mRenderSystemImpl->getPenColor();
 }
 
 void RenderSystem::setBrushColor(const Color& color)
 {
-	mBrushColor = color;
+	mRenderSystemImpl->setBrushColor(color);
 }
 
 Color RenderSystem::getBrushColor() const
 {
-	return mBrushColor;
+	mRenderSystemImpl->getBrushColor();
 }
 
 void RenderSystem::setRenderTarget(RenderTarget* renderTarget)
 {
-	mRenderTarget = renderTarget;
+	mRenderSystemImpl->setRenderTarget(renderTarget);
 }
 
 RenderTarget* RenderSystem::getRenderTarget()
 {
-	return mRenderTarget;
+	mRenderSystemImpl->getRenderTarget();
 }
 
 void RenderSystem::clearClipRegion()
 {
-	mClipping = false;
+	mRenderSystemImpl->clearClipRegion();
 }
 
 void RenderSystem::setClipRegion(const RoundRect& clipRegion)
 {
-	mClipping = true;
-	mClipRegion = clipRegion;
+	mRenderSystemImpl->setClipRegion(clipRegion);
 }
 
 RoundRect RenderSystem::getClipRegion() const
 {
-	return mClipRegion;
+	mRenderSystemImpl->getClipRegion();
 }
 
 bool RenderSystem::hasClipRegion() const
 {
-	return mClipping;
+	mRenderSystemImpl->hasClipRegion();
 }
 
 } // namespace duilib2

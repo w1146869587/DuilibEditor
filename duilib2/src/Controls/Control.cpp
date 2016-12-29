@@ -1,5 +1,5 @@
 #include <Controls/Control.h>
-#include <RenderSystemProxy.h>
+#include <RenderSystemImpl.h>
 #include <boost/random.hpp>
 
 namespace duilib2

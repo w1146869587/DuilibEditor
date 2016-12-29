@@ -3,23 +3,20 @@
 
 #include <duilib2_global.h>
 #include <RenderTarget.h>
-#include <RoundRect.h>
 #include <PropertyTypes.h>
-#include <QImage>
+#include <RenderSystemImpl.h>
+
 
 namespace duilib2
 {
 
+class RenderSystemImpl;
+
 class DUILIB2SHARED_EXPORT RenderSystem
 {
 public:
-	RenderSystem();
+	RenderSystem(RenderTarget* rt);
 	~RenderSystem();
-
-	/**
-	 * @brief reset
-	 */
-	virtual void reset();
 
 	/**
 	 * @brief drawArc
@@ -27,7 +24,7 @@ public:
 	 * @param startAngle
 	 * @param spanAngle
 	 */
-	virtual void drawArc(const Rect& rectangle, int startAngle, int spanAngle) = 0;
+	virtual void drawArc(const Rect& rectangle, int startAngle, int spanAngle);
 
 	/**
 	 * @brief drawChord
@@ -35,13 +32,13 @@ public:
 	 * @param startAngle
 	 * @param spanAngle
 	 */
-	virtual void drawChord(const Rect& rectangle, int startAngle, int spanAngle) = 0;
+	virtual void drawChord(const Rect& rectangle, int startAngle, int spanAngle);
 
 	/**
 	 * @brief drawEllipse
 	 * @param rectangle
 	 */
-	virtual void drawEllipse(const Rect& rectangle) = 0;
+	virtual void drawEllipse(const Rect& rectangle);
 
 	/**
 	 * @brief drawImage
@@ -49,7 +46,7 @@ public:
 	 * @param image
 	 * @param source
 	 */
-	virtual void drawImage(const Rect& rectangle, const QImage& image, const Rect& source) = 0;
+	virtual void drawImage(const Rect& rectangle, const Image& image, const Rect& source);
 
 	/**
 	 * @brief drawImage
@@ -57,28 +54,28 @@ public:
 	 * @param image
 	 * @param source
 	 */
-	virtual void drawImage(const Point& point, const QImage& image, const Rect& source) = 0;
+	virtual void drawImage(const Point& point, const Image& image, const Rect& source);
 
 	/**
 	 * @brief drawImage
 	 * @param rectangle
 	 * @param image
 	 */
-	virtual void drawImage(const Rect& rectangle, const QImage& image) = 0;
+	virtual void drawImage(const Rect& rectangle, const Image& image);
 
 	/**
 	 * @brief drawImage
 	 * @param point
 	 * @param image
 	 */
-	virtual void drawImage(const Point& point, const QImage& image) = 0;
+	virtual void drawImage(const Point& point, const Image& image);
 
 	/**
 	 * @brief drawLine
 	 * @param pt1
 	 * @param pt2
 	 */
-	virtual void drawLine(const Point& pt1, const Point& pt2) = 0;
+	virtual void drawLine(const Point& pt1, const Point& pt2);
 
 	/**
 	 * @brief drawPie
@@ -86,31 +83,31 @@ public:
 	 * @param startAngle
 	 * @param spanAngle
 	 */
-	virtual void drawPie(const Rect& rectangle, int startAngle, int spanAngle) = 0;
+	virtual void drawPie(const Rect& rectangle, int startAngle, int spanAngle);
 
 	/**
 	 * @brief drawPoint
 	 * @param position
 	 */
-	virtual void drawPoint(const Point& position) = 0;
+	virtual void drawPoint(const Point& position);
 
 	/**
 	 * @brief drawPolygon
 	 * @param points
 	 */
-	virtual void drawPolygon(const std::vector<Point>& points) = 0;
+	virtual void drawPolygon(const std::vector<Point>& points);
 
 	/**
 	 * @brief drawPolyline
 	 * @param points
 	 */
-	virtual void drawPolyline(const std::vector<Point>& points) = 0;
+	virtual void drawPolyline(const std::vector<Point>& points);
 
 	/**
 	 * @brief drawRect
 	 * @param rectangle
 	 */
-	virtual void drawRect(const Rect& rectangle) = 0;
+	virtual void drawRect(const Rect& rectangle);
 
 	/**
 	 * @brief drawRoundedRect
@@ -118,14 +115,14 @@ public:
 	 * @param xRadius
 	 * @param yRadius
 	 */
-	virtual void drawRoundedRect(const Rect& rect, int xRadius, int yRadius) = 0;
+	virtual void drawRoundedRect(const Rect& rect, int xRadius, int yRadius);
 
 	/**
 	 * @brief drawText
 	 * @param rectangle
 	 * @param text
 	 */
-	virtual void drawText(const Rect& rectangle, const String& text) = 0;
+	virtual void drawText(const Rect& rectangle, const String& text);
 
 	/**
 	 * @brief fillRect
@@ -135,7 +132,7 @@ public:
 	 * @param height
 	 * @param color
 	 */
-	virtual void fillRect(int x, int y, int width, int height, const Color& color) = 0;
+	virtual void fillRect(int x, int y, int width, int height, const Color& color);
 
 	/**
 	 * @brief setPenColor
@@ -198,11 +195,7 @@ public:
 
 
 private:
-	bool          mClipping;
-	RoundRect     mClipRegion;
-	RenderTarget* mRenderTarget;
-	Color         mPenColor;
-	Color         mBrushColor;
+	RenderSystemImpl* mRenderSystemImpl;
 };
 
 } // namespace duilib2

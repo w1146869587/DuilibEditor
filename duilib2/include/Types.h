@@ -2,6 +2,7 @@
 #define TYPES_H
 
 #include <duilib2_global.h>
+#include <RoundRect.h>
 
 namespace duilib2
 {

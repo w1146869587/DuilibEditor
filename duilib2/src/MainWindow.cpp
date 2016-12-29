@@ -1,6 +1,6 @@
 #include <MainWindow.h>
 #include <PropertyTypes.h>
-#include <RenderSystemProxy.h>
+#include <RenderSystemImpl.h>
 
 namespace duilib2
 {
