@@ -1,5 +1,5 @@
 #include <Controls/Control.h>
-#include <RenderSystemImpl.h>
+#include <RenderSystem.h>
 #include <boost/random.hpp>
 
 namespace duilib2
@@ -84,7 +84,7 @@ String Control::showModal()
 int Control::getWidth() const
 {
 	int width = getProperty("width").getAnyValue<Int>();
-	if (width == 0 && isFloat())
+	if (width == 0 && !isFloat())
 		width = mWidth;
 
 	return width;
@@ -93,7 +93,7 @@ int Control::getWidth() const
 int Control::getHeight() const
 {
 	int height = getProperty("height").getAnyValue<Int>();
-	if (height == 0 && isFloat())
+	if (height == 0 && !isFloat())
 		height = mHeight;
 
 	return height;
@@ -102,7 +102,7 @@ int Control::getHeight() const
 Point Control::getPosition(bool relativeToMainWindow) const
 {
 	Point pos;
-	if (isFloat())
+	if (!isFloat())
 	{
 		pos = mPosition;
 	}
@@ -148,7 +148,7 @@ void Control::render()
 	if (rt == NULL)
 		return;
 
-	RenderSystemProxy rs(rt);
+	RenderSystem rs(rt);
 
 	// Setup clip region
 	//rs.setClipRegion();
@@ -159,6 +159,7 @@ void Control::render()
 	drawText(&rs);
 	drawBorder(&rs);
 
+	// render children
 	Window::render();
 }
 

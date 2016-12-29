@@ -5,7 +5,8 @@
 namespace duilib2
 {
 
-QtPainterRenderSystem::QtPainterRenderSystem()
+QtPainterRenderSystem::QtPainterRenderSystem(RenderTarget* rt)
+	: RenderSystemImpl(rt)
 {
 
 }

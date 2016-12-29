@@ -60,7 +60,7 @@ bool XmlAttributes::exists(const String& name) const
 
 int XmlAttributes::getCount() const
 {
-	return mAttributes.size();
+	return (int)mAttributes.size();
 }
 
 String XmlAttributes::getName(int index) const

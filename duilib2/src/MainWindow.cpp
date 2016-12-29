@@ -1,6 +1,5 @@
 #include <MainWindow.h>
-#include <PropertyTypes.h>
-#include <RenderSystemImpl.h>
+#include <RenderSystem.h>
 
 namespace duilib2
 {
@@ -81,7 +80,7 @@ void MainWindow::render()
 	if (rt == NULL)
 		return;
 
-	RenderSystemProxy rs(rt);
+	RenderSystem rs(rt);
 
 	// 是否使用静态透明背景
 	// 如果不使用，则绘制一个纯色背景

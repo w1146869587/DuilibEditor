@@ -36,6 +36,7 @@ public:
 	 */
 	bool isFloat() const;
 
+	// internal use, invoke by layout
 	void _setPosition(const Point& pos);
 	void _setWidth(int width);
 	void _setHeight(int height);

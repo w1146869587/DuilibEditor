@@ -42,17 +42,10 @@ public:
 	 */
 	XmlParser* getXmlParser() const;
 
-	/**
-	 * @brief getRenderSystem
-	 * @return
-	 */
-	RenderSystem* getRenderSystem() const;
-
 private:
 	void createXmlParser();
 	void addArchiveFactories();
 	void addWindowFactores();
-	void createRenderSystem();
 
 private:
 	ArchiveManager*  mArchiveManager;
@@ -60,7 +53,6 @@ private:
 	WindowManager*   mWindowManager;
 	PropertyParserManager* mPropertyParserManager;
 	XmlParser*       mXmlParser;
-	RenderSystem*    mRenderSystem;
 	FontManager*     mFontManager;
 	DefaultPropertyManager* mDefaultPropertyManager;
 

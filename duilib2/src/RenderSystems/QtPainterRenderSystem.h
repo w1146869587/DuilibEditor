@@ -10,7 +10,7 @@ namespace duilib2
 class QtPainterRenderSystem : public RenderSystemImpl
 {
 public:
-	QtPainterRenderSystem();
+	QtPainterRenderSystem(RenderTarget* rt);
 	virtual ~QtPainterRenderSystem();
 
 	virtual void drawArc(const Rect& rectangle, int startAngle, int spanAngle);

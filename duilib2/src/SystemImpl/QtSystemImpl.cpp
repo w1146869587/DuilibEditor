@@ -87,9 +87,4 @@ void System::addWindowFactores()
 	mWindowManager->addWindowFactory(new WebBrowserFactory);
 }
 
-void System::createRenderSystem()
-{
-	mRenderSystem = new QtPainterRenderSystem;
-}
-
 }

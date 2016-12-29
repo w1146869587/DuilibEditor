@@ -17,82 +17,82 @@ RenderSystem::~RenderSystem()
 
 void RenderSystem::drawArc(const Rect& rectangle, int startAngle, int spanAngle)
 {
-
+	mRenderSystemImpl->drawArc(rectangle, startAngle, spanAngle);
 }
 
 void RenderSystem::drawChord(const Rect& rectangle, int startAngle, int spanAngle)
 {
-
+	mRenderSystemImpl->drawChord(rectangle, startAngle, spanAngle);
 }
 
 void RenderSystem::drawEllipse(const Rect& rectangle)
 {
-
+	mRenderSystemImpl->drawEllipse(rectangle);
 }
 
 void RenderSystem::drawImage(const Rect& rectangle, const Image& image, const Rect& source)
 {
-
+	mRenderSystemImpl->drawImage(rectangle, image, source);
 }
 
 void RenderSystem::drawImage(const Point& point, const Image& image, const Rect& source)
 {
-
+	mRenderSystemImpl->drawImage(point, image, source);
 }
 
 void RenderSystem::drawImage(const Rect& rectangle, const Image& image)
 {
-
+	mRenderSystemImpl->drawImage(rectangle, image);
 }
 
 void RenderSystem::drawImage(const Point& point, const Image& image)
 {
-
+	mRenderSystemImpl->drawImage(point, image);
 }
 
 void RenderSystem::drawLine(const Point& pt1, const Point& pt2)
 {
-
+	mRenderSystemImpl->drawLine(pt1, pt2);
 }
 
 void RenderSystem::drawPie(const Rect& rectangle, int startAngle, int spanAngle)
 {
-
+	mRenderSystemImpl->drawPie(rectangle, startAngle, spanAngle);
 }
 
 void RenderSystem::drawPoint(const Point& position)
 {
-
+	mRenderSystemImpl->drawPoint(position);
 }
 
 void RenderSystem::drawPolygon(const std::vector<Point>& points)
 {
-
+	mRenderSystemImpl->drawPolygon(points);
 }
 
 void RenderSystem::drawPolyline(const std::vector<Point>& points)
 {
-
+	mRenderSystemImpl->drawPolyline(points);
 }
 
 void RenderSystem::drawRect(const Rect& rectangle)
 {
-
+	mRenderSystemImpl->drawRect(rectangle);
 }
 
 void RenderSystem::drawRoundedRect(const Rect& rect, int xRadius, int yRadius)
 {
-
+	mRenderSystemImpl->drawRoundedRect(rect, xRadius, yRadius);
 }
 
 void RenderSystem::drawText(const Rect& rectangle, const String& text)
 {
-
+	mRenderSystemImpl->drawText(rectangle, text);
 }
 
 void RenderSystem::fillRect(int x, int y, int width, int height, const Color& color)
 {
-
+	mRenderSystemImpl->fillRect(x, y, width, height, color);
 }
 
 void RenderSystem::setPenColor(const Color& color)
@@ -102,7 +102,7 @@ void RenderSystem::setPenColor(const Color& color)
 
 Color RenderSystem::getPenColor() const
 {
-	mRenderSystemImpl->getPenColor();
+	return mRenderSystemImpl->getPenColor();
 }
 
 void RenderSystem::setBrushColor(const Color& color)
@@ -112,7 +112,7 @@ void RenderSystem::setBrushColor(const Color& color)
 
 Color RenderSystem::getBrushColor() const
 {
-	mRenderSystemImpl->getBrushColor();
+	return mRenderSystemImpl->getBrushColor();
 }
 
 void RenderSystem::setRenderTarget(RenderTarget* renderTarget)
@@ -122,7 +122,7 @@ void RenderSystem::setRenderTarget(RenderTarget* renderTarget)
 
 RenderTarget* RenderSystem::getRenderTarget()
 {
-	mRenderSystemImpl->getRenderTarget();
+	return mRenderSystemImpl->getRenderTarget();
 }
 
 void RenderSystem::clearClipRegion()
@@ -137,12 +137,12 @@ void RenderSystem::setClipRegion(const RoundRect& clipRegion)
 
 RoundRect RenderSystem::getClipRegion() const
 {
-	mRenderSystemImpl->getClipRegion();
+	return mRenderSystemImpl->getClipRegion();
 }
 
 bool RenderSystem::hasClipRegion() const
 {
-	mRenderSystemImpl->hasClipRegion();
+	return mRenderSystemImpl->hasClipRegion();
 }
 
 } // namespace duilib2

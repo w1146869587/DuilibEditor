@@ -11,7 +11,6 @@ System::System()
 	, mWindowManager(0)
 	, mPropertyParserManager(0)
 	, mXmlParser(0)
-	, mRenderSystem(0)
 	, mFontManager(0)
 	, mDefaultPropertyManager(0)
 {
@@ -23,14 +22,12 @@ System::System()
 	mDefaultPropertyManager = new DefaultPropertyManager;
 
 	createXmlParser();
-	createRenderSystem();
 	addArchiveFactories();
 	addWindowFactores();
 }
 
 System::~System()
 {
-	delete mRenderSystem;
 	delete mXmlParser;
 	delete mPropertyParserManager;
 	delete mWindowManager;
@@ -51,11 +48,6 @@ void System::destroy()
 XmlParser* System::getXmlParser() const
 {
 	return mXmlParser;
-}
-
-RenderSystem* System::getRenderSystem() const
-{
-	return mRenderSystem;
 }
 
 } // duilib2
