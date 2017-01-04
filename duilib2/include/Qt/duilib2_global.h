@@ -3,7 +3,6 @@
 
 #include <QtCore/qglobal.h>
 #include <QString>
-#include <QImage>
 
 #if defined(DUILIB2_LIBRARY)
 #  define DUILIB2SHARED_EXPORT Q_DECL_EXPORT
@@ -16,6 +15,5 @@
 #endif
 
 typedef QString String;
-typedef QImage Image;
 
 #endif // DUILIB2_GLOBAL_H

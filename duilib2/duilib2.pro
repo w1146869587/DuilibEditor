@@ -80,7 +80,8 @@ SOURCES += \
     src/DefaultPropertyManager.cpp \
     src/Font.cpp \
     src/FontManager.cpp \
-    src/RenderSystemImpl.cpp
+    src/RenderSystemImpl.cpp \
+    src/Image.cpp
 
 HEADERS +=\
     include/System.h \
@@ -156,7 +157,8 @@ HEADERS +=\
     src/RenderSystems/QtPainterRenderSystem.h \
     src/RenderTargets/QtPaintDeviceRenderTarget.h \
     src/XmlParsers/QtXmlParser.h \
-    include/RenderSystemImpl.h
+    include/RenderSystemImpl.h \
+    include/Image.h
 
 INCLUDEPATH += \
     include \
