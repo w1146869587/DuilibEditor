@@ -4,6 +4,7 @@
 #include <duilib2_global.h>
 #include <RenderTarget.h>
 #include <PropertyTypes.h>
+#include <vector>
 
 namespace duilib2
 {

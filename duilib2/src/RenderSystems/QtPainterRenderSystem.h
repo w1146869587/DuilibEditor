@@ -19,13 +19,13 @@ public:
 
 	virtual void drawEllipse(const Rect& rectangle);
 
-	virtual void drawImage(const Rect& rectangle, const QImage& image, const Rect& source);
+	virtual void drawImage(const Rect& rectangle, const Image& image, const Rect& source);
 
-	virtual void drawImage(const Point& point, const QImage& image, const Rect& source);
+	virtual void drawImage(const Point& point, const Image& image, const Rect& source);
 
-	virtual void drawImage(const Rect& rectangle, const QImage& image);
+	virtual void drawImage(const Rect& rectangle, const Image& image);
 
-	virtual void drawImage(const Point& point, const QImage& image);
+	virtual void drawImage(const Point& point, const Image& image);
 
 	virtual void drawLine(const Point& pt1, const Point& pt2);
 

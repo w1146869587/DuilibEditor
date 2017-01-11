@@ -1,6 +1,7 @@
 #include <Exception.h>
 #include "QtPainterRenderSystem.h"
 #include "../RenderTargets/QtPaintDeviceRenderTarget.h"
+#include <ResourceManager.h>
 
 namespace duilib2
 {
@@ -45,43 +46,55 @@ void QtPainterRenderSystem::drawEllipse(const Rect& rectangle)
 	painter.drawEllipse(QRectF(rectangle.mLeft, rectangle.mTop, rectangle.getWidth(), rectangle.getHeight()));
 }
 
-void QtPainterRenderSystem::drawImage(const Rect& rectangle, const QImage& image, const Rect& source)
+void QtPainterRenderSystem::drawImage(const Rect& rectangle, const Image& image, const Rect& source)
 {
 	QPainter painter(getPaintDevice());
 	initPainter(painter);
 	setupClipRegion(painter);
+
+	ResourceManager* resourceManager = ResourceManager::getSingletonPtr();
+	QImage qtimage = resourceManager->getImage(image.getFileName());
 
 	painter.drawImage(QRectF(rectangle.mLeft, rectangle.mTop, rectangle.getWidth(), rectangle.getHeight()),
-					  image, QRectF(source.mLeft, source.mTop, source.getWidth(), source.getHeight()));
+					  qtimage, QRectF(source.mLeft, source.mTop, source.getWidth(), source.getHeight()));
 }
 
-void QtPainterRenderSystem::drawImage(const Point& point, const QImage& image, const Rect& source)
+void QtPainterRenderSystem::drawImage(const Point& point, const Image& image, const Rect& source)
 {
 	QPainter painter(getPaintDevice());
 	initPainter(painter);
 	setupClipRegion(painter);
+
+	ResourceManager* resourceManager = ResourceManager::getSingletonPtr();
+	QImage qtimage = resourceManager->getImage(image.getFileName());
 
 	painter.drawImage(QRectF(point.mX, point.mY, source.getWidth(), source.getHeight()),
-					  image, QRectF(source.mLeft, source.mTop, source.getWidth(), source.getHeight()));
+					  qtimage, QRectF(source.mLeft, source.mTop, source.getWidth(), source.getHeight()));
 }
 
-void QtPainterRenderSystem::drawImage(const Rect& rectangle, const QImage& image)
+void QtPainterRenderSystem::drawImage(const Rect& rectangle, const Image& image)
 {
 	QPainter painter(getPaintDevice());
 	initPainter(painter);
 	setupClipRegion(painter);
+
+	ResourceManager* resourceManager = ResourceManager::getSingletonPtr();
+	QImage qtimage = resourceManager->getImage(image.getFileName());
 
 	painter.drawImage(QRectF(rectangle.mLeft, rectangle.mTop, rectangle.getWidth(), rectangle.getHeight()),
-					  image);
+					  qtimage);
 }
 
-void QtPainterRenderSystem::drawImage(const Point& point, const QImage& image)
+void QtPainterRenderSystem::drawImage(const Point& point, const Image& image)
 {
 	QPainter painter(getPaintDevice());
 	initPainter(painter);
 	setupClipRegion(painter);
 
-	painter.drawImage(QRectF(point.mX, point.mY, image.width(), image.height()), image);
+	ResourceManager* resourceManager = ResourceManager::getSingletonPtr();
+	QImage qtimage = resourceManager->getImage(image.getFileName());
+
+	painter.drawImage(QRectF(point.mX, point.mY, qtimage.width(), qtimage.height()), qtimage);
 }
 
 void QtPainterRenderSystem::drawLine(const Point& pt1, const Point& pt2)
